@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Hevesi Toolbox</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_iranyszog">Irányszög számítás</string>
+    <string name="title_activity_polarispont">Poláris pont számítás</string>
+    <string name="polaris_kezdopont_y">Kezdőpont Y</string>
+    <string name="polaris_kezdopont_x">Kezdőpont X</string>
+    <string name="title_activity_numerikuster">Numerikus területszámítás</string>
+    <string name="title_activity_numerikusterulet">Numerikus területszámítás</string>
+    <string name="title_activity_komparalas">Komparálás</string>
+
+</resources>

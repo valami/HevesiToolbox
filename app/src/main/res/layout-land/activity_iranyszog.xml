@@ -1,0 +1,203 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="hu.valamas.hevesitoolbox.iranyszog">
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:stretchColumns="*"
+        >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kezdöpont Y"
+                android:id="@+id/KY"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_column="0" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/KY_in"
+                android:layout_above="@+id/KX"
+                android:layout_toRightOf="@+id/KY"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_column="1"
+                android:layout_span="2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kezdöpont X"
+                android:id="@+id/KX"
+                android:layout_below="@+id/KY"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_column="0" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/KX_in"
+                android:layout_alignBottom="@+id/KX"
+                android:layout_alignLeft="@+id/KY_in"
+                android:layout_alignStart="@+id/KY_in"
+                android:layout_alignRight="@+id/KY_in"
+                android:layout_alignEnd="@+id/KY_in"
+                android:layout_column="1"
+                android:layout_span="2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Végpont Y"
+                android:id="@+id/VY"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_column="0" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/VY_in"
+                android:layout_above="@+id/VX_in"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignLeft="@+id/KX_in"
+                android:layout_alignStart="@+id/KX_in"
+                android:layout_column="1"
+                android:layout_span="2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Végpont X"
+                android:id="@+id/VX"
+                android:layout_below="@+id/VY"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_column="0" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/VX_in"
+                android:layout_alignBottom="@+id/VX"
+                android:layout_alignLeft="@+id/VY_in"
+                android:layout_alignStart="@+id/VY_in"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_column="1"
+                android:layout_span="2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Számol"
+                android:id="@+id/button"
+                android:layout_centerVertical="true"
+                android:layout_alignLeft="@+id/tav"
+                android:layout_alignStart="@+id/tav"
+                android:layout_column="0"
+                android:layout_span="3" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Szög :"
+                android:id="@+id/szog_text"
+                android:textSize="20dp"
+                android:layout_column="0"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Szög"
+                android:id="@+id/szogkiir"
+                android:textSize="20dp"
+                android:layout_below="@+id/button"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:visibility="invisible"
+                android:layout_column="2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Távolság :"
+                android:id="@+id/tav_text"
+                android:textSize="20dp"
+                android:layout_column="0"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Távolság"
+                android:id="@+id/tav"
+                android:visibility="invisible"
+                android:textSize="20dp"
+                android:layout_below="@+id/szogkiir"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_column="2" />
+        </TableRow>
+
+    </TableLayout>
+
+
+</RelativeLayout>

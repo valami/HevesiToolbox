@@ -1,0 +1,204 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="hu.valamas.hevesitoolbox.polarispont">
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:stretchColumns="*"
+        >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/polaris_kezdopont_y"
+                android:id="@+id/KY"
+                android:layout_column="0"
+                android:layout_marginRight="10dp" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/KY_in"
+                android:layout_column="1"
+                android:inputType="numberDecimal"
+                android:layout_weight="1" />
+        </TableRow>
+
+
+
+            <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/polaris_kezdopont_x"
+            android:id="@+id/KX"
+            android:layout_column="0" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/KX_in"
+            android:layout_column="1"
+            android:inputType="numberDecimal"
+            android:layout_weight="1"/>
+
+    </TableRow>
+    <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Szög"
+                android:id="@+id/szog"
+                android:layout_column="0" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/szog_in_fok"
+                android:layout_column="1"
+                android:inputType="numberDecimal"
+                android:numeric="integer|decimal"
+                android:autoText="false"
+                android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:id="@+id/elvalaszto1"
+            android:layout_column="3" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/szog_in_perc"
+            android:layout_column="4"
+            android:inputType="numberDecimal"
+            android:numeric="integer"
+            android:layout_weight="1"
+            android:minWidth="50dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:id="@+id/elvalaszto2"
+            android:layout_column="5" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/szog_in_masod"
+            android:layout_column="6"
+            android:inputType="numberDecimal"
+            android:numeric="integer"
+            android:layout_weight="1"
+            android:minWidth="50dp" />
+
+    </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Távolság"
+                android:id="@+id/tav"
+                android:layout_column="0" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tav_in"
+                android:layout_column="1"
+                android:inputType="numberDecimal"
+                android:layout_weight="1"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Számol"
+                android:id="@+id/button"
+                android:layout_column="0"
+                android:layout_span="7" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Pont Y :"
+                android:id="@+id/PY_text"
+                android:layout_column="0"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Eredmeny"
+                android:id="@+id/PY_eredmeny"
+                android:textSize="20dp"
+                android:layout_column="1"
+                android:visibility="invisible" />
+        </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Pont X :"
+                android:id="@+id/PX_text"
+                android:layout_column="0"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Eredmeny"
+                android:id="@+id/PX_eredmeny"
+                android:textSize="20dp"
+                android:layout_column="1"
+                android:visibility="invisible" />
+        </TableRow>
+
+    </TableLayout>
+</RelativeLayout>

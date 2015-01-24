@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:gravity="left|center"
+    android:layout_width="fill_parent">
+    <TextView
+        android:id="@+id/id_listout"
+        android:layout_width="50dip"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:singleLine="true"
+        android:textSize="15dip"
+        android:textStyle="bold"
+        android:paddingLeft="20dip">
+    </TextView>
+    <TextView
+        android:id="@+id/Y_listout"
+        android:layout_width="150dip"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:singleLine="true"
+        android:textSize="15dip"
+        android:textStyle="bold"
+        android:paddingLeft="20dip">
+    </TextView>
+    <TextView
+        android:id="@+id/X_listout"
+        android:layout_width="150dip"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:singleLine="true"
+        android:textSize="15dip"
+        android:textStyle="bold"
+        android:paddingLeft="20dip">
+    </TextView>
+</LinearLayout>

@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="hu.valamas.hevesitoolbox.polarispont">
+    <item android:id="@+id/action_reset"
+        android:title="Visszaállítás"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+</menu>
+

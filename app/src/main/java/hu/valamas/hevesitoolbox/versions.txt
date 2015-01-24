@@ -1,0 +1,28 @@
+0.1 Elsö pre-alpha
+0.2 Bugfix
+    Menü megjelenése
+    Logo
+    Fekvö képernyö
+    Metaadatok
+0.3 Poláris pont
+    Egységes xml táblázat
+    Szövegek egy része string.xml-be hivatkozva
+0.4 Új csomag
+    numerikus terület számítás
+    Fekvö Layout
+    Több telefon felbontás
+    Visszaállítás
+
+Várható:
+-Háromszög
+-szelvény keresö
+-Rajzolás
+-Beállítások
+-Menü
+-Tablet support
+
+-Komparálás
+-Mértékegység
+
+
+
