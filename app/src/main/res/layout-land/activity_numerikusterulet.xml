@@ -1,50 +1,51 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="hu.valamas.hevesitoolbox.numerikusterulet">
 
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false">
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="true">
 
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
             <TextView
+                android:id="@+id/Y_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Y"
-                android:id="@+id/Y_text"
-                android:textSize="20sp"
+                android:layout_column="1"
                 android:layout_marginRight="10dp"
-                android:layout_column="1" />
+                android:text="Y"
+                android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/Y_in"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
-                android:id="@+id/Y_in"
                 android:layout_column="2"
                 android:inputType="number|numberDecimal" />
 
             <TextView
+                android:id="@+id/X_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_column="1"
                 android:text="X"
-                android:id="@+id/X_text"
-                android:textSize="20sp"
-                android:layout_column="1" />
+                android:textSize="20sp" />
 
             <EditText
+                android:id="@+id/X_in"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
-                android:id="@+id/X_in"
                 android:layout_column="2"
                 android:inputType="number|numberDecimal" />
 
@@ -60,20 +61,20 @@
             android:layout_height="fill_parent">
 
             <Button
+                android:id="@+id/add"
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
-                android:text="Hozzáadás"
-                android:id="@+id/add"
                 android:layout_column="1"
-                android:layout_span="2" />
+                android:layout_span="2"
+                android:text="Hozzáadás" />
 
             <Button
+                android:id="@+id/calc"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:text="Számít"
-                android:id="@+id/calc"
                 android:layout_column="3"
-                android:layout_span="2" />
+                android:layout_span="2"
+                android:text="Számít" />
         </TableRow>
         <TableRow
             android:layout_width="fill_parent"
@@ -86,9 +87,9 @@
             android:layout_height="fill_parent">
 
             <ListView
+                android:id="@+id/listView1"
                 android:layout_width="100dp"
                 android:layout_height="140dp"
-                android:id="@+id/listView1"
                 android:layout_column="1"
                 android:layout_span="4" />
 
@@ -100,14 +101,14 @@
 
 
             <TextView
+                android:id="@+id/terulet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Eredmeny"
-                android:id="@+id/terulet"
                 android:layout_column="1"
-                android:textSize="25dp"
                 android:layout_span="2"
-                android:visibility="visible" />
+                android:text="Eredmeny"
+                android:textSize="25dp"
+                android:visibility="invisible" />
         </TableRow>
 
     </TableLayout>

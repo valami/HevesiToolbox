@@ -11,5 +11,6 @@
     <string name="title_activity_numerikuster">Numerikus területszámítás</string>
     <string name="title_activity_numerikusterulet">Numerikus területszámítás</string>
     <string name="title_activity_komparalas">Komparálás</string>
+    <string name="title_activity_haromszog">"Háromszög "</string>
 
 </resources>

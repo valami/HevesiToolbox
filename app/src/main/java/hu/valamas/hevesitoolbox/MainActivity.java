@@ -42,6 +42,14 @@ public class MainActivity extends Activity {
                 startActivity(intent2);
             }
         });
+        final Button haromszog = (Button) findViewById(R.id.haromszog);
+        haromszog.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this, haromszog.class);
+                startActivity(intent2);
+            }
+        });
 
     }
 

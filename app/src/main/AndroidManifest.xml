@@ -28,6 +28,9 @@
             android:name="hu.valamas.hevesitoolbox.numerikusterulet"
             android:label="@string/title_activity_numerikusterulet" >
         </activity>
+        <activity
+            android:name="hu.valamas.hevesitoolbox.haromszog"
+            android:label="@string/title_activity_haromszog"></activity>
     </application>
 
 </manifest>

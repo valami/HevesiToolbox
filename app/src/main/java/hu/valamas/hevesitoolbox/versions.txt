@@ -12,14 +12,18 @@
     Fekvö Layout
     Több telefon felbontás
     Visszaállítás
+0.5 Háromszög
+    Numerikus fekvö nézet javítva
 
 Várható:
--Háromszög
 -szelvény keresö
 -Rajzolás
 -Beállítások
 -Menü
 -Tablet support
+-felesleges ellenörzö sorok egyszerüsítése
+-szövegek hivatkozása
+-elömetszés
 
 -Komparálás
 -Mértékegység
