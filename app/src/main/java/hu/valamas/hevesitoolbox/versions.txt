@@ -14,6 +14,11 @@
     Visszaállítás
 0.5 Háromszög
     Numerikus fekvö nézet javítva
+    Kis felfontás javítva
+    Tippek
+    Minimum Android 2.3.3
+
+
 
 Várható:
 -szelvény keresö
@@ -24,6 +29,7 @@ Várható:
 -felesleges ellenörzö sorok egyszerüsítése
 -szövegek hivatkozása
 -elömetszés
+-tool tip
 
 -Komparálás
 -Mértékegység

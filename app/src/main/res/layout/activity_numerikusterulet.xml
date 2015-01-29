@@ -1,114 +1,124 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="hu.valamas.hevesitoolbox.numerikusterulet">
 
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView2"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false">
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true">
 
-        <TableRow
+        <TableLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Y"
-                android:id="@+id/Y_text"
-                android:textSize="20sp"
-                android:layout_marginRight="10dp"
-                android:layout_column="1" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Y_in"
-                android:layout_column="2"
-                android:inputType="number|numberDecimal" />
-
-        </TableRow>
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="X"
-                android:id="@+id/X_text"
-                android:textSize="20sp"
-                android:layout_marginRight="10dp"
-                android:layout_column="1" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/X_in"
-                android:layout_column="2"
-                android:inputType="number|numberDecimal" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-            <Button
+            <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Hozzáadás"
-                android:id="@+id/add"
-                android:layout_column="1"
-                android:layout_span="3" />
-        </TableRow>
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+                android:layout_height="fill_parent">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Számít"
-                android:id="@+id/calc"
-                android:layout_column="1"
-                android:layout_span="3" />
-        </TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Y"
+                    android:id="@+id/Y_text"
+                    android:textSize="20sp"
+                    android:layout_marginRight="10dp"
+                    android:layout_column="1" />
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Y_in"
+                    android:layout_column="2"
+                    android:inputType="number|numberDecimal" />
 
-            <ListView
-                android:layout_width="300dp"
-                android:layout_height="200dp"
-                android:id="@+id/listView1"
-                android:layout_column="2" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
 
-        </TableRow>
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="X"
+                    android:id="@+id/X_text"
+                    android:textSize="20sp"
+                    android:layout_marginRight="10dp"
+                    android:layout_column="1" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/X_in"
+                    android:layout_column="2"
+                    android:inputType="number|numberDecimal" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hozzáadás"
+                    android:id="@+id/add"
+                    android:layout_column="1"
+                    android:layout_span="3" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Számít"
+                    android:id="@+id/calc"
+                    android:layout_column="1"
+                    android:layout_span="3" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <ListView
+                    android:layout_width="300dp"
+                    android:layout_height="200dp"
+                    android:id="@+id/listView1"
+                    android:layout_column="2" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Eredmeny"
-                android:id="@+id/terulet"
-                android:layout_column="1"
-                android:textSize="25dp"
-                android:layout_marginTop="20dp"
-                android:layout_span="2"
-                android:visibility="invisible" />
-        </TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Eredmeny"
+                    android:id="@+id/terulet"
+                    android:layout_column="1"
+                    android:textSize="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_span="2"
+                    android:visibility="invisible" />
+            </TableRow>
 
-    </TableLayout>
+        </TableLayout>
+    </ScrollView>
 
 </RelativeLayout>

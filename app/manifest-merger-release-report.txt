@@ -57,6 +57,12 @@ ADDED from AndroidManifest.xml:27:9
 		ADDED from AndroidManifest.xml:29:13
 	android:name
 		ADDED from AndroidManifest.xml:28:13
+activity#hu.valamas.hevesitoolbox.haromszog
+ADDED from AndroidManifest.xml:31:9
+	android:label
+		ADDED from AndroidManifest.xml:33:13
+	android:name
+		ADDED from AndroidManifest.xml:32:13
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 	android:targetSdkVersion
