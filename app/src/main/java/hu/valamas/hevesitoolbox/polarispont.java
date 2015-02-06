@@ -1,6 +1,8 @@
 package hu.valamas.hevesitoolbox;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -120,6 +122,18 @@ public class polarispont extends Activity {
             szogmasod.setVisibility(View.INVISIBLE);
             return true;
         }
+        if (id == R.id.action_info)
+        {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle("Ismertető");
+            alertDialog.setMessage("Are you sure?");
+            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            alertDialog.show();
+        }
+
 
         return super.onOptionsItemSelected(item);
     }

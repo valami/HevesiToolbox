@@ -26,11 +26,20 @@
         </activity>
         <activity
             android:name="hu.valamas.hevesitoolbox.numerikusterulet"
-            android:label="@string/title_activity_numerikusterulet" >
+            android:label="Numerikus terület számítás" >
         </activity>
         <activity
             android:name="hu.valamas.hevesitoolbox.haromszog"
-            android:label="@string/title_activity_haromszog"></activity>
+            android:label="@string/title_activity_haromszog" >
+        </activity>
+        <activity
+            android:name="hu.valamas.hevesitoolbox.haromszograjz"
+            android:label="@string/title_activity_haromszograjz" >
+        </activity>
+        <activity
+            android:name="hu.valamas.hevesitoolbox.numerikusteruletrajz"
+            android:label="@string/title_activity_numerikusteruletrajz" >
+        </activity>
     </application>
 
 </manifest>

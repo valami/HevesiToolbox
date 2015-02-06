@@ -1,38 +1,43 @@
-0.1 Elsö pre-alpha
-0.2 Bugfix
+﻿0.1
+    Elsö pre-alpha
+0.2
+    Bugfix
     Menü megjelenése
     Logo
     Fekvö képernyö
     Metaadatok
-0.3 Poláris pont
+0.3
+    Poláris pont
     Egységes xml táblázat
     Szövegek egy része string.xml-be hivatkozva
-0.4 Új csomag
+0.4
+    Új csomag
     numerikus terület számítás
     Fekvö Layout
     Több telefon felbontás
     Visszaállítás
-0.5 Háromszög
-    Numerikus fekvö nézet javítva
+0.5
+    Háromszög
+    Numerikusnál fekvö nézet javítva
     Kis felfontás javítva
-    Tippek
     Minimum Android 2.3.3
-
+0.5.1
+    Rajzolás
+    Tool tip
+    Felesleges ellenörzö sorok egyszerüsítése
 
 
 Várható:
 -szelvény keresö
--Rajzolás
 -Beállítások
 -Menü
 -Tablet support
--felesleges ellenörzö sorok egyszerüsítése
 -szövegek hivatkozása
 -elömetszés
--tool tip
 
 -Komparálás
 -Mértékegység
 
+-számolás tárolás
 
 

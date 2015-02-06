@@ -2,6 +2,7 @@ package hu.valamas.hevesitoolbox;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -139,9 +140,17 @@ public class numerikusterulet extends Activity {
             }
             bevitt.clear();
             num_count=0;
-
-
             return true;
+        }
+
+        if (id ==R.id.action_rajz)
+        {
+            Intent intent = new Intent(numerikusterulet.this,numerikusteruletrajz.class);
+
+            intent.putExtra("X_koord",X_koord );
+            intent.putExtra("Y_koord",Y_koord );
+            intent.putExtra("count",num_count );
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

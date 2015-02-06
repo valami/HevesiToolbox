@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
         haromszog.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent intent2 = new Intent(MainActivity.this, haromszog.class);
+                Intent intent2 = new Intent(MainActivity.this,  hu.valamas.hevesitoolbox.haromszog.class);
                 startActivity(intent2);
             }
         });
