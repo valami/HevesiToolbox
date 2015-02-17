@@ -58,20 +58,26 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+            <Button
+                android:id="@+id/haromszog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_column="0"
-                android:weightSum="1">
+                android:layout_marginTop="10dp"
+                android:text="Háromszög" />
 
-                <Button
-                    android:id="@+id/haromszog"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_marginTop="10dp"
-                    android:text="Háromszög" />
-            </TableRow>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Átváltó"
+                android:id="@+id/atvalto"
+                android:layout_marginTop="10dp" />
         </TableRow>
 
     </TableLayout>

@@ -52,8 +52,8 @@ public class polarispont extends Activity {
                 String test61 = test6.getText().toString();
                 if (test11.matches("") | test21.matches("") |  test61.matches("")  ) {
                     Toast.makeText(getApplicationContext(),
-                            "Valamelyik mezö üres !", Toast.LENGTH_LONG).show();
-                    return;
+                            "Valamelyik mezö üres !", Toast.LENGTH_SHORT).show();
+
                 } else if (test31.matches("") |test41.matches("") | test51.matches("") )
                     {
                     if (test31.matches(""))
@@ -122,6 +122,7 @@ public class polarispont extends Activity {
             szogmasod.setVisibility(View.INVISIBLE);
             return true;
         }
+        /*
         if (id == R.id.action_info)
         {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
@@ -132,7 +133,7 @@ public class polarispont extends Activity {
                 }
             });
             alertDialog.show();
-        }
+        } */
 
 
         return super.onOptionsItemSelected(item);

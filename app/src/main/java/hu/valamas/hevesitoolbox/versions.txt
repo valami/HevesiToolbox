@@ -23,21 +23,27 @@
     Minimum Android 2.3.3
 0.5.1
     Rajzolás
-    Tool tip
     Felesleges ellenörzö sorok egyszerüsítése
+0.6
+    Rengeteg bugfix (de még a tezedes vesszö és pont problémát basztam javítani)
+    Átváltó
+    Minimum Android 2.1 (Ideiglenesen)
+
 
 
 Várható:
+-Tool tip
 -szelvény keresö
 -Beállítások
--Menü
 -Tablet support
 -szövegek hivatkozása
--elömetszés
-
+-Metszések
 -Komparálás
 -Mértékegység
+-Normásis kinézet
+-Elforgatás bugfix
 
 -számolás tárolás
+-troll hibaüzenet
 
 

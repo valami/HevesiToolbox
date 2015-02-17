@@ -2,7 +2,6 @@ package hu.valamas.hevesitoolbox;
 
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -94,7 +93,7 @@ public class numerikusterulet extends Activity {
             if (num_count<3)
             {
                 Toast.makeText(getApplicationContext(),
-                        "Túl kevés bevitt adat!", Toast.LENGTH_LONG).show();
+                        "Túl kevés bevitt adat!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -143,7 +142,7 @@ public class numerikusterulet extends Activity {
             return true;
         }
 
-        if (id ==R.id.action_rajz)
+        /* if (id ==R.id.action_rajz)
         {
             Intent intent = new Intent(numerikusterulet.this,numerikusteruletrajz.class);
 
@@ -151,7 +150,7 @@ public class numerikusterulet extends Activity {
             intent.putExtra("Y_koord",Y_koord );
             intent.putExtra("count",num_count );
             startActivity(intent);
-        }
+        } */
         return super.onOptionsItemSelected(item);
     }
     }

@@ -74,11 +74,10 @@ public class haromszog extends Activity {
                     double[] beta = visszavalt(beta_e);
                     double[] gamma = visszavalt(gamma_e);
 
-                    if ( egyenlotlen(a,b,c) )
+                    if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_LONG).show();
-                        return;
+                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
                     } else {
                         alfa_fok_in.setText(df.format(alfa[0]));
                         alfa_perc_in.setText(df.format(alfa[1]));
@@ -115,11 +114,10 @@ public class haromszog extends Activity {
                     double[] alfa = visszavalt(alfa_e);
                     double[] beta = visszavalt(beta_e);
 
-                    if ( egyenlotlen(a,b,c) )
+                    if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_LONG).show();
-                        return;
+                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
                     } else {
                         alfa_fok_in.setText(df.format(alfa[0]));
                         alfa_perc_in.setText(df3.format(alfa[1]));
@@ -155,10 +153,10 @@ public class haromszog extends Activity {
                     double[] alfa = visszavalt(alfa_e);
                     double[] gamma = visszavalt(gamma_e);
 
-                    if ( egyenlotlen(a,b,c) )
+                    if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_LONG).show();
+                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
                         alfa_fok_in.setText(df.format(alfa[0]));
@@ -192,10 +190,11 @@ public class haromszog extends Activity {
                     double gamma_e = costetel_szog(a, b, c);
                     double[] beta = visszavalt(beta_e);
                     double[] gamma = visszavalt(gamma_e);
-                    if ( egyenlotlen(a,b,c) )
+
+                    if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_LONG).show();
+                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
                         beta_fok_in.setText(df.format(beta[0]));
@@ -238,10 +237,10 @@ public class haromszog extends Activity {
                     c = szinusztetel_oldal(gamma_szog,alfa_szog,a);
 
                     double[] alfa = visszavalt(Math.toDegrees(alfa_szog));
-                    if ( egyenlotlen(a,b,c) )
+                    if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_LONG).show();
+                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
                         alfa_fok_in.setText(df.format(alfa[0]));
@@ -283,10 +282,10 @@ public class haromszog extends Activity {
                     c = szinusztetel_oldal(gamma_szog,beta_szog,b);
 
                     double[] beta = visszavalt(Math.toDegrees(beta_szog));
-                    if ( egyenlotlen(a,b,c) )
+                    if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_LONG).show();
+                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
                         beta_fok_in.setText(df.format(beta[0]));
@@ -328,10 +327,10 @@ public class haromszog extends Activity {
                     b = szinusztetel_oldal(beta_szog,gamma_szog,c);
 
                     double[] gamma = visszavalt(Math.toDegrees(gamma_szog));
-                    if ( egyenlotlen(a,b,c) )
+                    if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_LONG).show();
+                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
                         gamma_fok_in.setText(df.format(gamma[0]));
@@ -364,10 +363,10 @@ public class haromszog extends Activity {
 
                         double[] gamma = visszavalt(Math.toDegrees(gamma_szog));
                         double[] beta = visszavalt(Math.toDegrees(beta_szog));
-                        if ( egyenlotlen(a,b,c) )
+                        if (  egyenlotlen(a,b,c) != 3)
                         {
                             Toast.makeText(getApplicationContext(),
-                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_LONG).show();
+                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
                             beta_fok_in.setText(df.format(beta[0]));
@@ -403,9 +402,10 @@ public class haromszog extends Activity {
 
                     double[] gamma = visszavalt(Math.toDegrees(gamma_szog));
                     double[] alfa = visszavalt(Math.toDegrees(alfa_szog));
-                    if (egyenlotlen(a, b, c)) {
+                    if (  egyenlotlen(a,b,c) != 3)
+                    {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_LONG).show();
+                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
                         alfa_fok_in.setText(df.format(alfa[0]));
@@ -441,10 +441,10 @@ public class haromszog extends Activity {
 
                         double[] gamma = visszavalt(Math.toDegrees(gamma_szog));
                         double[] beta = visszavalt(Math.toDegrees(beta_szog));
-                        if ( egyenlotlen(a,b,c) )
+                        if (  egyenlotlen(a,b,c) != 3)
                         {
                             Toast.makeText(getApplicationContext(),
-                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_LONG).show();
+                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
                             beta_fok_in.setText(df.format(beta[0]));
@@ -481,10 +481,10 @@ public class haromszog extends Activity {
 
                         double[] alfa = visszavalt(Math.toDegrees(alfa_szog));
                         double[] beta = visszavalt(Math.toDegrees(beta_szog));
-                        if ( egyenlotlen(a,b,c) )
+                        if (  egyenlotlen(a,b,c) != 3)
                         {
                             Toast.makeText(getApplicationContext(),
-                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_LONG).show();
+                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
                             beta_fok_in.setText(df.format(beta[0]));
@@ -521,10 +521,10 @@ public class haromszog extends Activity {
 
                         double[] alfa = visszavalt(Math.toDegrees(alfa_szog));
                         double[] gamma = visszavalt(Math.toDegrees(gamma_szog));
-                        if ( egyenlotlen(a,b,c) )
+                        if (  egyenlotlen(a,b,c) != 3)
                         {
                             Toast.makeText(getApplicationContext(),
-                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_LONG).show();
+                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
                             gamma_fok_in.setText(df.format(gamma[0]));
@@ -561,10 +561,10 @@ public class haromszog extends Activity {
 
                         double[] alfa = visszavalt(Math.toDegrees(alfa_szog));
                         double[] beta = visszavalt(Math.toDegrees(beta_szog));
-                        if ( egyenlotlen(a,b,c) )
+                        if (  egyenlotlen(a,b,c) != 3)
                         {
                             Toast.makeText(getApplicationContext(),
-                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_LONG).show();
+                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
                             beta_fok_in.setText(df.format(beta[0]));
@@ -582,7 +582,7 @@ public class haromszog extends Activity {
                 else {
                     {
                         Toast.makeText(getApplicationContext(),
-                                "Túl kevés adat !", Toast.LENGTH_LONG).show();
+                                "Túl kevés adat !", Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
@@ -626,19 +626,18 @@ public class haromszog extends Activity {
         double oldal = (Math.sin(szogfelso)/Math.sin(szogalso) )*tavalso;
         return (oldal);
     }
-    public boolean egyenlotlen (double a ,double b ,double c){
+    public int egyenlotlen (double a ,double b ,double c){
+        int  i = 0 ;
         if ( (a+b)>c ){
-            return (true);
+            i = i+1 ;
         }
-        else if ( (a+c)>b ){
-            return (true);
+        if ( (a+c)>b ){
+            i = i+1 ;
         }
-        else if ( (b+c)>a ){
-            return (true);
+        if ( (b+c)>a ){
+            i = i+1 ;
         }
-        else {
-            return (false);
-        }
+        return (i);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -697,7 +696,7 @@ public class haromszog extends Activity {
             }
             else {
                 Toast.makeText(getApplicationContext(),
-                        "Elöször add meg a háromszög adatait !", Toast.LENGTH_LONG).show();
+                        "Elöször add meg a háromszög adatait !", Toast.LENGTH_SHORT).show();
                 }
             }
         return super.onOptionsItemSelected(item);

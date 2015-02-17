@@ -40,6 +40,10 @@
             android:name="hu.valamas.hevesitoolbox.numerikusteruletrajz"
             android:label="@string/title_activity_numerikusteruletrajz" >
         </activity>
+        <activity
+            android:name="hu.valamas.hevesitoolbox.atvalto"
+            android:label="@string/title_activity_atvalto" >
+        </activity>
     </application>
 
 </manifest>

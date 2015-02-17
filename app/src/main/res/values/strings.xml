@@ -14,5 +14,6 @@
     <string name="title_activity_haromszog">"Háromszög "</string>
     <string name="title_activity_haromszograjz">haromszograjz</string>
     <string name="title_activity_numerikusteruletrajz">numerikusteruletrajz</string>
+    <string name="title_activity_atvalto">Átváltó</string>
 
 </resources>

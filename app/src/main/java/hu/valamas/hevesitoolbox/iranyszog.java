@@ -16,7 +16,7 @@ import com.example.valamas.hevesitoolbox.R;
 
 
 public class iranyszog extends Activity {
-    private double KX , KY , VX ,VY ,szog,dist;
+    private double szog,dist;
     DecimalFormat df =new DecimalFormat("#");
     DecimalFormat dis =new DecimalFormat("#.###");
 
@@ -47,7 +47,7 @@ public class iranyszog extends Activity {
                 String test41 = test4.getText().toString();
                 if (test11.matches("") | test21.matches("") |  test31.matches("") | test41.matches("") ) {
                     Toast.makeText(getApplicationContext(),
-                            "Valamelyik mezö üres !", Toast.LENGTH_LONG).show();
+                            "Valamelyik mezö üres !", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -77,7 +77,7 @@ public class iranyszog extends Activity {
                     szog = 180;
                 }else{
                     Toast.makeText(getApplicationContext(),
-                    "A két koordináta egyezik !", Toast.LENGTH_LONG).show();
+                    "A két koordináta egyezik !", Toast.LENGTH_SHORT).show();
                     return;
                     }
 

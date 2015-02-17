@@ -50,6 +50,14 @@ public class MainActivity extends Activity {
                 startActivity(intent2);
             }
         });
+        final Button atvalto = (Button) findViewById(R.id.atvalto);
+        atvalto.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MainActivity.this,  hu.valamas.hevesitoolbox.atvalto.class);
+                startActivity(intent2);
+            }
+        });
 
     }
 
