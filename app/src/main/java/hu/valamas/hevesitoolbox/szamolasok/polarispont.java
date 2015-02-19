@@ -3,6 +3,7 @@ package hu.valamas.hevesitoolbox.szamolasok;
 import android.app.Activity;
 //import android.app.AlertDialog;
 //import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,42 +39,39 @@ public class polarispont extends Activity {
         szamit.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                EditText test1 = (EditText) findViewById(R.id.KX_in);
-                EditText test2 = (EditText) findViewById(R.id.KY_in);
-                EditText test3 = (EditText) findViewById(R.id.szog_in_fok);
-                EditText test4 = (EditText) findViewById(R.id.szog_in_perc);
-                EditText test5 = (EditText) findViewById(R.id.szog_in_masod);
-                EditText test6 = (EditText) findViewById(R.id.tav_in);
-                String test11 = test1.getText().toString();
-                String test21 = test2.getText().toString();
-                String test31 = test3.getText().toString();
-                String test41 = test4.getText().toString();
-                String test51 = test5.getText().toString();
-                String test61 = test6.getText().toString();
-                if (test11.matches("") | test21.matches("") |  test61.matches("")  ) {
+                String KX_s = KX_in.getText().toString();
+                String KY_s = KY_in.getText().toString();
+                String szogfok_s = szogfok.getText().toString();
+                String szogperc_s = szogperc.getText().toString();
+                String szogmasod_s = szogmasod.getText().toString();
+                String tav_s = tav_in.getText().toString();
+                if (KX_s.matches("") | KY_s.matches("") |  tav_s.matches("")  ) {
                     Toast.makeText(getApplicationContext(),
                             "Valamelyik mezö üres !", Toast.LENGTH_SHORT).show();
-
-                } else if (test31.matches("") |test41.matches("") | test51.matches("") )
+                            return;
+                } else if (szogfok_s.matches("") |szogperc_s.matches("") | szogmasod_s.matches("") )
                     {
-                    if (test31.matches(""))
+                    if (szogfok_s.matches(""))
                     {
                         szogfok.setText("0");
-                    } if (test41.matches(""))
+                        szogfok_s ="0";
+                    } if (szogperc_s.matches(""))
                     {
                         szogperc.setText("0");
-                    } if (test51.matches(""))
+                        szogperc_s="0";
+                    } if (szogmasod_s.matches(""))
                     {
                         szogmasod.setText("0");
+                        szogmasod_s="0";
                     }
                 }
 
-                float KX = Float.parseFloat(KX_in.getText().toString());
-                float KY = Float.parseFloat(KY_in.getText().toString());
-                float tav = Float.parseFloat(tav_in.getText().toString());
-                float fok = Integer.parseInt(szogfok.getText().toString());
-                float perc = Integer.parseInt(szogperc.getText().toString());
-                float masod = Integer.parseInt(szogmasod.getText().toString());
+                double KX = Double.parseDouble(KX_s);
+                double KY = Double.parseDouble(KY_s);
+                double tav = Double.parseDouble(tav_s);
+                double fok = Double.parseDouble(szogfok_s);
+                double perc = Double.parseDouble(szogperc_s);
+                double masod = Double.parseDouble(szogmasod_s);
 
                 double szog =Math.toRadians (fok + (perc/60) + (masod/3600)) ;
 
@@ -96,31 +94,12 @@ public class polarispont extends Activity {
         return true;
     }
 
-
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.action_reset) {
-            final TextView PX_eredm = (TextView) findViewById(R.id.PX_eredmeny);
-            final TextView PY_eredm = (TextView) findViewById(R.id.PY_eredmeny);
-            final EditText KX_in = (EditText) findViewById(R.id.KX_in);
-            final EditText KY_in = (EditText) findViewById(R.id.KY_in);
-            final TextView  PX_text = (TextView) findViewById(R.id.PX_text);
-            final TextView  PY_text = (TextView) findViewById(R.id.PY_text);
-            final EditText szogfok = (EditText) findViewById(R.id.szog_in_fok);
-            final EditText szogperc = (EditText) findViewById(R.id.szog_in_perc);
-            final EditText szogmasod = (EditText) findViewById(R.id.szog_in_masod);
-            final EditText tav_in = (EditText) findViewById(R.id.tav_in);
-            PX_eredm.setVisibility(View.INVISIBLE);
-            PY_eredm.setVisibility(View.INVISIBLE);
-            PY_text.setVisibility(View.INVISIBLE);
-            PX_text.setVisibility(View.INVISIBLE);
-            KX_in.setText("");
-            KY_in.setText("");
-            tav_in.setText("");
-            szogfok.setVisibility(View.INVISIBLE);
-            szogperc.setVisibility(View.INVISIBLE);
-            szogmasod.setVisibility(View.INVISIBLE);
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
             return true;
         }
         /*
@@ -135,7 +114,6 @@ public class polarispont extends Activity {
             });
             alertDialog.show();
         } */
-
 
         return super.onOptionsItemSelected(item);
     }

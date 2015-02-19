@@ -17,7 +17,6 @@ import java.text.DecimalFormat;
 
 import hu.valamas.hevesitoolbox.szamolasok.opengl.haromszograjz;
 
-
 public class haromszog extends Activity {
     DecimalFormat df = new DecimalFormat("#");
     DecimalFormat df2 = new DecimalFormat("#.##");
@@ -629,40 +628,12 @@ public class haromszog extends Activity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.action_reset) {
-            final EditText a_in = (EditText) findViewById(R.id.a_in);
-            final EditText b_in = (EditText) findViewById(R.id.b_in);
-            final EditText c_in = (EditText) findViewById(R.id.c_in);
-            final EditText alfa_fok_in = (EditText) findViewById(R.id.alfa_fok_in);
-            final EditText alfa_perc_in = (EditText) findViewById(R.id.alfa_perc_in);
-            final EditText alfa_masod_in = (EditText) findViewById(R.id.alfa_masod_in);
-            final EditText beta_fok_in = (EditText) findViewById(R.id.beta_fok_in);
-            final EditText beta_perc_in = (EditText) findViewById(R.id.beta_perc_in);
-            final EditText beta_masod_in = (EditText) findViewById(R.id.beta_masod_in);
-            final EditText gamma_fok_in = (EditText) findViewById(R.id.gamma_fok_in);
-            final EditText gamma_perc_in = (EditText) findViewById(R.id.gamma_perc_in);
-            final EditText gamma_masod_in = (EditText) findViewById(R.id.gamma_masod_in);
-            final TextView terulet = (TextView) findViewById(R.id.terulet);
-
-            terulet.setVisibility(View.INVISIBLE);
-
-            a_in.setText("");
-            b_in.setText("");
-            c_in.setText("");
-            alfa_fok_in.setText("");
-            alfa_perc_in.setText("");
-            alfa_masod_in.setText("");
-            beta_fok_in.setText("");
-            beta_perc_in.setText("");
-            beta_masod_in.setText("");
-            gamma_fok_in.setText("");
-            gamma_perc_in.setText("");
-            gamma_masod_in.setText("");
-
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
             return true;
         }
-
         if (id ==R.id.action_rajz)
         {
             if ( (a!=0) & (b!=0) & (c!=0) ) {
@@ -671,9 +642,7 @@ public class haromszog extends Activity {
                 message[0] = a;
                 message[1] = b;
                 message[2] = c;
-
                 intent.putExtra("numbers", message);
-
                 startActivity(intent);
             }
             else {

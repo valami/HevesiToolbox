@@ -15,7 +15,6 @@ import java.text.DecimalFormat;
 
 import com.example.valamas.hevesitoolbox.R;
 
-
 public class iranyszog extends Activity {
     private double szog,dist;
     DecimalFormat df =new DecimalFormat("#");
@@ -94,7 +93,6 @@ public class iranyszog extends Activity {
             }
         });
     }
-
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_iranyszog, menu);

@@ -20,5 +20,8 @@
     <string name="iranyszog_kezdopont.x">Kezdőpont X</string>
     <string name="iranyszog_vegpont.y">Végpont Y</string>
     <string name="iranyszog_vegpont.x">Végpont X</string>
+    <string name="iranyszog_szamol">Számol</string>
+    <string name="iranyszog_szog">Szög :</string>
+    <string name="iranyszog_tavolsag">Távolság :</string>
 
 </resources>

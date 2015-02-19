@@ -1,7 +1,7 @@
 package hu.valamas.hevesitoolbox.szamolasok;
 
-
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +19,6 @@ import java.util.HashMap;
 
 import com.example.valamas.hevesitoolbox.R;
 
-
 public class numerikusterulet extends Activity {
 
     ListView mylistview;
@@ -28,7 +27,6 @@ public class numerikusterulet extends Activity {
     int num_count = 0 ;
     double[] Y_koord = new double[10];
     double[] X_koord = new double[10] ;
-
 
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,17 +42,13 @@ public class numerikusterulet extends Activity {
         final SimpleAdapter simpleAdapter = new SimpleAdapter(this, bevitt, R.layout.list_layout, new String[]{"n" ,"Y", "X"}, new int[]{R.id.id_listout,R.id.Y_listout, R.id.X_listout});
         mylistview.setAdapter(simpleAdapter);
 
-
-
         Button add = (Button) findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 //Ellenörzés
-                EditText test1 = (EditText) findViewById(R.id.X_in);
-                EditText test2 = (EditText) findViewById(R.id.Y_in);
-                String test11 = test1.getText().toString();
-                String test21 = test2.getText().toString();
+                String test11 = Y_in.getText().toString();
+                String test21 = X_in.getText().toString();
                 if (test11.matches("") | test21.matches("")) {
                     Toast.makeText(getApplicationContext(),
                             "Valamelyik mezö üres !", Toast.LENGTH_LONG).show();
@@ -80,7 +74,6 @@ public class numerikusterulet extends Activity {
                     eredmeny.setText("Terület :"+ Double.toString(szamol())   );
                     eredmeny.setVisibility(View.VISIBLE);
                 }
-
             }
         });
         Button szamol = (Button) findViewById(R.id.calc);
@@ -88,22 +81,18 @@ public class numerikusterulet extends Activity {
            public void onClick(View v) {
             //automata visszazárás hiányzik
 
-
-
             if (num_count<3)
             {
                 Toast.makeText(getApplicationContext(),
                         "Túl kevés bevitt adat!", Toast.LENGTH_SHORT).show();
                 return;
             }
-
             eredmeny.setText("Terület :"+ Double.toString(szamol())   );
             eredmeny.setVisibility(View.VISIBLE);
            }
            }
         ) ;
-        }
-
+    }
 
     public double szamol(){
         double M =0;
@@ -116,29 +105,16 @@ public class numerikusterulet extends Activity {
         return( M );
     }
 
-
-
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_numerikusterulet, menu);
         return true;
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.action_reset) {
-            final EditText Y_in = (EditText) findViewById(R.id.Y_in);
-            final EditText X_in = (EditText) findViewById(R.id.X_in);
-            final TextView eredmeny = (TextView) findViewById(R.id.terulet);
-            Y_in.setText("");
-            X_in.setText("");
-            eredmeny.setVisibility(View.INVISIBLE);
-            for (int i=0 ; i<10 ; i++)
-            {
-                X_koord[i]=0;
-                Y_koord[i]=0;
-            }
-            bevitt.clear();
-            num_count=0;
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
             return true;
         }
 
@@ -153,7 +129,7 @@ public class numerikusterulet extends Activity {
         } */
         return super.onOptionsItemSelected(item);
     }
-    }
+}
 
 
 
