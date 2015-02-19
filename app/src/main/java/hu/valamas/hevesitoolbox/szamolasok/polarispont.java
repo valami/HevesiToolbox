@@ -1,8 +1,8 @@
-package hu.valamas.hevesitoolbox;
+package hu.valamas.hevesitoolbox.szamolasok;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+//import android.app.AlertDialog;
+//import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -117,6 +117,7 @@ public class polarispont extends Activity {
             PX_text.setVisibility(View.INVISIBLE);
             KX_in.setText("");
             KY_in.setText("");
+            tav_in.setText("");
             szogfok.setVisibility(View.INVISIBLE);
             szogperc.setVisibility(View.INVISIBLE);
             szogmasod.setVisibility(View.INVISIBLE);

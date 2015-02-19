@@ -17,31 +17,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="hu.valamas.hevesitoolbox.iranyszog"
+            android:name="hu.valamas.hevesitoolbox.szamolasok.iranyszog"
             android:label="@string/title_activity_iranyszog" >
         </activity>
         <activity
-            android:name="hu.valamas.hevesitoolbox.polarispont"
+            android:name="hu.valamas.hevesitoolbox.szamolasok.polarispont"
             android:label="@string/title_activity_polarispont" >
         </activity>
         <activity
-            android:name="hu.valamas.hevesitoolbox.numerikusterulet"
+            android:name="hu.valamas.hevesitoolbox.szamolasok.numerikusterulet"
             android:label="Numerikus terület számítás" >
         </activity>
         <activity
-            android:name="hu.valamas.hevesitoolbox.haromszog"
+            android:name="hu.valamas.hevesitoolbox.szamolasok.haromszog"
             android:label="@string/title_activity_haromszog" >
         </activity>
         <activity
-            android:name="hu.valamas.hevesitoolbox.haromszograjz"
+            android:name="hu.valamas.hevesitoolbox.szamolasok.opengl.haromszograjz"
             android:label="@string/title_activity_haromszograjz" >
         </activity>
         <activity
-            android:name="hu.valamas.hevesitoolbox.numerikusteruletrajz"
+            android:name="hu.valamas.hevesitoolbox.szamolasok.opengl.numerikusteruletrajz"
             android:label="@string/title_activity_numerikusteruletrajz" >
         </activity>
         <activity
-            android:name="hu.valamas.hevesitoolbox.atvalto"
+            android:name="hu.valamas.hevesitoolbox.szamolasok.atvalto"
             android:label="@string/title_activity_atvalto" >
         </activity>
     </application>

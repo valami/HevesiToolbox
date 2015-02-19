@@ -1,4 +1,4 @@
-package hu.valamas.hevesitoolbox;
+package hu.valamas.hevesitoolbox.szamolasok.opengl;
 
 import android.app.Activity;
 import android.content.Context;

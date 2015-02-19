@@ -1,6 +1,7 @@
-package hu.valamas.hevesitoolbox;
+package hu.valamas.hevesitoolbox.szamolasok;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,24 +38,19 @@ public class iranyszog extends Activity {
 
                     public void onClick(View v) {
                 //Ellenörzés
-                EditText test1 = (EditText) findViewById(R.id.KX_in);
-                EditText test2 = (EditText) findViewById(R.id.KY_in);
-                EditText test3 = (EditText) findViewById(R.id.VX_in);
-                EditText test4 = (EditText) findViewById(R.id.VY_in);
-                String test11 = test1.getText().toString();
-                String test21 = test2.getText().toString();
-                String test31 = test3.getText().toString();
-                String test41 = test4.getText().toString();
-                if (test11.matches("") | test21.matches("") |  test31.matches("") | test41.matches("") ) {
+                String KX_s = KX_in.getText().toString();
+                String KY_s = KY_in.getText().toString();
+                String VX_s = VX_in.getText().toString();
+                String VY_s = VY_in.getText().toString();
+                if (KX_s.matches("") | KY_s.matches("") |  VX_s.matches("") | VY_s.matches("") ) {
                     Toast.makeText(getApplicationContext(),
                             "Valamelyik mezö üres !", Toast.LENGTH_SHORT).show();
-                    return;
+                            return;
                 }
-
-                float KX = Float.parseFloat(KX_in.getText().toString());
-                float KY = Float.parseFloat(KY_in.getText().toString());
-                float VX = Float.parseFloat(VX_in.getText().toString());
-                float VY = Float.parseFloat(VY_in.getText().toString());
+                double KX = Double.parseDouble(KX_s);
+                double KY = Double.parseDouble(KY_s);
+                double VX = Double.parseDouble(VX_s);
+                double VY = Double.parseDouble(VY_s);
 
                 double szogu = ((VY - KY) / (VX - KX));
                 double szoge = Math.toDegrees(Math.atan(szogu));
@@ -107,24 +103,10 @@ public class iranyszog extends Activity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.action_reset) {
-            final TextView tavolnag = (TextView) findViewById(R.id.tav);
-            final TextView szogkiir = (TextView) findViewById(R.id.szogkiir);
-            final TextView szog_text = (TextView) findViewById(R.id.szog_text);
-            final TextView tav_text = (TextView) findViewById(R.id.tav_text);
-            tavolnag.setVisibility(View.INVISIBLE);
-            szogkiir.setVisibility(View.INVISIBLE);
-            szog_text.setVisibility(View.INVISIBLE);
-            tav_text.setVisibility(View.INVISIBLE);
-            final EditText KX_in = (EditText) findViewById(R.id.KX_in);
-            final EditText KY_in = (EditText) findViewById(R.id.KY_in);
-            final EditText VX_in = (EditText) findViewById(R.id.VX_in);
-            final EditText VY_in = (EditText) findViewById(R.id.VY_in);
-            KX_in.setText("");
-            KY_in.setText("");
-            VX_in.setText("");
-            VY_in.setText("");
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);

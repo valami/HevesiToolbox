@@ -1,4 +1,4 @@
-package hu.valamas.hevesitoolbox;
+package hu.valamas.hevesitoolbox.szamolasok;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import com.example.valamas.hevesitoolbox.R;
 
 import java.text.DecimalFormat;
 
+import hu.valamas.hevesitoolbox.szamolasok.opengl.haromszograjz;
 
 
 public class haromszog extends Activity {
@@ -157,7 +158,6 @@ public class haromszog extends Activity {
                     {
                         Toast.makeText(getApplicationContext(),
                                 "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
-                        return;
                     } else {
                         alfa_fok_in.setText(df.format(alfa[0]));
                         alfa_perc_in.setText(df3.format(alfa[1]));
@@ -195,7 +195,6 @@ public class haromszog extends Activity {
                     {
                         Toast.makeText(getApplicationContext(),
                                 "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
-                        return;
                     } else {
                         beta_fok_in.setText(df.format(beta[0]));
                         beta_perc_in.setText(df3.format(beta[1]));
@@ -241,7 +240,6 @@ public class haromszog extends Activity {
                     {
                         Toast.makeText(getApplicationContext(),
                                 "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
-                        return;
                     } else {
                         alfa_fok_in.setText(df.format(alfa[0]));
                         alfa_perc_in.setText(df3.format(alfa[1]));
@@ -286,7 +284,6 @@ public class haromszog extends Activity {
                     {
                         Toast.makeText(getApplicationContext(),
                                 "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
-                        return;
                     } else {
                         beta_fok_in.setText(df.format(beta[0]));
                         beta_perc_in.setText(df3.format(beta[1]));
@@ -331,7 +328,6 @@ public class haromszog extends Activity {
                     {
                         Toast.makeText(getApplicationContext(),
                                 "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
-                        return;
                     } else {
                         gamma_fok_in.setText(df.format(gamma[0]));
                         gamma_perc_in.setText(df3.format(gamma[1]));
@@ -367,7 +363,6 @@ public class haromszog extends Activity {
                         {
                             Toast.makeText(getApplicationContext(),
                                     "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
-                            return;
                         } else {
                             beta_fok_in.setText(df.format(beta[0]));
                             beta_perc_in.setText(df3.format(beta[1]));
@@ -406,7 +401,6 @@ public class haromszog extends Activity {
                     {
                         Toast.makeText(getApplicationContext(),
                                 "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
-                        return;
                     } else {
                         alfa_fok_in.setText(df.format(alfa[0]));
                         alfa_perc_in.setText(df3.format(alfa[1]));
@@ -445,7 +439,6 @@ public class haromszog extends Activity {
                         {
                             Toast.makeText(getApplicationContext(),
                                     "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
-                            return;
                         } else {
                             beta_fok_in.setText(df.format(beta[0]));
                             beta_perc_in.setText(df3.format(beta[1]));
@@ -485,7 +478,6 @@ public class haromszog extends Activity {
                         {
                             Toast.makeText(getApplicationContext(),
                                     "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
-                            return;
                         } else {
                             beta_fok_in.setText(df.format(beta[0]));
                             beta_perc_in.setText(df3.format(beta[1]));
@@ -525,7 +517,6 @@ public class haromszog extends Activity {
                         {
                             Toast.makeText(getApplicationContext(),
                                     "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
-                            return;
                         } else {
                             gamma_fok_in.setText(df.format(gamma[0]));
                             gamma_perc_in.setText(df3.format(gamma[1]));
@@ -565,7 +556,6 @@ public class haromszog extends Activity {
                         {
                             Toast.makeText(getApplicationContext(),
                                     "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
-                            return;
                         } else {
                             beta_fok_in.setText(df.format(beta[0]));
                             beta_perc_in.setText(df3.format(beta[1]));
@@ -583,16 +573,13 @@ public class haromszog extends Activity {
                     {
                         Toast.makeText(getApplicationContext(),
                                 "Túl kevés adat !", Toast.LENGTH_SHORT).show();
-                        return;
                     }
                 }
             }
         });
     }
-
     public double valt(double fok, double perc, double masod) {
-        double valt = Math.toRadians(fok + (perc / 60) + (masod / 3600));
-        return (valt);
+        return (Math.toRadians(fok + (perc / 60) + (masod / 3600)));
     }
     public double[] visszavalt(double szog) {
         double fok = Math.floor(szog);
@@ -607,24 +594,19 @@ public class haromszog extends Activity {
     }
     public double heron(double a, double b, double c) {
         double s = (a + b + c) / 2;
-        double terulet = Math.sqrt(s * (s - a) * (s - b) * (s - c));
-        return (terulet);
+        return (Math.sqrt(s * (s - a) * (s - b) * (s - c)));
     }
     public double costetel_szog(double a, double b, double c) {
-        double szog = Math.toDegrees(Math.acos((Math.pow(a, 2) + Math.pow(b, 2) - Math.pow(c, 2)) / (2 * a * b)));
-        return (szog);
+        return (Math.toDegrees(Math.acos((Math.pow(a, 2) + Math.pow(b, 2) - Math.pow(c, 2)) / (2 * a * b))));
     }
     public double costetel_oldal(double a, double b, double gamma) {
-        double oldal = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2) - 2 * a * b * (Math.cos(gamma)));
-        return (oldal);
+        return (Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2) - 2 * a * b * (Math.cos(gamma))));
     }
     public double szinusztetel_szog(double tavfelso, double tavalso, double szogalso) {
-        double szog = Math.asin((tavfelso / tavalso) *Math.sin(szogalso));
-        return (szog);
+        return (Math.asin((tavfelso / tavalso) *Math.sin(szogalso)));
     }
     public double szinusztetel_oldal (double szogfelso, double szogalso, double tavalso) {
-        double oldal = (Math.sin(szogfelso)/Math.sin(szogalso) )*tavalso;
-        return (oldal);
+        return ((Math.sin(szogfelso)/Math.sin(szogalso) )*tavalso);
     }
     public int egyenlotlen (double a ,double b ,double c){
         int  i = 0 ;

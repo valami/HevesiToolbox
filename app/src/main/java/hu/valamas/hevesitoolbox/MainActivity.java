@@ -10,6 +10,9 @@ import android.widget.Button;
 
 import com.example.valamas.hevesitoolbox.R;
 
+import hu.valamas.hevesitoolbox.szamolasok.numerikusterulet;
+import hu.valamas.hevesitoolbox.szamolasok.polarispont;
+
 
 public class MainActivity extends Activity {
 
@@ -22,7 +25,7 @@ public class MainActivity extends Activity {
         iranyszog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(MainActivity.this, hu.valamas.hevesitoolbox.iranyszog.class);
+                Intent intent1 = new Intent(MainActivity.this, hu.valamas.hevesitoolbox.szamolasok.iranyszog.class);
                 startActivity(intent1);
             }
         });
@@ -46,7 +49,7 @@ public class MainActivity extends Activity {
         haromszog.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent intent2 = new Intent(MainActivity.this,  hu.valamas.hevesitoolbox.haromszog.class);
+                Intent intent2 = new Intent(MainActivity.this,  hu.valamas.hevesitoolbox.szamolasok.haromszog.class);
                 startActivity(intent2);
             }
         });
@@ -54,7 +57,7 @@ public class MainActivity extends Activity {
         atvalto.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent intent2 = new Intent(MainActivity.this,  hu.valamas.hevesitoolbox.atvalto.class);
+                Intent intent2 = new Intent(MainActivity.this,  hu.valamas.hevesitoolbox.szamolasok.atvalto.class);
                 startActivity(intent2);
             }
         });

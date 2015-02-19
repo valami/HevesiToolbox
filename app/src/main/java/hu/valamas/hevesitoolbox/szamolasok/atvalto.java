@@ -1,4 +1,4 @@
-package hu.valamas.hevesitoolbox;
+package hu.valamas.hevesitoolbox.szamolasok;
 
 import android.app.Activity;
 import android.app.AlertDialog;
