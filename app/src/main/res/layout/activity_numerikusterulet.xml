@@ -17,10 +17,7 @@
 
         <TableLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false">
+            android:layout_height="wrap_content">
 
             <TableRow
                 android:layout_width="fill_parent"
@@ -29,7 +26,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Y"
+                    android:text="@string/numerikus_y"
                     android:id="@+id/Y_text"
                     android:textSize="20sp"
                     android:layout_marginRight="10dp"
@@ -50,7 +47,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="X"
+                    android:text="@string/numerikus_x"
                     android:id="@+id/X_text"
                     android:textSize="20sp"
                     android:layout_marginRight="10dp"
@@ -72,7 +69,7 @@
                 <Button
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hozzáadás"
+                    android:text="@string/hozzaadas"
                     android:id="@+id/add"
                     android:layout_column="1"
                     android:layout_span="3" />
@@ -84,7 +81,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Számít"
+                    android:text="@string/numerikus_szamol"
                     android:id="@+id/calc"
                     android:layout_column="1"
                     android:layout_span="3" />

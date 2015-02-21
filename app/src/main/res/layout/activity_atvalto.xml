@@ -17,10 +17,7 @@
         <TableLayout
             android:id="@+id/tabla"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
             android:stretchColumns="*">
 
             <TableRow
@@ -31,8 +28,6 @@
                 <RadioGroup
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
                     android:layout_span="2"
                     android:layout_column="0"
                     android:layout_weight="2"
@@ -43,7 +38,7 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Méret"
+                        android:text="@string/atvalto_meret"
                         android:id="@+id/radio_meret"
                         android:checked="false"
                         android:layout_weight="0.70" />
@@ -51,9 +46,8 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Méretarány"
+                        android:text="@string/atvalto_merata"
                         android:id="@+id/radio_mereta"
-                        android:layout_column="1"
                         android:checked="false" />
 
                 </RadioGroup>
@@ -77,7 +71,7 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Távolság"
+                        android:text="@string/atvalto_tav"
                         android:id="@+id/radio_tav"
                         android:checked="false"
                         android:visibility="invisible" />
@@ -85,7 +79,7 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Terület"
+                        android:text="@string/atvalto_ter"
                         android:id="@+id/radio_ter"
                         android:checked="false"
                         android:visibility="invisible" />
@@ -93,7 +87,7 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Szög"
+                        android:text="@string/atvalto_szog"
                         android:id="@+id/radio_szog"
                         android:checked="false"
                         android:visibility="invisible" />
@@ -162,7 +156,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Méretarány"
+                    android:text="@string/atvalto_meretarany"
                     android:id="@+id/mereta"
                     android:layout_column="1" />
             </TableRow>
@@ -178,7 +172,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Számol"
+                    android:text="@string/atvalto_szamol"
                     android:id="@+id/szamol"
                     android:layout_weight="2" />
             </TableRow>

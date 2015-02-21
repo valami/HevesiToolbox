@@ -1,9 +1,10 @@
 package hu.valamas.hevesitoolbox.szamolasok;
 
 import android.app.Activity;
-//import android.app.AlertDialog;
-//import android.content.DialogInterface;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +36,14 @@ public class polarispont extends Activity {
         final EditText szogmasod = (EditText) findViewById(R.id.szog_in_masod);
         final EditText tav_in = (EditText) findViewById(R.id.tav_in);
 
+        Bundle extras = getIntent().getExtras();
+        Byte orientation = extras.getByte("orientation");
+        if (orientation == 0)   {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }   else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
         Button szamit = (Button) findViewById(R.id.button);
         szamit.setOnClickListener(new View.OnClickListener() {
 
@@ -47,7 +56,7 @@ public class polarispont extends Activity {
                 String tav_s = tav_in.getText().toString();
                 if (KX_s.matches("") | KY_s.matches("") |  tav_s.matches("")  ) {
                     Toast.makeText(getApplicationContext(),
-                            "Valamelyik mezö üres !", Toast.LENGTH_SHORT).show();
+                            getString(R.string.polaris_ures), Toast.LENGTH_SHORT).show();
                             return;
                 } else if (szogfok_s.matches("") |szogperc_s.matches("") | szogmasod_s.matches("") )
                     {
@@ -102,18 +111,17 @@ public class polarispont extends Activity {
             startActivity(intent);
             return true;
         }
-        /*
         if (id == R.id.action_info)
         {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-            alertDialog.setTitle("Ismertető");
-            alertDialog.setMessage("Are you sure?");
+            alertDialog.setTitle(getString(R.string.menu_sugo));
+            alertDialog.setMessage(getString(R.string.polaris_sugo));
             alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                 }
             });
             alertDialog.show();
-        } */
+        }
 
         return super.onOptionsItemSelected(item);
     }

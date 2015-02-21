@@ -1,7 +1,10 @@
 package hu.valamas.hevesitoolbox.szamolasok;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,8 +28,8 @@ public class numerikusterulet extends Activity {
     ListAdapter simpleAdapter;
     final ArrayList<HashMap<String, String>> bevitt= new ArrayList<HashMap<String, String>>();
     int num_count = 0 ;
-    double[] Y_koord = new double[10];
-    double[] X_koord = new double[10] ;
+    double[] Y_koord = new double[15];
+    double[] X_koord = new double[15] ;
 
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,14 @@ public class numerikusterulet extends Activity {
         final SimpleAdapter simpleAdapter = new SimpleAdapter(this, bevitt, R.layout.list_layout, new String[]{"n" ,"Y", "X"}, new int[]{R.id.id_listout,R.id.Y_listout, R.id.X_listout});
         mylistview.setAdapter(simpleAdapter);
 
+        Bundle extras = getIntent().getExtras();
+        Byte orientation = extras.getByte("orientation");
+        if (orientation == 0)   {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }   else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
         Button add = (Button) findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -50,7 +61,7 @@ public class numerikusterulet extends Activity {
                 String X_in_s = X_in.getText().toString();
                 if (Y_in_s.matches("") | X_in_s.matches("")) {
                     Toast.makeText(getApplicationContext(),
-                            "Valamelyik mezö üres !", Toast.LENGTH_LONG).show();
+                            getString(R.string.numerikus_ures), Toast.LENGTH_LONG).show();
                     return;   }
 
                 //Hozzáadás
@@ -83,10 +94,10 @@ public class numerikusterulet extends Activity {
             if (num_count<3)
             {
                 Toast.makeText(getApplicationContext(),
-                        "Túl kevés bevitt adat!", Toast.LENGTH_SHORT).show();
+                        getString(R.string.numerikus_keves), Toast.LENGTH_SHORT).show();
                 return;
             }
-            eredmeny.setText("Terület :"+ Double.toString(szamol())   );
+            eredmeny.setText(getString(R.string.numerikus_terulet)+ Double.toString(szamol())   );
             eredmeny.setVisibility(View.VISIBLE);
            }
            }
@@ -116,6 +127,18 @@ public class numerikusterulet extends Activity {
             startActivity(intent);
             return true;
         }
+        if (id == R.id.action_info)
+        {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle(getString(R.string.menu_sugo));
+            alertDialog.setMessage(getString(R.string.numerikus_sugo));
+            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            alertDialog.show();
+        }
+
 
         /* if (id ==R.id.action_rajz)
         {

@@ -4,10 +4,10 @@
     <string name="app_name">Hevesi Toolbox</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    //Képernyök
     <string name="title_activity_iranyszog">Irányszög számítás</string>
     <string name="title_activity_polarispont">Poláris pont számítás</string>
-    <string name="polaris_kezdopont_y">Kezdőpont Y</string>
-    <string name="polaris_kezdopont_x">Kezdőpont X</string>
     <string name="title_activity_numerikuster">Numerikus területszámítás</string>
     <string name="title_activity_numerikusterulet">Numerikus területszámítás</string>
     <string name="title_activity_komparalas">Komparálás</string>
@@ -15,7 +15,7 @@
     <string name="title_activity_haromszograjz">haromszograjz</string>
     <string name="title_activity_numerikusteruletrajz">numerikusteruletrajz</string>
     <string name="title_activity_atvalto">Átváltó</string>
-    //irányszög
+    //Irányszög
     <string name="iranyszog_kezdopont.y">Kezdőpont Y</string>
     <string name="iranyszog_kezdopont.x">Kezdőpont X</string>
     <string name="iranyszog_vegpont.y">Végpont Y</string>
@@ -23,5 +23,67 @@
     <string name="iranyszog_szamol">Számol</string>
     <string name="iranyszog_szog">Szög :</string>
     <string name="iranyszog_tavolsag">Távolság :</string>
+    <string name="iranyszog_ures">Valamelyik mező üres!</string>
+    <string name="iranyszog_egyezik">A két koordináta egyezik !</string>
+    <string name="iranyszog_sugo">Meghatározza két pont távolságát ,és a köztük lévö irányszöget.</string>
+    //Poláris
+    <string name="polaris_kezdopont_y">Kezdőpont Y</string>
+    <string name="polaris_kezdopont_x">Kezdőpont X</string>
+    <string name="porlarisz_szog">Szög</string>
+    <string name="polaris_tav">Távolság</string>
+    <string name="polaris_szamol">Számol</string>
+    <string name="polaris_pont_y">Pont Y :</string>
+    <string name="polaris_pont_x">Pont X :</string>
+    <string name="polaris_ures">Valamelyik mező üres!</string>
+    <string name="polaris_sugo">Meghatározza annak a pontnak a helyzetét,amelyik egy ismert ponthoz képest ,megadott távolságra helyezkedik el egy ismert irányszögü egyenesen.</string>
+    //Numerikus
+    <string name="numerikus_y">Y</string>
+    <string name="numerikus_x">X</string>
+    <string name="hozzaadas">Hozzáadás</string>
+    <string name="numerikus_szamol">Számít</string>
+    <string name="numerikus_ures">Valamelyik mező üres!</string>
+    <string name="numerikus_keves">Túl kevés bevitt adat!</string>
+    <string name="numerikus_terulet">Terület : </string>
+    <string name="numerikus_sugo">Meghatározza a poligon területét sarokpontjainak koordinátái alapján.
+                                   \n Visszazáráskor számol! </string>
+    //Háromszög
+    <string name="haromszog_a">a oldal</string>
+    <string name="haromszog_b">b oldal</string>
+    <string name="haromszog_c">c oldal</string>
+    <string name="haromszog_alfa">α szög</string>
+    <string name="haromszog_beta">β szög</string>
+    <string name="haromszog_gamma">γ szög</string>
+    <string name="haromszog_szamol">Számol</string>
+    <string name="haromszog_egyenlotlen">A Háromszög-egyenlőtlenség nem teljesül!</string>
+    <string name="haromszog_terulet">Terület : </string>
+    <string name="haromszog_kevesadat">Túl kevés adat !</string>
+    <string name="haromszog_nincskesz">Elöször add meg a háromszög adatait !</string>
+    <string name="haromszog_sugo">Meghatározza a háromszög maradék adatait !
+                                  \n Lehetséges megadási módok :
+                                  \n  -Három oldal
+                                  \n  -Két oldala és a közbezárt szöge
+                                  \n  -Egy oldala és a rajta fekvő két szöge
+                                  \n  -Két oldala és a hosszabb oldallal szemközti szöge
+                                    </string>
+    //Átváltó
+    <string name="atvalto_meret">Méret</string>
+    <string name="atvalto_merata">Méretarány</string>
+    <string name="atvalto_tav">Távolság</string>
+    <string name="atvalto_ter">Terület</string>
+    <string name="atvalto_szog">Szög</string>
+    <string name="atvalto_meretarany">Méretarány</string>
+    <string name="atvalto_szamol">Számol</string>
+    <string name="atvalto_innen">Innen</string>
+    <string name="atvalto_ide">Ide</string>
+    <string name="atvalto_terepi">Terepi</string>
+    <string name="atvalto_terkepi">Térképi</string>
+    <string name="atvalto_ures">Nem adtál meg mértékegységet</string>
+    <string name="atvalto_keves">Túl kevés adat!</string>
+
+    //Merü
+    <string name="menu_vissza">Visszaállítás</string>
+    <string name="menu_sugo">Súgó</string>
+    <string name="munu_rajz">Rajzolás</string>
+
 
 </resources>

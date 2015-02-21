@@ -2,6 +2,7 @@ package hu.valamas.hevesitoolbox;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,10 +13,11 @@ import com.example.valamas.hevesitoolbox.R;
 
 import hu.valamas.hevesitoolbox.szamolasok.numerikusterulet;
 import hu.valamas.hevesitoolbox.szamolasok.polarispont;
-
+import hu.valamas.hevesitoolbox.szamolasok.iranyszog;
+import hu.valamas.hevesitoolbox.szamolasok.haromszog;
+import hu.valamas.hevesitoolbox.szamolasok.atvalto;
 
 public class MainActivity extends Activity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,45 +27,63 @@ public class MainActivity extends Activity {
         iranyszog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(MainActivity.this, hu.valamas.hevesitoolbox.szamolasok.iranyszog.class);
-                startActivity(intent1);
+                Intent intent = new Intent(MainActivity.this, iranyszog.class);
+                intent.putExtra("orientation", orient());
+                startActivity(intent);
             }
         });
+
         final Button polaris = (Button) findViewById(R.id.polaris);
         polaris.setOnClickListener(new View.OnClickListener() {
-
+            @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(MainActivity.this, polarispont.class);
-                startActivity(intent2);
+                Intent intent = new Intent(MainActivity.this, polarispont.class);
+                intent.putExtra("orientation", orient());
+                startActivity(intent);
             }
         });
+
         final Button numerikus = (Button) findViewById(R.id.numerikus);
         numerikus.setOnClickListener(new View.OnClickListener() {
-
+            @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(MainActivity.this, numerikusterulet.class);
-                startActivity(intent2);
+                Intent intent = new Intent(MainActivity.this, numerikusterulet.class);
+                intent.putExtra("orientation", orient());
+                startActivity(intent);
             }
         });
+
         final Button haromszog = (Button) findViewById(R.id.haromszog);
         haromszog.setOnClickListener(new View.OnClickListener() {
-
+            @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(MainActivity.this,  hu.valamas.hevesitoolbox.szamolasok.haromszog.class);
-                startActivity(intent2);
+                Intent intent = new Intent(MainActivity.this,  haromszog.class);
+                intent.putExtra("orientation", orient());
+                startActivity(intent);
             }
         });
+
         final Button atvalto = (Button) findViewById(R.id.atvalto);
         atvalto.setOnClickListener(new View.OnClickListener() {
-
+            @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(MainActivity.this,  hu.valamas.hevesitoolbox.szamolasok.atvalto.class);
-                startActivity(intent2);
+                Intent intent = new Intent(MainActivity.this,  atvalto.class);
+                intent.putExtra("orientation", orient());
+                startActivity(intent);
             }
         });
-
     }
 
+    public byte orient ()
+    {
+        int currentOrientation = getResources().getConfiguration().orientation;
+        byte message;
+        if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            message = (byte) 0;  }
+        else {
+            message = (byte) 1;  }
+        return (message);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -83,7 +103,6 @@ public class MainActivity extends Activity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

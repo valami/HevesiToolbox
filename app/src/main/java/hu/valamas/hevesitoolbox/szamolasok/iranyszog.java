@@ -1,7 +1,10 @@
 package hu.valamas.hevesitoolbox.szamolasok;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,15 +17,16 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 
 import com.example.valamas.hevesitoolbox.R;
+import hu.valamas.hevesitoolbox.szamolasok.felulet.tizedes;
 
-public class iranyszog extends Activity {
+public class iranyszog extends Activity   {
     private double szog,dist;
     DecimalFormat df =new DecimalFormat("#");
-    DecimalFormat dis =new DecimalFormat("#.###");
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iranyszog);
+        final tizedes tizedes =new tizedes();
         final TextView tavolnag = (TextView) findViewById(R.id.tav);
         final TextView szogkiir = (TextView) findViewById(R.id.szogkiir);
         final TextView szog_text = (TextView) findViewById(R.id.szog_text);
@@ -31,10 +35,18 @@ public class iranyszog extends Activity {
         final EditText KY_in = (EditText) findViewById(R.id.KY_in);
         final EditText VX_in = (EditText) findViewById(R.id.VX_in);
         final EditText VY_in = (EditText) findViewById(R.id.VY_in);
+        //Forgatás
+        Bundle extras = getIntent().getExtras();
+        Byte orientation = extras.getByte("orientation");
+        if (orientation == 0)   {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }   else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
 
         Button szamit = (Button) findViewById(R.id.button);
                 szamit.setOnClickListener(new View.OnClickListener() {
-
                     public void onClick(View v) {
                 //Ellenörzés
                 String KX_s = KX_in.getText().toString();
@@ -43,7 +55,7 @@ public class iranyszog extends Activity {
                 String VY_s = VY_in.getText().toString();
                 if (KX_s.matches("") | KY_s.matches("") |  VX_s.matches("") | VY_s.matches("") ) {
                     Toast.makeText(getApplicationContext(),
-                            "Valamelyik mezö üres !", Toast.LENGTH_SHORT).show();
+                            getString(R.string.iranyszog_ures), Toast.LENGTH_SHORT).show();
                             return;
                 }
                 double KX = Double.parseDouble(KX_s);
@@ -72,7 +84,7 @@ public class iranyszog extends Activity {
                     szog = 180;
                 }else{
                     Toast.makeText(getApplicationContext(),
-                    "A két koordináta egyezik !", Toast.LENGTH_SHORT).show();
+                        getString(R.string.iranyszog_egyezik), Toast.LENGTH_SHORT).show();
                     return;
                     }
 
@@ -89,7 +101,8 @@ public class iranyszog extends Activity {
                 szogkiir.setText(fokkiir + " - " + perckiir + " - " + masodkiir);
 
                 dist = Math.sqrt((((VY - KY) * (VY - KY)) + ((VX - KX) * (VX - KX))));
-                tavolnag.setText(dis.format(dist));
+
+                tavolnag.setText(tizedes.tizedes(dist,3));
             }
         });
     }
@@ -106,6 +119,17 @@ public class iranyszog extends Activity {
             finish();
             startActivity(intent);
             return true;
+        }
+        if (id == R.id.action_info)
+        {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle(getString(R.string.menu_sugo));
+            alertDialog.setMessage(getString(R.string.iranyszog_sugo));
+            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            alertDialog.show();
         }
         return super.onOptionsItemSelected(item);
     }

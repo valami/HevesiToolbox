@@ -2,7 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="hu.valamas.hevesitoolbox.szamolasok.numerikusterulet">
     <item android:id="@+id/action_reset"
-        android:title="Visszaállítás"
+        android:title="@string/menu_vissza"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+    <item android:id="@+id/action_info"
+        android:title="@string/menu_sugo"
         android:orderInCategory="100"
         android:showAsAction="never" />
 

@@ -19,10 +19,7 @@
         <TableLayout
             android:id="@+id/tabla"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
             android:stretchColumns="*">
 
             <TableRow
@@ -34,22 +31,15 @@
                     android:id="@+id/a_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
                     android:layout_column="0"
                     android:layout_marginRight="5dp"
-                    android:text="a oldal" />
+                    android:text="@string/haromszog_a" />
 
                 <EditText
                     android:id="@+id/a_in"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/KX"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     android:layout_column="1"
-                    android:layout_toRightOf="@+id/KY"
                     android:layout_weight="4"
                     android:ems="10"
                     android:inputType="numberDecimal" />
@@ -64,21 +54,13 @@
                     android:id="@+id/b_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/KY"
                     android:layout_column="0"
-                    android:text="b oldal" />
+                    android:text="@string/haromszog_b" />
 
                 <EditText
                     android:id="@+id/b_in"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/KX"
-                    android:layout_alignEnd="@+id/KY_in"
-                    android:layout_alignLeft="@+id/KY_in"
-                    android:layout_alignRight="@+id/KY_in"
-                    android:layout_alignStart="@+id/KY_in"
                     android:layout_column="1"
                     android:layout_weight="4"
                     android:ems="10"
@@ -94,20 +76,13 @@
                     android:id="@+id/c_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
                     android:layout_column="0"
-                    android:text="c oldal" />
+                    android:text="@string/haromszog_c" />
 
                 <EditText
                     android:id="@+id/c_in"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/VX_in"
-                    android:layout_alignLeft="@+id/KX_in"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignStart="@+id/KX_in"
                     android:layout_column="1"
                     android:layout_weight="4"
                     android:ems="10"
@@ -123,11 +98,8 @@
                     android:id="@+id/alfa_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/VY"
                     android:layout_column="0"
-                    android:text="α szög" />
+                    android:text="@string/haromszog_alfa" />
 
                 <EditText
                     android:id="@+id/alfa_fok_in"
@@ -183,11 +155,8 @@
                     android:id="@+id/beta_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/VY"
                     android:layout_column="0"
-                    android:text="β  szög" />
+                    android:text="@string/haromszog_beta" />
 
                 <EditText
                     android:id="@+id/beta_fok_in"
@@ -243,11 +212,8 @@
                     android:id="@+id/gamma_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/VY"
                     android:layout_column="0"
-                    android:text=" γ szög" />
+                    android:text="@string/haromszog_gamma" />
 
                 <EditText
                     android:id="@+id/gamma_fok_in"
@@ -304,13 +270,10 @@
                     android:id="@+id/button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/tav"
-                    android:layout_alignStart="@+id/tav"
-                    android:layout_centerVertical="true"
                     android:layout_column="0"
                     android:layout_span="4"
                     android:layout_weight="4"
-                    android:text="Számol" />
+                    android:text="@string/haromszog_szamol" />
             </TableRow>
 
             <TableRow
@@ -326,8 +289,7 @@
                     android:layout_column="0"
                     android:layout_span="4"
                     android:layout_weight="4"
-                    android:text="Terület"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:visibility="invisible" />
             </TableRow>
 

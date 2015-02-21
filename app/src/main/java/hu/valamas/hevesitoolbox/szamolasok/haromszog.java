@@ -1,7 +1,10 @@
 package hu.valamas.hevesitoolbox.szamolasok;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,15 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.valamas.hevesitoolbox.R;
-
-import java.text.DecimalFormat;
-
 import hu.valamas.hevesitoolbox.szamolasok.opengl.haromszograjz;
+import hu.valamas.hevesitoolbox.szamolasok.felulet.tizedes;
 
 public class haromszog extends Activity {
-    DecimalFormat df = new DecimalFormat("#");
-    DecimalFormat df2 = new DecimalFormat("#.##");
-    DecimalFormat df3 = new DecimalFormat("##");
+    final tizedes tizedes =new tizedes();
     double pi = 3.141592653589793238462643383279502884197;
 
     double a;
@@ -44,6 +43,14 @@ public class haromszog extends Activity {
         final EditText gamma_masod_in = (EditText) findViewById(R.id.gamma_masod_in);
         final TextView terulet = (TextView) findViewById(R.id.terulet);
 
+        Bundle extras = getIntent().getExtras();
+        Byte orientation = extras.getByte("orientation");
+        if (orientation == 0)   {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }   else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
         Button szamit = (Button) findViewById(R.id.button);
         szamit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -61,7 +68,7 @@ public class haromszog extends Activity {
                 String gamma_masod_in_s = gamma_masod_in.getText().toString();
 
                 if (!a_in_s.matches("") & !b_in_s.matches("") & !c_in_s.matches("")) {
-                    //három oldal
+                    //Három oldal
                     a = Double.parseDouble(a_in_s);
                     b = Double.parseDouble(b_in_s);
                     c = Double.parseDouble(c_in_s);
@@ -77,29 +84,32 @@ public class haromszog extends Activity {
                     if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
+                            getString(R.string.haromszog_egyenlotlen), Toast.LENGTH_SHORT).show();
                     } else {
-                        alfa_fok_in.setText(df.format(alfa[0]));
-                        alfa_perc_in.setText(df.format(alfa[1]));
-                        alfa_masod_in.setText(df.format(alfa[2]));
-                        beta_fok_in.setText(df.format(beta[0]));
-                        beta_perc_in.setText(df3.format(beta[1]));
-                        beta_masod_in.setText(df3.format(beta[2]));
-                        gamma_fok_in.setText(df.format(gamma[0]));
-                        gamma_perc_in.setText(df3.format(gamma[1]));
-                        gamma_masod_in.setText(df3.format(gamma[2]));
+                        alfa_fok_in.setText(tizedes.tizedes(alfa[0],0));
+                        alfa_perc_in.setText(tizedes.tizedes(alfa[1],0));
+                        alfa_masod_in.setText(tizedes.tizedes(alfa[2],0));
+                        beta_fok_in.setText(tizedes.tizedes(beta[0],0));
+                        beta_perc_in.setText(tizedes.tizedes(beta[1],0));
+                        beta_masod_in.setText(tizedes.tizedes(beta[2],0));
+                        gamma_fok_in.setText(tizedes.tizedes(gamma[0],0));
+                        gamma_perc_in.setText(tizedes.tizedes(gamma[1],0));
+                        gamma_masod_in.setText(tizedes.tizedes(gamma[2],0));
                         terulet.setVisibility(View.VISIBLE);
-                        terulet.setText("Terület :" + df2.format(heron(a, b, c)));
+                        terulet.setText(getString(R.string.haromszog_terulet) + tizedes.tizedes(heron(a, b, c),2));
                     }
 
                 } else if (!a_in_s.matches("") & !b_in_s.matches("") & (!gamma_fok_in_s.matches("") | !gamma_perc_in_s.matches("") | !gamma_masod_in_s.matches(""))) {
-                    // a-b-gamma
+                    // A-B-Gamma
                     if (gamma_fok_in_s.matches(""))
-                    {    gamma_fok_in.setText("0");  }
+                    {   gamma_fok_in.setText("0");
+                        gamma_fok_in_s="0";}
                     if (gamma_perc_in_s.matches(""))
-                    {    gamma_perc_in.setText("0"); }
+                    {   gamma_perc_in.setText("0");
+                        gamma_perc_in_s="0";}
                     if (gamma_masod_in_s.matches(""))
-                    {    gamma_masod_in.setText("0");}
+                    {   gamma_masod_in.setText("0");
+                        gamma_masod_in_s="0";}
                     a = Double.parseDouble(a_in_s);
                     b = Double.parseDouble(b_in_s);
                     double gamma_fok = Double.parseDouble(gamma_fok_in_s);
@@ -117,28 +127,31 @@ public class haromszog extends Activity {
                     if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
+                                getString(R.string.haromszog_egyenlotlen), Toast.LENGTH_SHORT).show();
                     } else {
-                        alfa_fok_in.setText(df.format(alfa[0]));
-                        alfa_perc_in.setText(df3.format(alfa[1]));
-                        alfa_masod_in.setText(df3.format(alfa[2]));
-                        beta_fok_in.setText(df.format(beta[0]));
-                        beta_perc_in.setText(df3.format(beta[1]));
-                        beta_masod_in.setText(df3.format(beta[2]));
-                        c_in.setText(df2.format(c));
-                        terulet.setText("Terület :" + df2.format(heron(a, b, c)));
+                        alfa_fok_in.setText(tizedes.tizedes(alfa[0],0));
+                        alfa_perc_in.setText(tizedes.tizedes(alfa[1],0));
+                        alfa_masod_in.setText(tizedes.tizedes(alfa[2],0));
+                        beta_fok_in.setText(tizedes.tizedes(beta[0],0));
+                        beta_perc_in.setText(tizedes.tizedes(beta[1],0));
+                        beta_masod_in.setText(tizedes.tizedes(beta[2],0));
+                        c_in.setText(tizedes.tizedes(c,2));
+                        terulet.setText(getString(R.string.haromszog_terulet) + tizedes.tizedes(heron(a, b, c),2));
                         terulet.setVisibility(View.VISIBLE);
                     }
 
 
                 } else if (!a_in_s.matches("") & !c_in_s.matches("") & (!beta_fok_in_s.matches("") | !beta_perc_in_s.matches("") | !beta_masod_in_s.matches(""))) {
-                    //a-c-béta
+                    //A-C-Béta
                     if (beta_fok_in_s.matches(""))
-                    {    beta_fok_in.setText("0");   }
+                    {   beta_fok_in.setText("0");
+                        beta_fok_in_s="0";}
                     if (beta_perc_in_s.matches(""))
-                    {    beta_perc_in.setText("0");  }
+                    {   beta_perc_in.setText("0");
+                        beta_perc_in_s="0";}
                     if (beta_masod_in_s.matches(""))
-                    {    beta_masod_in.setText("0"); }
+                    {   beta_masod_in.setText("0");
+                        beta_masod_in_s="0";}
                     a = Double.parseDouble(a_in_s);
                     c = Double.parseDouble(c_in_s);
                     double beta_fok = Double.parseDouble(beta_fok_in_s);
@@ -156,26 +169,29 @@ public class haromszog extends Activity {
                     if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
+                                getString(R.string.haromszog_egyenlotlen), Toast.LENGTH_SHORT).show();
                     } else {
-                        alfa_fok_in.setText(df.format(alfa[0]));
-                        alfa_perc_in.setText(df3.format(alfa[1]));
-                        alfa_masod_in.setText(df3.format(alfa[2]));
-                        gamma_fok_in.setText(df.format(gamma[0]));
-                        gamma_perc_in.setText(df3.format(gamma[1]));
-                        gamma_masod_in.setText(df3.format(gamma[2]));
-                        b_in.setText(df2.format(b));
-                        terulet.setText("Terület :" + df2.format(heron(a, b, c)));
+                        alfa_fok_in.setText(tizedes.tizedes(alfa[0],0 ) );
+                        alfa_perc_in.setText(tizedes.tizedes(alfa[1],0));
+                        alfa_masod_in.setText(tizedes.tizedes(alfa[2],0));
+                        gamma_fok_in.setText(tizedes.tizedes(gamma[0],0));
+                        gamma_perc_in.setText(tizedes.tizedes(gamma[1],0));
+                        gamma_masod_in.setText(tizedes.tizedes(gamma[2],0));
+                        b_in.setText(tizedes.tizedes(b,2));
+                        terulet.setText(getString(R.string.haromszog_terulet) + tizedes.tizedes(heron(a, b, c),2));
                         terulet.setVisibility(View.VISIBLE);
                     }
                 } else if (!c_in_s.matches("") & !b_in_s.matches("") & (!alfa_fok_in_s.matches("") | !alfa_perc_in_s.matches("") | !alfa_masod_in_s.matches(""))) {
-                    //b-c-alfa
+                    //B-C-Alfa
                     if (alfa_fok_in_s.matches(""))
-                    {   alfa_fok_in.setText("0");   }
+                    {   alfa_fok_in.setText("0");
+                        alfa_fok_in_s="0";}
                     if (alfa_perc_in_s.matches(""))
-                    {   alfa_perc_in.setText("0");  }
+                    {   alfa_perc_in.setText("0");
+                        alfa_perc_in_s="0";}
                     if (alfa_masod_in_s.matches(""))
-                    {   alfa_masod_in.setText("0"); }
+                    {   alfa_masod_in.setText("0");
+                        alfa_masod_in_s="0";}
                     b = Double.parseDouble(b_in_s);
                     c = Double.parseDouble(c_in_s);
                     double alfa_fok = Double.parseDouble(alfa_fok_in_s);
@@ -193,32 +209,38 @@ public class haromszog extends Activity {
                     if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
+                                getString(R.string.haromszog_egyenlotlen), Toast.LENGTH_SHORT).show();
                     } else {
-                        beta_fok_in.setText(df.format(beta[0]));
-                        beta_perc_in.setText(df3.format(beta[1]));
-                        beta_masod_in.setText(df3.format(beta[2]));
-                        gamma_fok_in.setText(df.format(gamma[0]));
-                        gamma_perc_in.setText(df3.format(gamma[1]));
-                        gamma_masod_in.setText(df3.format(gamma[2]));
-                        a_in.setText(df2.format(c));
-                        terulet.setText("Terület :" + df2.format(heron(a, b, c)));
+                        beta_fok_in.setText(tizedes.tizedes(beta[0],0));
+                        beta_perc_in.setText(tizedes.tizedes(beta[1],0));
+                        beta_masod_in.setText(tizedes.tizedes(beta[2],0));
+                        gamma_fok_in.setText(tizedes.tizedes(gamma[0],0));
+                        gamma_perc_in.setText(tizedes.tizedes(gamma[1],0));
+                        gamma_masod_in.setText(tizedes.tizedes(gamma[2],0));
+                        a_in.setText(tizedes.tizedes(c,2));
+                        terulet.setText(getString(R.string.haromszog_terulet)+ tizedes.tizedes(heron(a, b, c),2));
                         terulet.setVisibility(View.VISIBLE);
                     }
                 } else if (!a_in_s.matches("") &  (!beta_fok_in_s.matches("") | !beta_perc_in_s.matches("") | !beta_masod_in_s.matches("")) & (!gamma_fok_in_s.matches("")| !gamma_perc_in_s.matches("")| !gamma_masod_in_s.matches("")) ) {
-                    //a -béta-gamma
+                    //A -Béta-Gamma
                     if (beta_fok_in_s.matches(""))
-                    {    beta_fok_in.setText("0");  }
+                    {   beta_fok_in.setText("0");
+                        beta_fok_in_s="0";}
                     if (beta_perc_in_s.matches(""))
-                    {   beta_perc_in.setText("0");  }
+                    {   beta_perc_in.setText("0");
+                        beta_perc_in_s="0";}
                     if (beta_masod_in_s.matches(""))
-                    {   beta_masod_in.setText("0"); }
+                    {   beta_masod_in.setText("0");
+                        beta_masod_in_s="0";}
                     if (gamma_fok_in_s.matches(""))
-                    {    gamma_fok_in.setText("0");  }
+                    {   gamma_fok_in.setText("0");
+                        gamma_fok_in_s="0";}
                     if (gamma_perc_in_s.matches(""))
-                    {   gamma_perc_in.setText("0");  }
+                    {   gamma_perc_in.setText("0");
+                        gamma_perc_in_s="0";}
                     if (gamma_masod_in_s.matches(""))
-                    {   gamma_masod_in.setText("0"); }
+                    {   gamma_masod_in.setText("0");
+                        gamma_masod_in_s="0";}
                     a = Double.parseDouble(a_in_s);
                     double beta_fok = Double.parseDouble(beta_fok_in_s);
                     double beta_perc = Double.parseDouble(beta_perc_in_s);
@@ -238,31 +260,36 @@ public class haromszog extends Activity {
                     if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
+                                getString(R.string.haromszog_egyenlotlen), Toast.LENGTH_SHORT).show();
                     } else {
-                        alfa_fok_in.setText(df.format(alfa[0]));
-                        alfa_perc_in.setText(df3.format(alfa[1]));
-                        alfa_masod_in.setText(df3.format(alfa[2]));
-                        b_in.setText(df2.format(b));
-                        c_in.setText(df2.format(c));
-                        terulet.setText("Terület :" + df2.format(heron(a, b, c)));
+                        alfa_fok_in.setText(tizedes.tizedes(alfa[0],0));
+                        alfa_perc_in.setText(tizedes.tizedes(alfa[1],0));
+                        alfa_masod_in.setText(tizedes.tizedes(alfa[2],0));
+                        b_in.setText(tizedes.tizedes(b,2));
+                        c_in.setText(tizedes.tizedes(c,2));
+                        terulet.setText(getString(R.string.haromszog_terulet)+ tizedes.tizedes(heron(a, b, c),2));
                         terulet.setVisibility(View.VISIBLE);
                     }
                 }   else if (!b_in_s.matches("") & ( !alfa_fok_in_s.matches("") | !alfa_perc_in_s.matches("") | !alfa_masod_in_s.matches("")) & (!gamma_fok_in_s.matches("") | !gamma_perc_in_s.matches("") | !gamma_masod_in_s.matches(""))) {
-                    //b -alfa-gamma
+                    //B -Alfa-Gamma
                     if (alfa_fok_in_s.matches(""))
-                    {    alfa_fok_in.setText("0");  }
+                    {   alfa_fok_in.setText("0");
+                        alfa_fok_in_s="0";}
                     if (alfa_perc_in_s.matches(""))
-                    {   alfa_perc_in.setText("0");  }
+                    {   alfa_perc_in.setText("0");
+                        alfa_perc_in_s="0";}
                     if (alfa_masod_in_s.matches(""))
-                    {   alfa_masod_in.setText("0"); }
+                    {   alfa_masod_in.setText("0");
+                        alfa_masod_in_s="0";}
                     if (gamma_fok_in_s.matches(""))
-                    {    gamma_fok_in.setText("0");  }
+                    {   gamma_fok_in.setText("0");
+                        gamma_fok_in_s="0";}
                     if (gamma_perc_in_s.matches(""))
-                    {   gamma_perc_in.setText("0");  }
+                    {   gamma_perc_in.setText("0");
+                        gamma_perc_in_s="0";}
                     if (gamma_masod_in_s.matches(""))
-                    {   gamma_masod_in.setText("0"); }
-
+                    {   gamma_masod_in.setText("0");
+                        gamma_masod_in_s="0";}
                     b = Double.parseDouble(b_in_s);
                     double alfa_fok = Double.parseDouble(alfa_fok_in_s);
                     double alfa_perc = Double.parseDouble(alfa_perc_in_s);
@@ -282,30 +309,36 @@ public class haromszog extends Activity {
                     if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
+                                getString(R.string.haromszog_egyenlotlen), Toast.LENGTH_SHORT).show();
                     } else {
-                        beta_fok_in.setText(df.format(beta[0]));
-                        beta_perc_in.setText(df3.format(beta[1]));
-                        beta_masod_in.setText(df3.format(beta[2]));
-                        a_in.setText(df2.format(a));
-                        c_in.setText(df2.format(c));
-                        terulet.setText("Terület :" + df2.format(heron(a, b, c)));
+                        beta_fok_in.setText(tizedes.tizedes(beta[0],0));
+                        beta_perc_in.setText(tizedes.tizedes(beta[1],0));
+                        beta_masod_in.setText(tizedes.tizedes(beta[2],0));
+                        a_in.setText(tizedes.tizedes(a,2));
+                        c_in.setText(tizedes.tizedes(c,2));
+                        terulet.setText(getString(R.string.haromszog_terulet) + tizedes.tizedes(heron(a, b, c),2));
                         terulet.setVisibility(View.VISIBLE);
                     }
                 }else if (!c_in_s.matches("") & ( !alfa_fok_in_s.matches("") | !alfa_perc_in_s.matches("") | !alfa_masod_in_s.matches("")) & (!beta_fok_in_s.matches("") | !beta_perc_in_s.matches("") | !beta_masod_in_s.matches(""))) {
-                    //c -alfa-béta
+                    //C -Alfa-Béta
                     if (beta_fok_in_s.matches(""))
-                    {    beta_fok_in.setText("0");  }
+                    {   beta_fok_in.setText("0");
+                        beta_fok_in_s="0";}
                     if (beta_perc_in_s.matches(""))
-                    {   beta_perc_in.setText("0");  }
+                    {   beta_perc_in.setText("0");
+                        beta_perc_in_s="0";}
                     if (beta_masod_in_s.matches(""))
-                    {   beta_masod_in.setText("0"); }
+                    {   beta_masod_in.setText("0");
+                        beta_masod_in_s="0";}
                     if (alfa_fok_in_s.matches(""))
-                    {    alfa_fok_in.setText("0");  }
+                    {   alfa_fok_in.setText("0");
+                        alfa_fok_in_s="0";}
                     if (alfa_perc_in_s.matches(""))
-                    {   alfa_perc_in.setText("0");  }
+                    {   alfa_perc_in.setText("0");
+                        alfa_perc_in_s="0";}
                     if (alfa_masod_in_s.matches(""))
-                    {   alfa_masod_in.setText("0"); }
+                    {   alfa_masod_in.setText("0");
+                        alfa_masod_in_s="0";}
 
                     c = Double.parseDouble(c_in_s);
                     double alfa_fok = Double.parseDouble(alfa_fok_in_s);
@@ -326,24 +359,27 @@ public class haromszog extends Activity {
                     if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
+                                getString(R.string.haromszog_egyenlotlen), Toast.LENGTH_SHORT).show();
                     } else {
-                        gamma_fok_in.setText(df.format(gamma[0]));
-                        gamma_perc_in.setText(df3.format(gamma[1]));
-                        gamma_masod_in.setText(df3.format(gamma[2]));
-                        a_in.setText(df2.format(a));
-                        b_in.setText(df2.format(b));
-                        terulet.setText("Terület :" + df2.format(heron(a, b, c)));
+                        gamma_fok_in.setText(tizedes.tizedes(gamma[0],0));
+                        gamma_perc_in.setText(tizedes.tizedes(gamma[1],0));
+                        gamma_masod_in.setText(tizedes.tizedes(gamma[2],0));
+                        a_in.setText(tizedes.tizedes(a,2));
+                        b_in.setText(tizedes.tizedes(b,2));
+                        terulet.setText(getString(R.string.haromszog_terulet) + tizedes.tizedes(heron(a, b, c),2));
                         terulet.setVisibility(View.VISIBLE);
                     }
                 }else if (!a_in_s.matches("") & !b_in_s.matches("") & ( !alfa_fok_in_s.matches("") | !alfa_perc_in_s.matches("") | !alfa_masod_in_s.matches(""))) {
-                    //a b-alfa -a nagyobb
+                    //A-B-Alfa -A nagyobb
                     if (alfa_fok_in_s.matches(""))
-                    {    alfa_fok_in.setText("0");  }
+                    {   alfa_fok_in.setText("0");
+                        alfa_fok_in_s="0";}
                     if (alfa_perc_in_s.matches(""))
-                    {   alfa_perc_in.setText("0");  }
+                    {   alfa_perc_in.setText("0");
+                        alfa_perc_in_s="0";}
                     if (alfa_masod_in_s.matches(""))
-                    {   alfa_masod_in.setText("0"); }
+                    {   alfa_masod_in.setText("0");
+                        alfa_masod_in_s="0";}
                     a = Double.parseDouble(a_in_s);
                     b = Double.parseDouble(b_in_s);
                     if (a>b) {
@@ -361,27 +397,30 @@ public class haromszog extends Activity {
                         if (  egyenlotlen(a,b,c) != 3)
                         {
                             Toast.makeText(getApplicationContext(),
-                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
+                                    getString(R.string.haromszog_egyenlotlen), Toast.LENGTH_SHORT).show();
                         } else {
-                            beta_fok_in.setText(df.format(beta[0]));
-                            beta_perc_in.setText(df3.format(beta[1]));
-                            beta_masod_in.setText(df3.format(beta[2]));
-                            gamma_fok_in.setText(df.format(gamma[0]));
-                            gamma_perc_in.setText(df3.format(gamma[1]));
-                            gamma_masod_in.setText(df3.format(gamma[2]));
-                            c_in.setText(df2.format(c));
-                            terulet.setText("Terület :" + df2.format(heron(a, b, c)));
+                            beta_fok_in.setText(tizedes.tizedes(beta[0],0));
+                            beta_perc_in.setText(tizedes.tizedes(beta[1],0));
+                            beta_masod_in.setText(tizedes.tizedes(beta[2],0));
+                            gamma_fok_in.setText(tizedes.tizedes(gamma[0],0));
+                            gamma_perc_in.setText(tizedes.tizedes(gamma[1],0));
+                            gamma_masod_in.setText(tizedes.tizedes(gamma[2],0));
+                            c_in.setText(tizedes.tizedes(c,2));
+                            terulet.setText(getString(R.string.haromszog_terulet) + tizedes.tizedes(heron(a, b, c),2));
                             terulet.setVisibility(View.VISIBLE);
                         }
                     }
                 }else if (!a_in_s.matches("") & !b_in_s.matches("") & ( !beta_fok_in_s.matches("") | !beta_perc_in_s.matches("") | !beta_masod_in_s.matches(""))) {
                 //a b-béta -b nagyobb
                     if (beta_fok_in_s.matches(""))
-                    {    beta_fok_in.setText("0");  }
+                    {   beta_fok_in.setText("0");
+                        beta_fok_in_s="0";}
                     if (beta_perc_in_s.matches(""))
-                    {   beta_perc_in.setText("0");  }
+                    {   beta_perc_in.setText("0");
+                        beta_perc_in_s="0";}
                     if (beta_masod_in_s.matches(""))
-                    {   beta_masod_in.setText("0"); }
+                    {   beta_masod_in.setText("0");
+                        beta_masod_in_s="0";}
                 a = Double.parseDouble(a_in_s);
                 b = Double.parseDouble(b_in_s);
                 if (a<b) {
@@ -399,27 +438,30 @@ public class haromszog extends Activity {
                     if (  egyenlotlen(a,b,c) != 3)
                     {
                         Toast.makeText(getApplicationContext(),
-                                "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
+                                getString(R.string.haromszog_egyenlotlen), Toast.LENGTH_SHORT).show();
                     } else {
-                        alfa_fok_in.setText(df.format(alfa[0]));
-                        alfa_perc_in.setText(df3.format(alfa[1]));
-                        alfa_masod_in.setText(df3.format(alfa[2]));
-                        gamma_fok_in.setText(df.format(gamma[0]));
-                        gamma_perc_in.setText(df3.format(gamma[1]));
-                        gamma_masod_in.setText(df3.format(gamma[2]));
-                        c_in.setText(df2.format(c));
-                        terulet.setText("Terület :" + df2.format(heron(a, b, c)));
+                        alfa_fok_in.setText(tizedes.tizedes(alfa[0],0));
+                        alfa_perc_in.setText(tizedes.tizedes(alfa[1],0));
+                        alfa_masod_in.setText(tizedes.tizedes(alfa[2],0));
+                        gamma_fok_in.setText(tizedes.tizedes(gamma[0],0));
+                        gamma_perc_in.setText(tizedes.tizedes(gamma[1],0));
+                        gamma_masod_in.setText(tizedes.tizedes(gamma[2],0));
+                        c_in.setText(tizedes.tizedes(c,2));
+                        terulet.setText(getString(R.string.haromszog_terulet) + tizedes.tizedes(heron(a, b, c),2));
                         terulet.setVisibility(View.VISIBLE);
                     }
                 }
                 }else if (!a_in_s.matches("") & !c_in_s.matches("") & (!alfa_fok_in_s.matches("") | !alfa_perc_in_s.matches("") | !alfa_masod_in_s.matches(""))) {
                     //a-c-alfa-a nagyobb
                     if (alfa_fok_in_s.matches(""))
-                    {    alfa_fok_in.setText("0");  }
+                    {   alfa_fok_in.setText("0");
+                        alfa_fok_in_s="0";}
                     if (alfa_perc_in_s.matches(""))
-                    {   alfa_perc_in.setText("0");  }
+                    {   alfa_perc_in.setText("0");
+                        alfa_perc_in_s="0";}
                     if (alfa_masod_in_s.matches(""))
-                    {   alfa_masod_in.setText("0"); }
+                    {   alfa_masod_in.setText("0");
+                        alfa_masod_in_s="0";}
                     a = Double.parseDouble(a_in_s);
                     c = Double.parseDouble(c_in_s);
                     if (c<a) {
@@ -437,16 +479,16 @@ public class haromszog extends Activity {
                         if (  egyenlotlen(a,b,c) != 3)
                         {
                             Toast.makeText(getApplicationContext(),
-                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
+                                    getString(R.string.haromszog_egyenlotlen), Toast.LENGTH_SHORT).show();
                         } else {
-                            beta_fok_in.setText(df.format(beta[0]));
-                            beta_perc_in.setText(df3.format(beta[1]));
-                            beta_masod_in.setText(df3.format(beta[2]));
-                            gamma_fok_in.setText(df.format(gamma[0]));
-                            gamma_perc_in.setText(df3.format(gamma[1]));
-                            gamma_masod_in.setText(df3.format(gamma[2]));
-                            b_in.setText(df2.format(b));
-                            terulet.setText("Terület :" + df2.format(heron(a, b, c)));
+                            beta_fok_in.setText(tizedes.tizedes(beta[0],0));
+                            beta_perc_in.setText(tizedes.tizedes(beta[1],0));
+                            beta_masod_in.setText(tizedes.tizedes(beta[2],0));
+                            gamma_fok_in.setText(tizedes.tizedes(gamma[0],0));
+                            gamma_perc_in.setText(tizedes.tizedes(gamma[1],0));
+                            gamma_masod_in.setText(tizedes.tizedes(gamma[2],0));
+                            b_in.setText(tizedes.tizedes(b,2));
+                            terulet.setText(getString(R.string.haromszog_terulet) + tizedes.tizedes(heron(a, b, c),2));
                             terulet.setVisibility(View.VISIBLE);
                         }
                     }
@@ -454,11 +496,14 @@ public class haromszog extends Activity {
                 }else if (!a_in_s.matches("") & !c_in_s.matches("") & (!gamma_fok_in_s.matches("") | !gamma_perc_in_s.matches("") | !gamma_masod_in_s.matches(""))) {
                     //a c-gamma -c nagyobb
                     if (gamma_fok_in_s.matches(""))
-                    {    gamma_fok_in.setText("0");  }
+                    {   gamma_fok_in.setText("0");
+                        gamma_fok_in_s="0";}
                     if (gamma_perc_in_s.matches(""))
-                    {   gamma_perc_in.setText("0");  }
+                    {   gamma_perc_in.setText("0");
+                        gamma_perc_in_s="0";}
                     if (gamma_masod_in_s.matches(""))
-                    {   gamma_masod_in.setText("0"); }
+                    {   gamma_masod_in.setText("0");
+                        gamma_masod_in_s="0";}
                     a = Double.parseDouble(a_in_s);
                     c = Double.parseDouble(c_in_s);
                     if (a<c) {
@@ -476,16 +521,16 @@ public class haromszog extends Activity {
                         if (  egyenlotlen(a,b,c) != 3)
                         {
                             Toast.makeText(getApplicationContext(),
-                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
+                                    getString(R.string.haromszog_egyenlotlen), Toast.LENGTH_SHORT).show();
                         } else {
-                            beta_fok_in.setText(df.format(beta[0]));
-                            beta_perc_in.setText(df3.format(beta[1]));
-                            beta_masod_in.setText(df3.format(beta[2]));
-                            alfa_fok_in.setText(df.format(alfa[0]));
-                            alfa_perc_in.setText(df3.format(alfa[1]));
-                            alfa_masod_in.setText(df3.format(alfa[2]));
-                            b_in.setText(df2.format(b));
-                            terulet.setText("Terület :" + df2.format(heron(a, b, c)));
+                            beta_fok_in.setText(tizedes.tizedes(beta[0],0));
+                            beta_perc_in.setText(tizedes.tizedes(beta[1],0));
+                            beta_masod_in.setText(tizedes.tizedes(beta[2],0));
+                            alfa_fok_in.setText(tizedes.tizedes(alfa[0],0));
+                            alfa_perc_in.setText(tizedes.tizedes(alfa[1],0));
+                            alfa_masod_in.setText(tizedes.tizedes(alfa[2],0));
+                            b_in.setText(tizedes.tizedes(b,2));
+                            terulet.setText(getString(R.string.haromszog_terulet) + tizedes.tizedes(heron(a, b, c),2));
                             terulet.setVisibility(View.VISIBLE);
                         }
                     }
@@ -493,11 +538,14 @@ public class haromszog extends Activity {
                 }else if (!b_in_s.matches("") & !c_in_s.matches("") & (!beta_fok_in_s.matches("") | !beta_perc_in_s.matches("") | !beta_masod_in_s.matches(""))) {
                     //b c-beta -b nagyobb
                     if (beta_fok_in_s.matches(""))
-                    {    beta_fok_in.setText("0");  }
+                    {   beta_fok_in.setText("0");
+                        beta_fok_in_s="0";}
                     if (beta_perc_in_s.matches(""))
-                    {   beta_perc_in.setText("0");  }
+                    {   beta_perc_in.setText("0");
+                        beta_perc_in_s="0";}
                     if (beta_masod_in_s.matches(""))
-                    {   beta_masod_in.setText("0"); }
+                    {   beta_masod_in.setText("0");
+                        beta_masod_in_s="0";}
                     b = Double.parseDouble(b_in_s);
                     c = Double.parseDouble(c_in_s);
                     if (c<b) {
@@ -515,16 +563,16 @@ public class haromszog extends Activity {
                         if (  egyenlotlen(a,b,c) != 3)
                         {
                             Toast.makeText(getApplicationContext(),
-                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
+                                    getString(R.string.haromszog_egyenlotlen), Toast.LENGTH_SHORT).show();
                         } else {
-                            gamma_fok_in.setText(df.format(gamma[0]));
-                            gamma_perc_in.setText(df3.format(gamma[1]));
-                            gamma_masod_in.setText(df3.format(gamma[2]));
-                            alfa_fok_in.setText(df.format(alfa[0]));
-                            alfa_perc_in.setText(df3.format(alfa[1]));
-                            alfa_masod_in.setText(df3.format(alfa[2]));
-                            a_in.setText(df2.format(a));
-                            terulet.setText("Terület :" + df2.format(heron(a, b, c)));
+                            gamma_fok_in.setText(tizedes.tizedes(gamma[0],0));
+                            gamma_perc_in.setText(tizedes.tizedes(gamma[1],0));
+                            gamma_masod_in.setText(tizedes.tizedes(gamma[2],0));
+                            alfa_fok_in.setText(tizedes.tizedes(alfa[0],0));
+                            alfa_perc_in.setText(tizedes.tizedes(alfa[1],0));
+                            alfa_masod_in.setText(tizedes.tizedes(alfa[2],0));
+                            a_in.setText(tizedes.tizedes(a,2));
+                            terulet.setText(getString(R.string.haromszog_terulet) + tizedes.tizedes(heron(a, b, c),2));
                             terulet.setVisibility(View.VISIBLE);
                         }
                     }
@@ -532,11 +580,14 @@ public class haromszog extends Activity {
                 }else if (!b_in_s.matches("") & !c_in_s.matches("") & (!gamma_fok_in_s.matches("") | !gamma_perc_in_s.matches("") | !gamma_masod_in_s.matches(""))) {
                     //b c-gamma -c nagyobb
                     if (gamma_fok_in_s.matches(""))
-                    {    gamma_fok_in.setText("0");  }
+                    {   gamma_fok_in.setText("0");
+                        gamma_fok_in_s="0";}
                     if (gamma_perc_in_s.matches(""))
-                    {   gamma_perc_in.setText("0");  }
+                    {   gamma_perc_in.setText("0");
+                        gamma_perc_in_s="0";}
                     if (gamma_masod_in_s.matches(""))
-                    {   gamma_masod_in.setText("0"); }
+                    {   gamma_masod_in.setText("0");
+                        gamma_masod_in_s="0";}
                     b = Double.parseDouble(b_in_s);
                     c = Double.parseDouble(c_in_s);
                     if (b<c) {
@@ -554,16 +605,16 @@ public class haromszog extends Activity {
                         if (  egyenlotlen(a,b,c) != 3)
                         {
                             Toast.makeText(getApplicationContext(),
-                                    "A Háromszög-egyenlőtlenség nem teljesül!", Toast.LENGTH_SHORT).show();
+                                    getString(R.string.haromszog_egyenlotlen), Toast.LENGTH_SHORT).show();
                         } else {
-                            beta_fok_in.setText(df.format(beta[0]));
-                            beta_perc_in.setText(df3.format(beta[1]));
-                            beta_masod_in.setText(df3.format(beta[2]));
-                            alfa_fok_in.setText(df.format(alfa[0]));
-                            alfa_perc_in.setText(df3.format(alfa[1]));
-                            alfa_masod_in.setText(df3.format(alfa[2]));
-                            a_in.setText(df2.format(a));
-                            terulet.setText("Terület :" + df2.format(heron(a, b, c)));
+                            beta_fok_in.setText(tizedes.tizedes(beta[0],0));
+                            beta_perc_in.setText(tizedes.tizedes(beta[1],0));
+                            beta_masod_in.setText(tizedes.tizedes(beta[2],0));
+                            alfa_fok_in.setText(tizedes.tizedes(alfa[0],0));
+                            alfa_perc_in.setText(tizedes.tizedes(alfa[1],0));
+                            alfa_masod_in.setText(tizedes.tizedes(alfa[2],0));
+                            a_in.setText(tizedes.tizedes(a,2));
+                            terulet.setText(getString(R.string.haromszog_terulet) + tizedes.tizedes(heron(a, b, c),2));
                             terulet.setVisibility(View.VISIBLE);
                         }
                     }
@@ -571,7 +622,7 @@ public class haromszog extends Activity {
                 else {
                     {
                         Toast.makeText(getApplicationContext(),
-                                "Túl kevés adat !", Toast.LENGTH_SHORT).show();
+                                getString(R.string.haromszog_kevesadat), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -647,9 +698,21 @@ public class haromszog extends Activity {
             }
             else {
                 Toast.makeText(getApplicationContext(),
-                        "Elöször add meg a háromszög adatait !", Toast.LENGTH_SHORT).show();
+                        getString(R.string.haromszog_nincskesz), Toast.LENGTH_SHORT).show();
                 }
             }
+        if (id == R.id.action_info)
+        {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle(getString(R.string.menu_sugo));
+            alertDialog.setMessage(getString(R.string.haromszog_sugo));
+            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            alertDialog.show();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }

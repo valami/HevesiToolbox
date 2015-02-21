@@ -35,6 +35,7 @@
     Jóval egyszerübb kód a hatékonyabb futás érdekében
     Szövegek hivatkozása
     Funkciókhoz súgó
+    Új logó
 
 Várható:
 -szelvény keresö
@@ -46,5 +47,5 @@ Várható:
 -troll hibaüzenet
 
 -új UI
--új logó
+
 

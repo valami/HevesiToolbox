@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -51,6 +52,14 @@ public class atvalto extends Activity {
         final TableRow sor5 = (TableRow) findViewById(R.id.sor5);
         final TableRow sor6 = (TableRow) findViewById(R.id.sor6);
 
+        Bundle extras = getIntent().getExtras();
+        Byte orientation = extras.getByte("orientation");
+        if (orientation == 0)   {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }   else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
         radio_meret.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,16 +105,16 @@ public class atvalto extends Activity {
                 {
                     // Meret - Hossz
                     from_in.setText("1");
-                    from.setText("Innen");
-                    to.setText("Ide");
+                    from.setText( getString(R.string.atvalto_innen));
+                    to.setText( getString(R.string.atvalto_ide));
                     funkcio = 1;
                 }
                 else if (funkcioal == 2)
                 {
                     //Mertekegyeg - Hossz
                     from_in.setText("");
-                    from.setText("Térképi");
-                    to.setText("Terepi");
+                    from.setText( getString(R.string.atvalto_terkepi));
+                    to.setText( getString(R.string.atvalto_terepi));
                     funkcio = 11;
                     sor5.setVisibility(View.VISIBLE);
                 }
@@ -126,16 +135,16 @@ public class atvalto extends Activity {
                 {
                     // Meret - Terület
                     from_in.setText("1");
-                    from.setText("Innen");
-                    to.setText("Ide");
+                    from.setText( getString(R.string.atvalto_innen));
+                    to.setText( getString(R.string.atvalto_ide));
                     funkcio = 2;
                 }
                 else if (funkcioal == 2)
                 {
                     //Mertekegyeg - Terület
                     from_in.setText("");
-                    from.setText("Térképi");
-                    to.setText("Terepi");
+                    from.setText( getString(R.string.atvalto_terkepi));
+                    to.setText( getString(R.string.atvalto_terepi));
                     funkcio = 12;
                     sor5.setVisibility(View.VISIBLE);
                 }
@@ -148,8 +157,8 @@ public class atvalto extends Activity {
                 sor4.setVisibility(View.VISIBLE);
                 sor6.setVisibility(View.VISIBLE);
 
-                from.setText("Innen");
-                to.setText("Ide");
+                from.setText( getString(R.string.atvalto_innen));
+                to.setText( getString(R.string.atvalto_ide));
                 from_ert = 0;
                 to_ert = 0;
                 from_in.setText("1");
@@ -203,11 +212,11 @@ public class atvalto extends Activity {
 
                 if (funkcioal == 1)
                 {
-                    menuAleart.setTitle("Innen");
+                    menuAleart.setTitle(getString(R.string.atvalto_innen));
                 }
                 else if (funkcioal == 2)
                 {
-                    menuAleart.setTitle("Térképi");
+                    menuAleart.setTitle(getString(R.string.atvalto_terkepi));
                 }
                 if (funkcio==1 | funkcio==3){
                 final String menu[]=menuList.toArray(new String[menuList.size()]);
@@ -356,11 +365,11 @@ public class atvalto extends Activity {
 
                 if (funkcioal == 1)
                 {
-                    menuAleart.setTitle("Ide");
+                    menuAleart.setTitle(getString(R.string.atvalto_ide));
                 }
                 else if (funkcioal == 2)
                 {
-                    menuAleart.setTitle("Terepi");
+                    menuAleart.setTitle(getString(R.string.atvalto_terepi));
                 }
                 if (funkcio==1 | funkcio==3){
                     final String menu[]=menuList.toArray(new String[menuList.size()]);
@@ -472,7 +481,7 @@ public class atvalto extends Activity {
                     to_in.setText(atvalt(funkcio,from_ert,to_ert,in));
                 }else {
                     Toast.makeText(getApplicationContext(),
-                            "Nem adtál meg mértékegységet", Toast.LENGTH_SHORT).show();
+                            getString(R.string.atvalto_ures), Toast.LENGTH_SHORT).show();
                 }
             }
             if (funkcio==11)
@@ -566,7 +575,7 @@ public class atvalto extends Activity {
                     }
                 } else {
                     Toast.makeText(getApplicationContext(),
-                            "Túl kevés adat !", Toast.LENGTH_SHORT).show();
+                            getString(R.string.atvalto_keves), Toast.LENGTH_SHORT).show();
                 }
             }
             if (funkcio==12)
@@ -666,7 +675,7 @@ public class atvalto extends Activity {
                         }
                     } else {
                         Toast.makeText(getApplicationContext(),
-                                "Túl kevés adat !", Toast.LENGTH_SHORT).show();
+                                getString(R.string.atvalto_keves), Toast.LENGTH_SHORT).show();
                     }
 
                 }
