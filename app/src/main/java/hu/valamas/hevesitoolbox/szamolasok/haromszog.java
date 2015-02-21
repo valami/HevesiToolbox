@@ -47,24 +47,24 @@ public class haromszog extends Activity {
         Button szamit = (Button) findViewById(R.id.button);
         szamit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String test1 = a_in.getText().toString();
-                String test2 = b_in.getText().toString();
-                String test3 = c_in.getText().toString();
-                String test4 = alfa_fok_in.getText().toString();
-                String test5 = alfa_perc_in.getText().toString();
-                String test6 = alfa_masod_in.getText().toString();
-                String test7 = beta_fok_in.getText().toString();
-                String test8 = beta_perc_in.getText().toString();
-                String test9 = beta_masod_in.getText().toString();
-                String test10 = gamma_fok_in.getText().toString();
-                String test11 = gamma_perc_in.getText().toString();
-                String test12 = gamma_masod_in.getText().toString();
+                String a_in_s = a_in.getText().toString();
+                String b_in_s = b_in.getText().toString();
+                String c_in_s = c_in.getText().toString();
+                String alfa_fok_in_s = alfa_fok_in.getText().toString();
+                String alfa_perc_in_s = alfa_perc_in.getText().toString();
+                String alfa_masod_in_s = alfa_masod_in.getText().toString();
+                String beta_fok_in_s = beta_fok_in.getText().toString();
+                String beta_perc_in_s = beta_perc_in.getText().toString();
+                String beta_masod_in_s = beta_masod_in.getText().toString();
+                String gamma_fok_in_s = gamma_fok_in.getText().toString();
+                String gamma_perc_in_s = gamma_perc_in.getText().toString();
+                String gamma_masod_in_s = gamma_masod_in.getText().toString();
 
-                if (!test1.matches("") & !test2.matches("") & !test3.matches("")) {
+                if (!a_in_s.matches("") & !b_in_s.matches("") & !c_in_s.matches("")) {
                     //három oldal
-                    a = Double.parseDouble(a_in.getText().toString());
-                    b = Double.parseDouble(b_in.getText().toString());
-                    c = Double.parseDouble(c_in.getText().toString());
+                    a = Double.parseDouble(a_in_s);
+                    b = Double.parseDouble(b_in_s);
+                    c = Double.parseDouble(c_in_s);
 
                     double alfa_e = costetel_szog(c, b, a);
                     double beta_e = costetel_szog(c, a, b);
@@ -92,19 +92,19 @@ public class haromszog extends Activity {
                         terulet.setText("Terület :" + df2.format(heron(a, b, c)));
                     }
 
-                } else if (!test1.matches("") & !test2.matches("") & (!test10.matches("") | !test11.matches("") | !test12.matches(""))) {
+                } else if (!a_in_s.matches("") & !b_in_s.matches("") & (!gamma_fok_in_s.matches("") | !gamma_perc_in_s.matches("") | !gamma_masod_in_s.matches(""))) {
                     // a-b-gamma
-                    if (test10.matches(""))
+                    if (gamma_fok_in_s.matches(""))
                     {    gamma_fok_in.setText("0");  }
-                    if (test11.matches(""))
+                    if (gamma_perc_in_s.matches(""))
                     {    gamma_perc_in.setText("0"); }
-                    if (test12.matches(""))
+                    if (gamma_masod_in_s.matches(""))
                     {    gamma_masod_in.setText("0");}
-                    a = Double.parseDouble(a_in.getText().toString());
-                    b = Double.parseDouble(b_in.getText().toString());
-                    double gamma_fok = Double.parseDouble(gamma_fok_in.getText().toString());
-                    double gamma_perc = Double.parseDouble(gamma_perc_in.getText().toString());
-                    double gamma_masod = Double.parseDouble(gamma_masod_in.getText().toString());
+                    a = Double.parseDouble(a_in_s);
+                    b = Double.parseDouble(b_in_s);
+                    double gamma_fok = Double.parseDouble(gamma_fok_in_s);
+                    double gamma_perc = Double.parseDouble(gamma_perc_in_s);
+                    double gamma_masod = Double.parseDouble(gamma_masod_in_s);
 
                     double gamma_szog = valt(gamma_fok, gamma_perc, gamma_masod);
                     c = costetel_oldal(a, b, gamma_szog);
@@ -131,19 +131,19 @@ public class haromszog extends Activity {
                     }
 
 
-                } else if (!test1.matches("") & !test3.matches("") & (!test7.matches("") | !test8.matches("") | !test9.matches(""))) {
+                } else if (!a_in_s.matches("") & !c_in_s.matches("") & (!beta_fok_in_s.matches("") | !beta_perc_in_s.matches("") | !beta_masod_in_s.matches(""))) {
                     //a-c-béta
-                    if (test7.matches(""))
+                    if (beta_fok_in_s.matches(""))
                     {    beta_fok_in.setText("0");   }
-                    if (test8.matches(""))
+                    if (beta_perc_in_s.matches(""))
                     {    beta_perc_in.setText("0");  }
-                    if (test9.matches(""))
+                    if (beta_masod_in_s.matches(""))
                     {    beta_masod_in.setText("0"); }
-                    a = Double.parseDouble(a_in.getText().toString());
-                    c = Double.parseDouble(c_in.getText().toString());
-                    double beta_fok = Double.parseDouble(beta_fok_in.getText().toString());
-                    double beta_perc = Double.parseDouble(beta_perc_in.getText().toString());
-                    double beta_masod = Double.parseDouble(beta_masod_in.getText().toString());
+                    a = Double.parseDouble(a_in_s);
+                    c = Double.parseDouble(c_in_s);
+                    double beta_fok = Double.parseDouble(beta_fok_in_s);
+                    double beta_perc = Double.parseDouble(beta_perc_in_s);
+                    double beta_masod = Double.parseDouble(beta_masod_in_s);
 
                     double beta_szog = valt(beta_fok, beta_perc, beta_masod);
                     b = costetel_oldal(a, c, beta_szog);
@@ -168,19 +168,19 @@ public class haromszog extends Activity {
                         terulet.setText("Terület :" + df2.format(heron(a, b, c)));
                         terulet.setVisibility(View.VISIBLE);
                     }
-                } else if (!test3.matches("") & !test2.matches("") & (!test4.matches("") | !test5.matches("") | !test6.matches(""))) {
+                } else if (!c_in_s.matches("") & !b_in_s.matches("") & (!alfa_fok_in_s.matches("") | !alfa_perc_in_s.matches("") | !alfa_masod_in_s.matches(""))) {
                     //b-c-alfa
-                    if (test4.matches(""))
+                    if (alfa_fok_in_s.matches(""))
                     {   alfa_fok_in.setText("0");   }
-                    if (test5.matches(""))
+                    if (alfa_perc_in_s.matches(""))
                     {   alfa_perc_in.setText("0");  }
-                    if (test6.matches(""))
+                    if (alfa_masod_in_s.matches(""))
                     {   alfa_masod_in.setText("0"); }
-                    b = Double.parseDouble(b_in.getText().toString());
-                    c = Double.parseDouble(c_in.getText().toString());
-                    double alfa_fok = Double.parseDouble(alfa_fok_in.getText().toString());
-                    double alfa_perc = Double.parseDouble(alfa_perc_in.getText().toString());
-                    double alfa_masod = Double.parseDouble(alfa_masod_in.getText().toString());
+                    b = Double.parseDouble(b_in_s);
+                    c = Double.parseDouble(c_in_s);
+                    double alfa_fok = Double.parseDouble(alfa_fok_in_s);
+                    double alfa_perc = Double.parseDouble(alfa_perc_in_s);
+                    double alfa_masod = Double.parseDouble(alfa_masod_in_s);
 
                     double alfa_szog = valt(alfa_fok, alfa_perc, alfa_masod);
                     a = costetel_oldal(b, c, alfa_szog);
@@ -205,27 +205,27 @@ public class haromszog extends Activity {
                         terulet.setText("Terület :" + df2.format(heron(a, b, c)));
                         terulet.setVisibility(View.VISIBLE);
                     }
-                } else if (!test1.matches("") &  (!test7.matches("") | !test8.matches("") | !test9.matches("")) & (!test10.matches("")| !test11.matches("")| !test12.matches("")) ) {
+                } else if (!a_in_s.matches("") &  (!beta_fok_in_s.matches("") | !beta_perc_in_s.matches("") | !beta_masod_in_s.matches("")) & (!gamma_fok_in_s.matches("")| !gamma_perc_in_s.matches("")| !gamma_masod_in_s.matches("")) ) {
                     //a -béta-gamma
-                    if (test7.matches(""))
+                    if (beta_fok_in_s.matches(""))
                     {    beta_fok_in.setText("0");  }
-                    if (test8.matches(""))
+                    if (beta_perc_in_s.matches(""))
                     {   beta_perc_in.setText("0");  }
-                    if (test9.matches(""))
+                    if (beta_masod_in_s.matches(""))
                     {   beta_masod_in.setText("0"); }
-                    if (test10.matches(""))
+                    if (gamma_fok_in_s.matches(""))
                     {    gamma_fok_in.setText("0");  }
-                    if (test11.matches(""))
+                    if (gamma_perc_in_s.matches(""))
                     {   gamma_perc_in.setText("0");  }
-                    if (test12.matches(""))
+                    if (gamma_masod_in_s.matches(""))
                     {   gamma_masod_in.setText("0"); }
-                    a = Double.parseDouble(a_in.getText().toString());
-                    double beta_fok = Double.parseDouble(beta_fok_in.getText().toString());
-                    double beta_perc = Double.parseDouble(beta_perc_in.getText().toString());
-                    double beta_masod = Double.parseDouble(beta_masod_in.getText().toString());
-                    double gamma_fok = Double.parseDouble(gamma_fok_in.getText().toString());
-                    double gamma_perc = Double.parseDouble(gamma_perc_in.getText().toString());
-                    double gamma_masod = Double.parseDouble(gamma_masod_in.getText().toString());
+                    a = Double.parseDouble(a_in_s);
+                    double beta_fok = Double.parseDouble(beta_fok_in_s);
+                    double beta_perc = Double.parseDouble(beta_perc_in_s);
+                    double beta_masod = Double.parseDouble(beta_masod_in_s);
+                    double gamma_fok = Double.parseDouble(gamma_fok_in_s);
+                    double gamma_perc = Double.parseDouble(gamma_perc_in_s);
+                    double gamma_masod = Double.parseDouble(gamma_masod_in_s);
 
                     double beta_szog = valt(beta_fok, beta_perc, beta_masod);
                     double gamma_szog = valt(gamma_fok, gamma_perc, gamma_masod);
@@ -248,28 +248,28 @@ public class haromszog extends Activity {
                         terulet.setText("Terület :" + df2.format(heron(a, b, c)));
                         terulet.setVisibility(View.VISIBLE);
                     }
-                }   else if (!test2.matches("") & ( !test4.matches("") | !test5.matches("") | !test6.matches("")) & (!test10.matches("") | !test11.matches("") | !test12.matches(""))) {
+                }   else if (!b_in_s.matches("") & ( !alfa_fok_in_s.matches("") | !alfa_perc_in_s.matches("") | !alfa_masod_in_s.matches("")) & (!gamma_fok_in_s.matches("") | !gamma_perc_in_s.matches("") | !gamma_masod_in_s.matches(""))) {
                     //b -alfa-gamma
-                    if (test4.matches(""))
+                    if (alfa_fok_in_s.matches(""))
                     {    alfa_fok_in.setText("0");  }
-                    if (test5.matches(""))
+                    if (alfa_perc_in_s.matches(""))
                     {   alfa_perc_in.setText("0");  }
-                    if (test6.matches(""))
+                    if (alfa_masod_in_s.matches(""))
                     {   alfa_masod_in.setText("0"); }
-                    if (test10.matches(""))
+                    if (gamma_fok_in_s.matches(""))
                     {    gamma_fok_in.setText("0");  }
-                    if (test11.matches(""))
+                    if (gamma_perc_in_s.matches(""))
                     {   gamma_perc_in.setText("0");  }
-                    if (test12.matches(""))
+                    if (gamma_masod_in_s.matches(""))
                     {   gamma_masod_in.setText("0"); }
 
-                    b = Double.parseDouble(b_in.getText().toString());
-                    double alfa_fok = Double.parseDouble(alfa_fok_in.getText().toString());
-                    double alfa_perc = Double.parseDouble(alfa_perc_in.getText().toString());
-                    double alfa_masod = Double.parseDouble(alfa_masod_in.getText().toString());
-                    double gamma_fok = Double.parseDouble(gamma_fok_in.getText().toString());
-                    double gamma_perc = Double.parseDouble(gamma_perc_in.getText().toString());
-                    double gamma_masod = Double.parseDouble(gamma_masod_in.getText().toString());
+                    b = Double.parseDouble(b_in_s);
+                    double alfa_fok = Double.parseDouble(alfa_fok_in_s);
+                    double alfa_perc = Double.parseDouble(alfa_perc_in_s);
+                    double alfa_masod = Double.parseDouble(alfa_masod_in_s);
+                    double gamma_fok = Double.parseDouble(gamma_fok_in_s);
+                    double gamma_perc = Double.parseDouble(gamma_perc_in_s);
+                    double gamma_masod = Double.parseDouble(gamma_masod_in_s);
 
                     double alfa_szog = valt(alfa_fok, alfa_perc, alfa_masod);
                     double gamma_szog = valt(gamma_fok, gamma_perc, gamma_masod);
@@ -292,28 +292,28 @@ public class haromszog extends Activity {
                         terulet.setText("Terület :" + df2.format(heron(a, b, c)));
                         terulet.setVisibility(View.VISIBLE);
                     }
-                }else if (!test3.matches("") & ( !test4.matches("") | !test5.matches("") | !test6.matches("")) & (!test7.matches("") | !test8.matches("") | !test9.matches(""))) {
+                }else if (!c_in_s.matches("") & ( !alfa_fok_in_s.matches("") | !alfa_perc_in_s.matches("") | !alfa_masod_in_s.matches("")) & (!beta_fok_in_s.matches("") | !beta_perc_in_s.matches("") | !beta_masod_in_s.matches(""))) {
                     //c -alfa-béta
-                    if (test7.matches(""))
+                    if (beta_fok_in_s.matches(""))
                     {    beta_fok_in.setText("0");  }
-                    if (test8.matches(""))
+                    if (beta_perc_in_s.matches(""))
                     {   beta_perc_in.setText("0");  }
-                    if (test9.matches(""))
+                    if (beta_masod_in_s.matches(""))
                     {   beta_masod_in.setText("0"); }
-                    if (test4.matches(""))
+                    if (alfa_fok_in_s.matches(""))
                     {    alfa_fok_in.setText("0");  }
-                    if (test5.matches(""))
+                    if (alfa_perc_in_s.matches(""))
                     {   alfa_perc_in.setText("0");  }
-                    if (test6.matches(""))
+                    if (alfa_masod_in_s.matches(""))
                     {   alfa_masod_in.setText("0"); }
 
-                    c = Double.parseDouble(c_in.getText().toString());
-                    double alfa_fok = Double.parseDouble(alfa_fok_in.getText().toString());
-                    double alfa_perc = Double.parseDouble(alfa_perc_in.getText().toString());
-                    double alfa_masod = Double.parseDouble(alfa_masod_in.getText().toString());
-                    double beta_fok = Double.parseDouble(beta_fok_in.getText().toString());
-                    double beta_perc = Double.parseDouble(beta_perc_in.getText().toString());
-                    double beta_masod = Double.parseDouble(beta_masod_in.getText().toString());
+                    c = Double.parseDouble(c_in_s);
+                    double alfa_fok = Double.parseDouble(alfa_fok_in_s);
+                    double alfa_perc = Double.parseDouble(alfa_perc_in_s);
+                    double alfa_masod = Double.parseDouble(alfa_masod_in_s);
+                    double beta_fok = Double.parseDouble(beta_fok_in_s);
+                    double beta_perc = Double.parseDouble(beta_perc_in_s);
+                    double beta_masod = Double.parseDouble(beta_masod_in_s);
 
                     double alfa_szog = valt(alfa_fok, alfa_perc, alfa_masod);
                     double beta_szog = valt(beta_fok, beta_perc, beta_masod);
@@ -336,20 +336,20 @@ public class haromszog extends Activity {
                         terulet.setText("Terület :" + df2.format(heron(a, b, c)));
                         terulet.setVisibility(View.VISIBLE);
                     }
-                }else if (!test1.matches("") & !test2.matches("") & ( !test4.matches("") | !test5.matches("") | !test6.matches(""))) {
+                }else if (!a_in_s.matches("") & !b_in_s.matches("") & ( !alfa_fok_in_s.matches("") | !alfa_perc_in_s.matches("") | !alfa_masod_in_s.matches(""))) {
                     //a b-alfa -a nagyobb
-                    if (test4.matches(""))
+                    if (alfa_fok_in_s.matches(""))
                     {    alfa_fok_in.setText("0");  }
-                    if (test5.matches(""))
+                    if (alfa_perc_in_s.matches(""))
                     {   alfa_perc_in.setText("0");  }
-                    if (test6.matches(""))
+                    if (alfa_masod_in_s.matches(""))
                     {   alfa_masod_in.setText("0"); }
-                    a = Double.parseDouble(a_in.getText().toString());
-                    b = Double.parseDouble(b_in.getText().toString());
+                    a = Double.parseDouble(a_in_s);
+                    b = Double.parseDouble(b_in_s);
                     if (a>b) {
-                        double alfa_fok = Double.parseDouble(alfa_fok_in.getText().toString());
-                        double alfa_perc = Double.parseDouble(alfa_perc_in.getText().toString());
-                        double alfa_masod = Double.parseDouble(alfa_masod_in.getText().toString());
+                        double alfa_fok = Double.parseDouble(alfa_fok_in_s);
+                        double alfa_perc = Double.parseDouble(alfa_perc_in_s);
+                        double alfa_masod = Double.parseDouble(alfa_masod_in_s);
 
                         double alfa_szog = valt(alfa_fok, alfa_perc, alfa_masod);
                         double beta_szog = szinusztetel_szog(a,b,alfa_szog);
@@ -374,20 +374,20 @@ public class haromszog extends Activity {
                             terulet.setVisibility(View.VISIBLE);
                         }
                     }
-                }else if (!test1.matches("") & !test2.matches("") & ( !test7.matches("") | !test8.matches("") | !test9.matches(""))) {
+                }else if (!a_in_s.matches("") & !b_in_s.matches("") & ( !beta_fok_in_s.matches("") | !beta_perc_in_s.matches("") | !beta_masod_in_s.matches(""))) {
                 //a b-béta -b nagyobb
-                    if (test7.matches(""))
+                    if (beta_fok_in_s.matches(""))
                     {    beta_fok_in.setText("0");  }
-                    if (test8.matches(""))
+                    if (beta_perc_in_s.matches(""))
                     {   beta_perc_in.setText("0");  }
-                    if (test9.matches(""))
+                    if (beta_masod_in_s.matches(""))
                     {   beta_masod_in.setText("0"); }
-                a = Double.parseDouble(a_in.getText().toString());
-                b = Double.parseDouble(b_in.getText().toString());
+                a = Double.parseDouble(a_in_s);
+                b = Double.parseDouble(b_in_s);
                 if (a<b) {
-                    double beta_fok = Double.parseDouble(beta_fok_in.getText().toString());
-                    double beta_perc = Double.parseDouble(beta_perc_in.getText().toString());
-                    double beta_masod = Double.parseDouble(beta_masod_in.getText().toString());
+                    double beta_fok = Double.parseDouble(beta_fok_in_s);
+                    double beta_perc = Double.parseDouble(beta_perc_in_s);
+                    double beta_masod = Double.parseDouble(beta_masod_in_s);
 
                     double beta_szog = valt(beta_fok, beta_perc, beta_masod);
                     double alfa_szog = szinusztetel_szog(a, b, beta_szog);
@@ -412,20 +412,20 @@ public class haromszog extends Activity {
                         terulet.setVisibility(View.VISIBLE);
                     }
                 }
-                }else if (!test1.matches("") & !test3.matches("") & (!test4.matches("") | !test5.matches("") | !test6.matches(""))) {
+                }else if (!a_in_s.matches("") & !c_in_s.matches("") & (!alfa_fok_in_s.matches("") | !alfa_perc_in_s.matches("") | !alfa_masod_in_s.matches(""))) {
                     //a-c-alfa-a nagyobb
-                    if (test4.matches(""))
+                    if (alfa_fok_in_s.matches(""))
                     {    alfa_fok_in.setText("0");  }
-                    if (test5.matches(""))
+                    if (alfa_perc_in_s.matches(""))
                     {   alfa_perc_in.setText("0");  }
-                    if (test6.matches(""))
+                    if (alfa_masod_in_s.matches(""))
                     {   alfa_masod_in.setText("0"); }
-                    a = Double.parseDouble(a_in.getText().toString());
-                    c = Double.parseDouble(c_in.getText().toString());
+                    a = Double.parseDouble(a_in_s);
+                    c = Double.parseDouble(c_in_s);
                     if (c<a) {
-                        double alfa_fok = Double.parseDouble(alfa_fok_in.getText().toString());
-                        double alfa_perc = Double.parseDouble(alfa_perc_in.getText().toString());
-                        double alfa_masod = Double.parseDouble(alfa_masod_in.getText().toString());
+                        double alfa_fok = Double.parseDouble(alfa_fok_in_s);
+                        double alfa_perc = Double.parseDouble(alfa_perc_in_s);
+                        double alfa_masod = Double.parseDouble(alfa_masod_in_s);
 
                         double alfa_szog = valt(alfa_fok, alfa_perc, alfa_masod);
                         double gamma_szog = szinusztetel_szog(c,a,alfa_szog);
@@ -451,20 +451,20 @@ public class haromszog extends Activity {
                         }
                     }
 
-                }else if (!test1.matches("") & !test3.matches("") & (!test10.matches("") | !test11.matches("") | !test12.matches(""))) {
+                }else if (!a_in_s.matches("") & !c_in_s.matches("") & (!gamma_fok_in_s.matches("") | !gamma_perc_in_s.matches("") | !gamma_masod_in_s.matches(""))) {
                     //a c-gamma -c nagyobb
-                    if (test10.matches(""))
+                    if (gamma_fok_in_s.matches(""))
                     {    gamma_fok_in.setText("0");  }
-                    if (test11.matches(""))
+                    if (gamma_perc_in_s.matches(""))
                     {   gamma_perc_in.setText("0");  }
-                    if (test12.matches(""))
+                    if (gamma_masod_in_s.matches(""))
                     {   gamma_masod_in.setText("0"); }
-                    a = Double.parseDouble(a_in.getText().toString());
-                    c = Double.parseDouble(c_in.getText().toString());
+                    a = Double.parseDouble(a_in_s);
+                    c = Double.parseDouble(c_in_s);
                     if (a<c) {
-                        double gamma_fok = Double.parseDouble(gamma_fok_in.getText().toString());
-                        double gamma_perc = Double.parseDouble(gamma_perc_in.getText().toString());
-                        double gamma_masod = Double.parseDouble(gamma_masod_in.getText().toString());
+                        double gamma_fok = Double.parseDouble(gamma_fok_in_s);
+                        double gamma_perc = Double.parseDouble(gamma_perc_in_s);
+                        double gamma_masod = Double.parseDouble(gamma_masod_in_s);
 
                         double gamma_szog = valt(gamma_fok, gamma_perc, gamma_masod);
                         double alfa_szog = szinusztetel_szog(a,c,gamma_szog);
@@ -490,20 +490,20 @@ public class haromszog extends Activity {
                         }
                     }
 
-                }else if (!test2.matches("") & !test3.matches("") & (!test7.matches("") | !test8.matches("") | !test9.matches(""))) {
+                }else if (!b_in_s.matches("") & !c_in_s.matches("") & (!beta_fok_in_s.matches("") | !beta_perc_in_s.matches("") | !beta_masod_in_s.matches(""))) {
                     //b c-beta -b nagyobb
-                    if (test7.matches(""))
+                    if (beta_fok_in_s.matches(""))
                     {    beta_fok_in.setText("0");  }
-                    if (test8.matches(""))
+                    if (beta_perc_in_s.matches(""))
                     {   beta_perc_in.setText("0");  }
-                    if (test9.matches(""))
+                    if (beta_masod_in_s.matches(""))
                     {   beta_masod_in.setText("0"); }
-                    b = Double.parseDouble(b_in.getText().toString());
-                    c = Double.parseDouble(c_in.getText().toString());
+                    b = Double.parseDouble(b_in_s);
+                    c = Double.parseDouble(c_in_s);
                     if (c<b) {
-                        double beta_fok = Double.parseDouble(beta_fok_in.getText().toString());
-                        double beta_perc = Double.parseDouble(beta_perc_in.getText().toString());
-                        double beta_masod = Double.parseDouble(beta_masod_in.getText().toString());
+                        double beta_fok = Double.parseDouble(beta_fok_in_s);
+                        double beta_perc = Double.parseDouble(beta_perc_in_s);
+                        double beta_masod = Double.parseDouble(beta_masod_in_s);
 
                         double beta_szog = valt(beta_fok, beta_perc, beta_masod);
                         double gamma_szog = szinusztetel_szog(c,b,beta_szog);
@@ -529,20 +529,20 @@ public class haromszog extends Activity {
                         }
                     }
 
-                }else if (!test2.matches("") & !test3.matches("") & (!test10.matches("") | !test11.matches("") | !test12.matches(""))) {
+                }else if (!b_in_s.matches("") & !c_in_s.matches("") & (!gamma_fok_in_s.matches("") | !gamma_perc_in_s.matches("") | !gamma_masod_in_s.matches(""))) {
                     //b c-gamma -c nagyobb
-                    if (test10.matches(""))
+                    if (gamma_fok_in_s.matches(""))
                     {    gamma_fok_in.setText("0");  }
-                    if (test11.matches(""))
+                    if (gamma_perc_in_s.matches(""))
                     {   gamma_perc_in.setText("0");  }
-                    if (test12.matches(""))
+                    if (gamma_masod_in_s.matches(""))
                     {   gamma_masod_in.setText("0"); }
-                    b = Double.parseDouble(b_in.getText().toString());
-                    c = Double.parseDouble(c_in.getText().toString());
+                    b = Double.parseDouble(b_in_s);
+                    c = Double.parseDouble(c_in_s);
                     if (b<c) {
-                        double gamma_fok = Double.parseDouble(gamma_fok_in.getText().toString());
-                        double gamma_perc = Double.parseDouble(gamma_perc_in.getText().toString());
-                        double gamma_masod = Double.parseDouble(gamma_masod_in.getText().toString());
+                        double gamma_fok = Double.parseDouble(gamma_fok_in_s);
+                        double gamma_perc = Double.parseDouble(gamma_perc_in_s);
+                        double gamma_masod = Double.parseDouble(gamma_masod_in_s);
 
                         double gamma_szog = valt(gamma_fok, gamma_perc, gamma_masod);
                         double beta_szog = szinusztetel_szog(b,c,gamma_szog);
@@ -653,4 +653,3 @@ public class haromszog extends Activity {
         return super.onOptionsItemSelected(item);
     }
 }
-

@@ -37,7 +37,6 @@ public class numerikusterulet extends Activity {
         final EditText X_in = (EditText) findViewById(R.id.X_in);
         final TextView eredmeny = (TextView) findViewById(R.id.terulet);
 
-
         final HashMap<String, String> map = new HashMap<String, String>();
         final SimpleAdapter simpleAdapter = new SimpleAdapter(this, bevitt, R.layout.list_layout, new String[]{"n" ,"Y", "X"}, new int[]{R.id.id_listout,R.id.Y_listout, R.id.X_listout});
         mylistview.setAdapter(simpleAdapter);
@@ -47,17 +46,17 @@ public class numerikusterulet extends Activity {
             public void onClick(View v) {
 
                 //Ellenörzés
-                String test11 = Y_in.getText().toString();
-                String test21 = X_in.getText().toString();
-                if (test11.matches("") | test21.matches("")) {
+                String Y_in_s = Y_in.getText().toString();
+                String X_in_s = X_in.getText().toString();
+                if (Y_in_s.matches("") | X_in_s.matches("")) {
                     Toast.makeText(getApplicationContext(),
                             "Valamelyik mezö üres !", Toast.LENGTH_LONG).show();
                     return;   }
 
                 //Hozzáadás
                 HashMap<String, String> map = new HashMap<String, String>();
-                float Y = Float.parseFloat(Y_in.getText().toString());
-                float X = Float.parseFloat(X_in.getText().toString());
+                float Y = Float.parseFloat(Y_in_s);
+                float X = Float.parseFloat(X_in_s);
                 Y_koord[num_count]=Y;
                 X_koord[num_count]=X;
                 num_count=num_count +1;

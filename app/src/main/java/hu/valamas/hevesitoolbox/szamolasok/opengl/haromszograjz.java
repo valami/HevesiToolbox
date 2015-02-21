@@ -44,17 +44,19 @@ public class haromszograjz extends Activity {
         float cx_d =(float) (b * Math.cos(szog));
         float cy_d =(float) (b * Math.sin(szog));
 
-        if (cy_d<c)
-        {
-            cx= -1 + (       (cy_d / ((float) (c)))*2 ) ;
+        if ( (c>=cy_d)&&(c>=cx_d) )
+        {   cx= -1 + (       (cy_d / ((float) (c)))*2 ) ;
             cy= -1 + (       (cx_d / ((float) (c)))*2 ) ;
             by = 1.0f ;
-        }   else if (cy_d>c)        {
-            cx = 1.0f;
+        }   else if ( (cx_d>=c)&&(cx_d>=cy_d) )
+        {   cx = 1.0f;
             cy =-1 + (       (cy_d /  cx_d)*2 ) ;
             by =-1 + (       ( ((float)c) / ( (cx_d)))*2 ) ;
+        }   else if ( (cy_d>=c)&&(cy_d>=cx_d) )
+        {   cy = 1.0f;
+            cx =-1 + (       (cx_d /  cy_d)*2 ) ;
+            by =-1 + (       ( ((float)c) / ( (cx_d)))*2 ) ;
         }
-
 
         glView = new GLSurfaceView(this);
         glView.setRenderer(new MyGLRenderer(this));

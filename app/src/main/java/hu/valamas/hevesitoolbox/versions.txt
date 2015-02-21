@@ -28,22 +28,23 @@
     Rengeteg bugfix (de még a tezedes vesszö és pont problémát basztam javítani)
     Átváltó
     Minimum Android 2.1 (Ideiglenesen)
-
-
+0.7
+    Kib@szott sok bugfix
+        -Tizedes vesszö
+        -Elforgatás
+    Jóval egyszerübb kód a hatékonyabb futás érdekében
+    Szövegek hivatkozása
+    Funkciókhoz súgó
 
 Várható:
--Tool tip
 -szelvény keresö
 -Beállítások
 -Tablet support
--szövegek hivatkozása
 -Metszések
 -Komparálás
--Mértékegység
--Normásis kinézet
--Elforgatás bugfix
-
 -számolás tárolás
 -troll hibaüzenet
 
+-új UI
+-új logó
 
