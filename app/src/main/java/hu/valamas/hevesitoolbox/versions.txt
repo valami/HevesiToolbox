@@ -28,7 +28,7 @@
     Rengeteg bugfix (de még a tezedes vesszö és pont problémát basztam javítani)
     Átváltó
     Minimum Android 2.1 (Ideiglenesen)
-0.7
+0.6.4
     Kib@szott sok bugfix
         -Tizedes vesszö
         -Elforgatás

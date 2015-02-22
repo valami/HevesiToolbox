@@ -4,6 +4,8 @@
     <string name="app_name">Hevesi Toolbox</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="banner_ad_unit_id">ca-app-pub-4956466865971466/8315826234</string>
+
 
     //Képernyök
     <string name="title_activity_iranyszog">Irányszög számítás</string>

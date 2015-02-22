@@ -33,8 +33,6 @@ public class tizedes {
             }
         }
 
-
-
         String szam_out =new String(szam_c_out);
 
         return (szam_out);

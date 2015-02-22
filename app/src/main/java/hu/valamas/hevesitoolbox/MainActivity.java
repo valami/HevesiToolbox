@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.valamas.hevesitoolbox.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import hu.valamas.hevesitoolbox.szamolasok.numerikusterulet;
 import hu.valamas.hevesitoolbox.szamolasok.polarispont;
@@ -22,6 +24,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Reklám
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
 
         final Button iranyszog = (Button) findViewById(R.id.iranyszog);
         iranyszog.setOnClickListener(new View.OnClickListener() {

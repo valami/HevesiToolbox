@@ -22,7 +22,7 @@ ADDED from AndroidManifest.xml:5:5
 	android:icon
 		ADDED from AndroidManifest.xml:7:9
 	android:theme
-		ADDED from AndroidManifest.xml:9:9
+		ADDED from AndroidManifest.xml:9:17
 activity#hu.valamas.hevesitoolbox.MainActivity
 ADDED from AndroidManifest.xml:10:9
 	android:label
