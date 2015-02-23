@@ -17,6 +17,7 @@
     <string name="title_activity_haromszograjz">haromszograjz</string>
     <string name="title_activity_numerikusteruletrajz">numerikusteruletrajz</string>
     <string name="title_activity_atvalto">Átváltó</string>
+
     //Irányszög
     <string name="iranyszog_kezdopont.y">Kezdőpont Y</string>
     <string name="iranyszog_kezdopont.x">Kezdőpont X</string>
@@ -28,6 +29,7 @@
     <string name="iranyszog_ures">Valamelyik mező üres!</string>
     <string name="iranyszog_egyezik">A két koordináta egyezik !</string>
     <string name="iranyszog_sugo">Meghatározza két pont távolságát ,és a köztük lévö irányszöget.</string>
+
     //Poláris
     <string name="polaris_kezdopont_y">Kezdőpont Y</string>
     <string name="polaris_kezdopont_x">Kezdőpont X</string>
@@ -38,6 +40,7 @@
     <string name="polaris_pont_x">Pont X :</string>
     <string name="polaris_ures">Valamelyik mező üres!</string>
     <string name="polaris_sugo">Meghatározza annak a pontnak a helyzetét,amelyik egy ismert ponthoz képest ,megadott távolságra helyezkedik el egy ismert irányszögü egyenesen.</string>
+
     //Numerikus
     <string name="numerikus_y">Y</string>
     <string name="numerikus_x">X</string>
@@ -48,6 +51,7 @@
     <string name="numerikus_terulet">Terület : </string>
     <string name="numerikus_sugo">Meghatározza a poligon területét sarokpontjainak koordinátái alapján.
                                    \n Visszazáráskor számol! </string>
+
     //Háromszög
     <string name="haromszog_a">a oldal</string>
     <string name="haromszog_b">b oldal</string>
@@ -67,6 +71,7 @@
                                   \n  -Egy oldala és a rajta fekvő két szöge
                                   \n  -Két oldala és a hosszabb oldallal szemközti szöge
                                     </string>
+
     //Átváltó
     <string name="atvalto_meret">Méret</string>
     <string name="atvalto_merata">Méretarány</string>
@@ -82,10 +87,23 @@
     <string name="atvalto_ures">Nem adtál meg mértékegységet</string>
     <string name="atvalto_keves">Túl kevés adat!</string>
 
+    //Szelvény
+    <string-array name="meretarany_array">
+        <item>1:500</item>
+        <item>1:1000</item>
+        <item>1:2000</item>
+        <item>1:4000</item>
+        <item>1:10000</item>
+        <item>1:25000</item>
+        <item>1:50000</item>
+        <item>1:100000</item>
+    </string-array>
+
     //Merü
     <string name="menu_vissza">Visszaállítás</string>
     <string name="menu_sugo">Súgó</string>
     <string name="munu_rajz">Rajzolás</string>
+    <string name="title_activity_szelveny">Szelvény kereső</string>
 
 
 </resources>

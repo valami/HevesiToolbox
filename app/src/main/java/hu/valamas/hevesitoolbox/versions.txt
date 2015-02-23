@@ -36,12 +36,16 @@
     Szövegek hivatkozása
     Funkciókhoz súgó
     Új logó
+0.6.5
+    Hírdetés a föoldalra
+0.7
+    Metszések (Elö ,hátra ,oldal ,ív)
+    Szelvény keresö
+
 
 Várható:
--szelvény keresö
 -Beállítások
 -Tablet support
--Metszések
 -Komparálás
 -számolás tárolás
 -troll hibaüzenet

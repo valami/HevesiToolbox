@@ -18,6 +18,7 @@ import hu.valamas.hevesitoolbox.szamolasok.polarispont;
 import hu.valamas.hevesitoolbox.szamolasok.iranyszog;
 import hu.valamas.hevesitoolbox.szamolasok.haromszog;
 import hu.valamas.hevesitoolbox.szamolasok.atvalto;
+import hu.valamas.hevesitoolbox.szamolasok.szelveny;
 
 public class MainActivity extends Activity {
     @Override
@@ -76,6 +77,16 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,  atvalto.class);
+                intent.putExtra("orientation", orient());
+                startActivity(intent);
+            }
+        });
+
+        final Button szelveny = (Button) findViewById(R.id.szelveny);
+        szelveny.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,  szelveny.class);
                 intent.putExtra("orientation", orient());
                 startActivity(intent);
             }

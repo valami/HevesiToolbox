@@ -81,6 +81,18 @@
                 android:layout_marginTop="10dp" />
         </TableRow>
 
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Szelvény keresö"
+                android:id="@+id/szelveny"
+                android:layout_marginTop="20dp" />
+        </TableRow>
+
     </TableLayout>
 
     <com.google.android.gms.ads.AdView
