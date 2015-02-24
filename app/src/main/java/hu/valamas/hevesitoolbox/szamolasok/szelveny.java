@@ -3,11 +3,12 @@ package hu.valamas.hevesitoolbox.szamolasok;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.text.method.DigitsKeyListener;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,9 +26,9 @@ public class szelveny extends Activity {
         EditText x_in = (EditText) findViewById(R.id.x_in);
         EditText y_in = (EditText) findViewById(R.id.y_in);
         final EditText szelv_also = (EditText) findViewById(R.id.szelv_also);
-        EditText szelv_ball = (EditText) findViewById(R.id.szelv_ball);
-        EditText szelv_jobb = (EditText) findViewById(R.id.szelv_jobb);
-        EditText szelv_fel = (EditText) findViewById(R.id.szelv_fel);
+        final EditText szelv_bal = (EditText) findViewById(R.id.szelv_bal);
+        final EditText szelv_jobb = (EditText) findViewById(R.id.szelv_jobb);
+        final EditText szelv_fel = (EditText) findViewById(R.id.szelv_fel);
         final EditText szelv_kozep = (EditText) findViewById(R.id.szelv_kozep);
         Button szamol = (Button) findViewById(R.id.szamol);
 
@@ -54,11 +55,12 @@ public class szelveny extends Activity {
         szelv_kozep.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                //Beírás
                 String kozep_s = szelv_kozep.getText().toString();
                 if (!kozep_s.matches("")) {
                     char kozep_c[] = kozep_s.toCharArray();
@@ -84,11 +86,50 @@ public class szelveny extends Activity {
                             {
                                 if (kozep_c[3]!='-' && kozep_c[2]!='-')
                                 {
-                                    String kozep_s_out = Character.toString(kozep_c[0]) + Character.toString(kozep_c[1]) + Character.toString(kozep_c[2]) + "-" + Character.toString(kozep_c[3])  ;
+                                    String kozep_s_out =Character.toString(kozep_c[0])+ Character.toString(kozep_c[1]) + Character.toString(kozep_c[2]) + "-" + Character.toString(kozep_c[3])  ;
                                     szelv_kozep.setText(kozep_s_out);
                                     szelv_kozep.setSelection(szelv_kozep.getText().length());
                                 }
                             }
+                            if (kozep_c.length ==7)
+                            {
+                                if (kozep_c[2]== '-' && kozep_c[6] != '-' )
+                                {
+                                    String kozep_s_out =Character.toString(kozep_c[0])+ Character.toString(kozep_c[1])+ Character.toString(kozep_c[2])+ Character.toString(kozep_c[3]) + Character.toString(kozep_c[4])+ Character.toString(kozep_c[5])+ "-" + Character.toString(kozep_c[6]);
+                                    szelv_kozep.setText(kozep_s_out) ;
+                                    szelv_kozep.setSelection(szelv_kozep.getText().length());
+                                }
+                            }
+                            if (kozep_c.length ==8)
+                            {
+                                if (kozep_c[3]== '-' && kozep_c[7] != '-' )
+                                {
+                                    String kozep_s_out =Character.toString(kozep_c[0])+ Character.toString(kozep_c[1])+ Character.toString(kozep_c[2])+ Character.toString(kozep_c[3]) + Character.toString(kozep_c[4])+ Character.toString(kozep_c[5])+ Character.toString(kozep_c[6])+ "-" + Character.toString(kozep_c[7]);
+                                    szelv_kozep.setText(kozep_s_out) ;
+                                    szelv_kozep.setSelection(szelv_kozep.getText().length());
+                                }
+                            }
+                            if (kozep_c.length ==11)
+                            {
+                                if (kozep_c[2]== '-' && kozep_c[10] != '-' )
+                                {
+                                    String kozep_s_out =Character.toString(kozep_c[0])+ Character.toString(kozep_c[1])+ Character.toString(kozep_c[2])+ Character.toString(kozep_c[3]) + Character.toString(kozep_c[4])+ Character.toString(kozep_c[5])+ Character.toString(kozep_c[6]) + Character.toString(kozep_c[7])+ Character.toString(kozep_c[8])+ Character.toString(kozep_c[9])+"-"+ Character.toString(kozep_c[10]);
+                                    szelv_kozep.setFilters(new InputFilter[] {new InputFilter.LengthFilter(12)});
+                                    szelv_kozep.setText(kozep_s_out) ;
+                                    szelv_kozep.setSelection(szelv_kozep.getText().length());
+                                }
+                            }
+                            if (kozep_c.length ==12)
+                            {
+                                if (kozep_c[3]== '-' && kozep_c[11] != '-' )
+                                {
+                                    String kozep_s_out =Character.toString(kozep_c[0])+ Character.toString(kozep_c[1])+ Character.toString(kozep_c[2])+ Character.toString(kozep_c[3]) + Character.toString(kozep_c[4])+ Character.toString(kozep_c[5])+ Character.toString(kozep_c[6]) + Character.toString(kozep_c[7])+ Character.toString(kozep_c[8])+ Character.toString(kozep_c[9])+Character.toString(kozep_c[10])+"-"+ Character.toString(kozep_c[11]);
+                                    szelv_kozep.setFilters(new InputFilter[] {new InputFilter.LengthFilter(13)});
+                                    szelv_kozep.setText(kozep_s_out) ;
+                                    szelv_kozep.setSelection(szelv_kozep.getText().length());
+                                }
+                            }
+
                         }
                     }
                 }
@@ -96,10 +137,37 @@ public class szelveny extends Activity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                /*
+                String kozep_s = szelv_kozep.getText().toString();
+                if (kozep_s.equals(Integer.toString(szelvenyszam(kozep_s)))) {
+                    char[] kozep_c = Integer.toString(szelvenyszam(kozep_s)).toCharArray();
+                    String also =  Integer.toString(Integer.parseInt(Character.toString(kozep_c[0])) - 1) +Character.toString(kozep_c[1]) ;
+                    String felso =  Integer.toString(Integer.parseInt(Character.toString(kozep_c[0])) + 1) +Character.toString(kozep_c[1]) ;
+                    String bal =  Character.toString(kozep_c[0]) +Integer.toString(Integer.parseInt(Character.toString(kozep_c[1])) - 1)  ;
+                    String jobb =  Character.toString(kozep_c[0]) +Integer.toString(Integer.parseInt(Character.toString(kozep_c[1])) + 1)  ;
+                    szelv_also.setText(also);
+                    szelv_fel.setText(felso);
+                    szelv_bal.setText(bal);
+                    szelv_jobb.setText(jobb);
+                } */
             }
         });
     }
+    public int szelvenyszam (String kozep)
+    {
+        char kozep_c[] = kozep.toCharArray();
+        int szam;
+        if (kozep_c[2]=='-')
+        {
+            szam =Integer.parseInt(Character.toString(kozep_c[0]) + Character.toString(kozep_c[1]));
+        }
+        else
+        {
+            szam =Integer.parseInt(Character.toString(kozep_c[0]) +Character.toString(kozep_c[1])+Character.toString(kozep_c[2]));
+        }
+        return (szam);
+    }
+
 
 
     @Override
