@@ -52,4 +52,5 @@ Várható:
 
 -új UI
 
-
+-frissítéskor ujdonságok
+-szög bevitel egyszerüsítés
