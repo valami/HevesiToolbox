@@ -100,6 +100,12 @@ public class szelveny extends Activity {
                                     szelv_kozep.setText(kozep_s_out) ;
                                     szelv_kozep.setSelection(szelv_kozep.getText().length());
                                 }
+                                if (kozep_c[2]== '-' && kozep_c[6] == '-' )
+                                {
+                                    String kozep_s_out =Character.toString(kozep_c[0])+ Character.toString(kozep_c[1])+ Character.toString(kozep_c[2])+ Character.toString(kozep_c[3]) + Character.toString(kozep_c[4])+ Character.toString(kozep_c[5]);
+                                    szelv_kozep.setText(kozep_s_out) ;
+                                    szelv_kozep.setSelection(szelv_kozep.getText().length());
+                                }
                             }
                             if (kozep_c.length ==8)
                             {
@@ -109,12 +115,25 @@ public class szelveny extends Activity {
                                     szelv_kozep.setText(kozep_s_out) ;
                                     szelv_kozep.setSelection(szelv_kozep.getText().length());
                                 }
+                                if (kozep_c[3]== '-' && kozep_c[7] == '-' )
+                                {
+                                    String kozep_s_out =Character.toString(kozep_c[0])+ Character.toString(kozep_c[1])+ Character.toString(kozep_c[2])+ Character.toString(kozep_c[3]) + Character.toString(kozep_c[4])+ Character.toString(kozep_c[5])+ Character.toString(kozep_c[6]);
+                                    szelv_kozep.setText(kozep_s_out) ;
+                                    szelv_kozep.setSelection(szelv_kozep.getText().length());
+                                }
                             }
                             if (kozep_c.length ==11)
                             {
                                 if (kozep_c[2]== '-' && kozep_c[10] != '-' )
                                 {
                                     String kozep_s_out =Character.toString(kozep_c[0])+ Character.toString(kozep_c[1])+ Character.toString(kozep_c[2])+ Character.toString(kozep_c[3]) + Character.toString(kozep_c[4])+ Character.toString(kozep_c[5])+ Character.toString(kozep_c[6]) + Character.toString(kozep_c[7])+ Character.toString(kozep_c[8])+ Character.toString(kozep_c[9])+"-"+ Character.toString(kozep_c[10]);
+                                    szelv_kozep.setFilters(new InputFilter[] {new InputFilter.LengthFilter(12)});
+                                    szelv_kozep.setText(kozep_s_out) ;
+                                    szelv_kozep.setSelection(szelv_kozep.getText().length());
+                                }
+                                if (kozep_c[2]== '-' && kozep_c[10] == '-' )
+                                {
+                                    String kozep_s_out =Character.toString(kozep_c[0])+ Character.toString(kozep_c[1])+ Character.toString(kozep_c[2])+ Character.toString(kozep_c[3]) + Character.toString(kozep_c[4])+ Character.toString(kozep_c[5])+ Character.toString(kozep_c[6]) + Character.toString(kozep_c[7])+ Character.toString(kozep_c[8])+ Character.toString(kozep_c[9]);
                                     szelv_kozep.setFilters(new InputFilter[] {new InputFilter.LengthFilter(12)});
                                     szelv_kozep.setText(kozep_s_out) ;
                                     szelv_kozep.setSelection(szelv_kozep.getText().length());
@@ -129,8 +148,14 @@ public class szelveny extends Activity {
                                     szelv_kozep.setText(kozep_s_out) ;
                                     szelv_kozep.setSelection(szelv_kozep.getText().length());
                                 }
+                                if (kozep_c[3]== '-' && kozep_c[11] == '-' )
+                                {
+                                    String kozep_s_out =Character.toString(kozep_c[0])+ Character.toString(kozep_c[1])+ Character.toString(kozep_c[2])+ Character.toString(kozep_c[3]) + Character.toString(kozep_c[4])+ Character.toString(kozep_c[5])+ Character.toString(kozep_c[6]) + Character.toString(kozep_c[7])+ Character.toString(kozep_c[8])+ Character.toString(kozep_c[9])+Character.toString(kozep_c[10]);
+                                    szelv_kozep.setFilters(new InputFilter[] {new InputFilter.LengthFilter(13)});
+                                    szelv_kozep.setText(kozep_s_out) ;
+                                    szelv_kozep.setSelection(szelv_kozep.getText().length());
+                                }
                             }
-
                         }
                     }
                 }
@@ -140,11 +165,11 @@ public class szelveny extends Activity {
             public void afterTextChanged(Editable s) {
                 String kozep_s = szelv_kozep.getText().toString();
                 if (kozep_s.length()>2) {
-                    if (letezik(szelvenyszam(kozep_s))==true ) {
-                        String also_sz ,felso_sz, bal_sz,jobb_sz;
+                    if (letezik(szelvenyszam(kozep_s))) {
                         int szelveny = szelvenyszam(kozep_s);
                         char[] kozep_c = Integer.toString(szelvenyszam(kozep_s)).toCharArray();
                         int szelv_kozep_eleje ,szelv_kozep_vege;
+                        String also_sz ,felso_sz, bal_sz,jobb_sz;
 
                         if (Integer.toString(szelveny).length()==3 && kozep_c[0]=='1'  )    {
                             szelv_kozep_eleje = 10;
@@ -158,22 +183,60 @@ public class szelveny extends Activity {
                             szelv_kozep_vege = Integer.parseInt(Character.toString(kozep_c[1]));
                         }
 
-                    szelv_fel.setText((Integer.toString(szelv_kozep_eleje)+Integer.toString(szelv_kozep_vege)));
-                    szelv_also.setText(Integer.toString(szelvenyszamutan(kozep_s)));
+                //    szelv_fel.setText((Integer.toString(szelv_kozep_eleje)+Integer.toString(szelv_kozep_vege)));
+                //    szelv_also.setText(Integer.toString(szelvenyszamutan(kozep_s)));
 
+                    if (szelvenyszamutan(kozep_s)==0)
+                    {
+                        if (szelveny < 110){
+                            also_sz = Integer.toString(szelveny-10);
+                            felso_sz = Integer.toString(szelveny+10);
+                        } else {
+                            also_sz = Integer.toString(szelveny-100);
+                            felso_sz = Integer.toString(szelveny+100);
+                        }
+                        if (Integer.toString(szelveny).length() == 2     )
+                        {
+                            bal_sz = Character.toString(kozep_c[0]) +  Integer.toString(Integer.parseInt(Character.toString(kozep_c[1])) - 1 );
+                            jobb_sz = Character.toString(kozep_c[0]) +  Integer.toString(Integer.parseInt(Character.toString(kozep_c[1])) + 1 );
+                        }
+                        else
+                        {
+                            bal_sz = Character.toString(kozep_c[0])+ Character.toString(kozep_c[2]) +  Integer.toString(Integer.parseInt(Character.toString(kozep_c[2])) - 1 );
+                            jobb_sz = Character.toString(kozep_c[0])+ Character.toString(kozep_c[2]) +  Integer.toString(Integer.parseInt(Character.toString(kozep_c[2])) + 1 );
+                        }
 
+                        if (letezik(Integer.parseInt(also_sz)))
+                        {
+                            szelv_also.setText(also_sz);
+                        } else {
+                            szelv_also.setText("");
+                        }
+                        if (letezik(Integer.parseInt(felso_sz)))
+                        {
+                            szelv_fel.setText(felso_sz);
+                        } else {
+                            szelv_fel.setText("");
+                        }
+                        if (letezik(Integer.parseInt(jobb_sz)))
+                        {
+                            szelv_jobb.setText(jobb_sz);
+                        } else {
+                            szelv_jobb.setText("");
+                        }
+                        if (letezik(Integer.parseInt(bal_sz)))
+                        {
+                            szelv_bal.setText(bal_sz);
+                        } else {
+                            szelv_bal.setText("");
+                        }
+                    } else {
+                            szelv_bal.setText(bal(szelvenyszam(kozep_s),szelvenyszamutan(kozep_s)));
+                            szelv_jobb.setText(jobb(szelvenyszam(kozep_s),szelvenyszamutan(kozep_s)));
+                            szelv_fel.setText(fel(szelvenyszam(kozep_s),szelvenyszamutan(kozep_s)));
+                            szelv_also.setText(le(szelvenyszam(kozep_s),szelvenyszamutan(kozep_s)));
 
-
-
-
-
-
-
-
-
-
-
-
+                        }
                     } else  {
                         szelv_kozep.setError(Html.fromHtml("<font color='black'>Nem létező szelvény!</font>"));
                         szelv_also.setText("");
@@ -189,6 +252,26 @@ public class szelveny extends Activity {
                 }
             }
         });
+    }
+    public String tagol (String bemeno )
+    {
+        char[] bemeno_c = bemeno.toCharArray();
+        if (bemeno_c.length>6)  {
+            return (bemeno.substring(0,3)+"-"+bemeno.substring(3,6) + "-" + bemeno.substring(6) );
+        } else if (bemeno_c.length> 3)   {
+            return (bemeno.substring(0,3)+ "-" +bemeno.substring(3)  );
+        } else {
+            return bemeno.substring(0);
+        }
+    }
+    public String intarraytostring (int[] intarray)
+    {
+        String eredmeny = "";
+        for (int o=0 ; o<intarray.length ; o++)
+        {
+            eredmeny = eredmeny + Integer.toString(intarray[o]);
+        }
+        return eredmeny;
     }
     public int szelvenyszam (String kozep)
     {
@@ -207,7 +290,7 @@ public class szelveny extends Activity {
     public int szelvenyszamutan (String kozep)
     {
         char kozep_c[] = kozep.toCharArray();
-        String elso ="";
+        String elso="";
         String masodik ="";
         String harmadik="";
         int szam;
@@ -228,7 +311,7 @@ public class szelveny extends Activity {
             szam= Integer.parseInt(elso+masodik+harmadik);
             return (szam);
         }
-        else if (kozep_c[3]=='-'&& kozep.length()> 4)
+        else if (kozep.length()> 4)
         {
             if (kozep.length()<8 )
             {
@@ -287,6 +370,122 @@ public class szelveny extends Activity {
             return (false);
         }
     }
+    public String bal (int alap, int utani)
+    {
+        String raw =  Integer.toString(utani);
+        String r = "";
+        int[] num = new int[raw.length()];
+        for (int o = 0; o < raw.length(); o++){
+            num[o] = raw.charAt(o) - '0';
+        }
+
+        for  (int i = 0;i<num.length; i++) {
+            if (num[(num.length - 1)-i] == 2 || num[(num.length - 1)-i] == 4) {
+                num[(num.length - 1)-i] = num[(num.length - 1)-i] -1 ;
+                r = (Integer.toString(alap) + "-" + tagol(intarraytostring(num)) );
+                i = i + 10;
+            } else {
+                if (num.length == i + 1) {
+                    if (letezik(alap - 1)) {
+                        num[num.length - 1 - i] = num[num.length - 1 - i] + 1;
+                        return (Integer.toString(alap - 1) + "-" + tagol(intarraytostring(num)));
+                    } else {
+                        return "";
+                    }
+                } else {
+                    num[num.length - 1 - i] = num[num.length - 1 - i] + 1;
+                }
+            }
+        }
+        return (r);
+    }
+    public String jobb (int alap, int utani)
+    {
+        String raw =  Integer.toString(utani);
+        String r = "";
+        int[] num = new int[raw.length()];
+        for (int o = 0; o < raw.length(); o++){
+            num[o] = raw.charAt(o) - '0';
+        }
+
+        for  (int i = 0;i<num.length; i++) {
+            if (num[(num.length - 1)-i] == 1 || num[(num.length - 1)-i] == 3) {
+                num[(num.length - 1)-i] = num[(num.length - 1)-i] +1 ;
+                r = (Integer.toString(alap) + "-" + tagol(intarraytostring(num)) );
+                i = i + 10;
+            } else {
+                if (num.length == i + 1) {
+                    if (letezik(alap + 1)) {
+                        num[num.length - 1 - i] = num[num.length - 1 - i] - 1;
+                        return (Integer.toString(alap + 1) + "-" + tagol(intarraytostring(num)));
+                    } else {
+                        return "";
+                    }
+                } else {
+                    num[num.length - 1 - i] = num[num.length - 1 - i] - 1;
+                }
+            }
+        }
+        return (r);
+    }
+    public String fel (int alap, int utani)
+    {
+        String raw =  Integer.toString(utani);
+        String r = "";
+        int[] num = new int[raw.length()];
+        for (int o = 0; o < raw.length(); o++){
+            num[o] = raw.charAt(o) - '0';
+        }
+
+        for  (int i = 0;i<num.length; i++) {
+            if (num[(num.length - 1)-i] == 3 || num[(num.length - 1)-i] == 4) {
+                num[(num.length - 1)-i] = num[(num.length - 1)-i] -2 ;
+                r = (Integer.toString(alap) + "-" + tagol(intarraytostring(num)) );
+                i = i + 10;
+            } else {
+                if (num.length == i + 1) {
+                    if (letezik(alap + 10)) {
+                        num[num.length - 1 - i] = num[num.length - 1 - i] + 2;
+                        return (Integer.toString(alap + 10) + "-" + tagol(intarraytostring(num)));
+                    } else {
+                        return "";
+                    }
+                } else {
+                    num[num.length - 1 - i] = num[num.length - 1 - i] + 2;
+                }
+            }
+        }
+        return (r);
+    }
+    public String le (int alap, int utani)
+    {
+        String raw =  Integer.toString(utani);
+        String r = "";
+        int[] num = new int[raw.length()];
+        for (int o = 0; o < raw.length(); o++){
+            num[o] = raw.charAt(o) - '0';
+        }
+
+        for  (int i = 0;i<num.length; i++) {
+            if (num[(num.length - 1)-i] == 1 || num[(num.length - 1)-i] == 2) {
+                num[(num.length - 1)-i] = num[(num.length - 1)-i] +2 ;
+                r = (Integer.toString(alap) + "-" + tagol(intarraytostring(num)) );
+                i = i + 10;
+            } else {
+                if (num.length == i + 1) {
+                    if (letezik(alap - 10)) {
+                        num[num.length - 1 - i] = num[num.length - 1 - i] - 2;
+                        return (Integer.toString(alap - 10) + "-" + tagol(intarraytostring(num)));
+                    } else {
+                        return "";
+                    }
+                } else {
+                    num[num.length - 1 - i] = num[num.length - 1 - i] - 2;
+                }
+            }
+        }
+        return (r);
+    }
 
 
 
@@ -308,7 +507,6 @@ public class szelveny extends Activity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
