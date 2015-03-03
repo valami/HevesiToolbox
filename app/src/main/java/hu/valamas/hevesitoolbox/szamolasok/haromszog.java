@@ -43,6 +43,7 @@ public class haromszog extends Activity {
         final EditText gamma_masod_in = (EditText) findViewById(R.id.gamma_masod_in);
         final TextView terulet = (TextView) findViewById(R.id.terulet);
 
+        //Forgatás
         Bundle extras = getIntent().getExtras();
         Byte orientation = extras.getByte("orientation");
         if (orientation == 0)   {

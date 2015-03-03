@@ -71,7 +71,7 @@
                 <Button
                     android:layout_width="100sp"
                     android:layout_height="wrap_content"
-                    android:text="Keres"
+                    android:text="@string/szelveny_kereses"
                     android:id="@+id/szamol" />
             </LinearLayout>
 
@@ -87,6 +87,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/szelv_fel"
                     android:minWidth="50sp"
+                    android:maxWidth="50sp"
                     android:layout_weight="0.30"
                     android:inputType="number"
                     android:focusable="true" />
@@ -103,6 +104,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/szelv_bal"
                     android:layout_weight="0.33"
+                    android:maxWidth="50sp"
                     android:focusable="false" />
 
                 <EditText
@@ -113,13 +115,15 @@
                     android:minWidth="50sp"
                     android:layout_weight="0.33"
                     android:inputType="number"
-                    android:maxWidth="50sp" />
+                    android:maxWidth="50sp"
+                    android:editable="true" />
 
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/szelv_jobb"
                     android:layout_weight="0.33"
+                    android:maxWidth="50sp"
                     android:focusable="false" />
 
             </LinearLayout>
@@ -136,6 +140,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/szelv_also"
                     android:minWidth="50sp"
+                    android:maxWidth="50sp"
                     android:layout_weight="0.29"
                     android:focusable="true" />
             </LinearLayout>

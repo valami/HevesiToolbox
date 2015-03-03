@@ -17,6 +17,7 @@
     <string name="title_activity_haromszograjz">haromszograjz</string>
     <string name="title_activity_numerikusteruletrajz">numerikusteruletrajz</string>
     <string name="title_activity_atvalto">Átváltó</string>
+    <string name="title_activity_szelveny">Szelvény kereső</string>
 
     //Irányszög
     <string name="iranyszog_kezdopont.y">Kezdőpont Y</string>
@@ -65,12 +66,12 @@
     <string name="haromszog_kevesadat">Túl kevés adat !</string>
     <string name="haromszog_nincskesz">Elöször add meg a háromszög adatait !</string>
     <string name="haromszog_sugo">Meghatározza a háromszög maradék adatait !
-                                  \n Lehetséges megadási módok :
-                                  \n  -Három oldal
-                                  \n  -Két oldala és a közbezárt szöge
-                                  \n  -Egy oldala és a rajta fekvő két szöge
-                                  \n  -Két oldala és a hosszabb oldallal szemközti szöge
-                                    </string>
+          \n Lehetséges megadási módok :
+          \n  -Három oldal
+          \n  -Két oldala és a közbezárt szöge
+          \n  -Egy oldala és a rajta fekvő két szöge
+          \n  -Két oldala és a hosszabb oldallal szemközti szöge
+        </string>
 
     //Átváltó
     <string name="atvalto_meret">Méret</string>
@@ -98,12 +99,16 @@
         <item>1:50000</item>
         <item>1:100000</item>
     </string-array>
+    <string name="szelveny_ervenytelen">Érvénytelen koordináta!</string>
+    <string name="szelveny_ures">Valamelyik mező üres !</string>
+    <string name="szelveny_nemletezo">Nem létező szelvény!</string>
+    <string name="szelveny_sugo">EOV koordináta alapján ,az azt tartalmazó EOTR szelvény keresése.
+            \n EOTR szelvény szomszédjainak keresése.
+        </string>
+    <string name="szelveny_kereses">Keres</string>
 
     //Merü
     <string name="menu_vissza">Visszaállítás</string>
     <string name="menu_sugo">Súgó</string>
     <string name="munu_rajz">Rajzolás</string>
-    <string name="title_activity_szelveny">Szelvény kereső</string>
-
-
 </resources>

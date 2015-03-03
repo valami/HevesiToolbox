@@ -27,11 +27,9 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         //Reklám
-        /*
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-        */
 
         final Button iranyszog = (Button) findViewById(R.id.iranyszog);
         iranyszog.setOnClickListener(new View.OnClickListener() {
