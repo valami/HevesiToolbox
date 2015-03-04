@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 
 import com.example.valamas.hevesitoolbox.R;
+import hu.valamas.hevesitoolbox.szamolasok.felulet.szogkezeles;
 
 public class polarispont extends Activity {
      DecimalFormat df = new DecimalFormat("#.##");
@@ -25,17 +28,18 @@ public class polarispont extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_polarispont);
 
+        final szogkezeles szogkezeles = new szogkezeles();
         final TextView PX_eredm = (TextView) findViewById(R.id.PX_eredmeny);
         final TextView PY_eredm = (TextView) findViewById(R.id.PY_eredmeny);
         final EditText KX_in = (EditText) findViewById(R.id.KX_in);
         final EditText KY_in = (EditText) findViewById(R.id.KY_in);
         final TextView  PX_text = (TextView) findViewById(R.id.PX_text);
         final TextView  PY_text = (TextView) findViewById(R.id.PY_text);
-        final EditText szogfok = (EditText) findViewById(R.id.szog_in_fok);
-        final EditText szogperc = (EditText) findViewById(R.id.szog_in_perc);
-        final EditText szogmasod = (EditText) findViewById(R.id.szog_in_masod);
+        final EditText szog = (EditText) findViewById(R.id.szog_in);
         final EditText tav_in = (EditText) findViewById(R.id.tav_in);
 
+
+        //Forgatás
         Bundle extras = getIntent().getExtras();
         Byte orientation = extras.getByte("orientation");
         if (orientation == 0)   {
@@ -44,51 +48,63 @@ public class polarispont extends Activity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Szögbevitel
+        szog.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String szog_bent =szog.getText().toString();
+                String szog_tagolt = szogkezeles.tagolas(szog_bent);
+                if (!szog_bent.equals(szog_tagolt))
+                {
+                    szog.setText(szog_tagolt);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+
+
         Button szamit = (Button) findViewById(R.id.button);
         szamit.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 String KX_s = KX_in.getText().toString();
                 String KY_s = KY_in.getText().toString();
-                String szogfok_s = szogfok.getText().toString();
-                String szogperc_s = szogperc.getText().toString();
-                String szogmasod_s = szogmasod.getText().toString();
+
+                //final String szog_s = szog.getText().toString();
+
+
+
+
+
                 String tav_s = tav_in.getText().toString();
-                if (KX_s.matches("") | KY_s.matches("") |  tav_s.matches("")  ) {
+                if (KX_s.matches("") || KY_s.matches("") ||  tav_s.matches("") ) {
                     Toast.makeText(getApplicationContext(),
                             getString(R.string.polaris_ures), Toast.LENGTH_SHORT).show();
                             return;
-                } else if (szogfok_s.matches("") |szogperc_s.matches("") | szogmasod_s.matches("") )
-                    {
-                    if (szogfok_s.matches(""))
-                    {
-                        szogfok.setText("0");
-                        szogfok_s ="0";
-                    } if (szogperc_s.matches(""))
-                    {
-                        szogperc.setText("0");
-                        szogperc_s="0";
-                    } if (szogmasod_s.matches(""))
-                    {
-                        szogmasod.setText("0");
-                        szogmasod_s="0";
-                    }
                 }
 
                 double KX = Double.parseDouble(KX_s);
                 double KY = Double.parseDouble(KY_s);
                 double tav = Double.parseDouble(tav_s);
-                double fok = Double.parseDouble(szogfok_s);
-                double perc = Double.parseDouble(szogperc_s);
-                double masod = Double.parseDouble(szogmasod_s);
 
-                double szog =Math.toRadians (fok + (perc/60) + (masod/3600)) ;
+     //           double fok = Double.parseDouble(szogfok_s);
 
-                double PY = KY + (tav * Math.sin(szog));
-                double PX = KX + (tav * Math.cos(szog));
+      //          double szog =Math.toRadians (fok + (perc/60) + (masod/3600)) ;
 
-                PX_eredm.setText(df.format(PX));
-                PY_eredm.setText(df.format(PY));
+      //          double PY = KY + (tav * Math.sin(szog));
+      //          double PX = KX + (tav * Math.cos(szog));
+
+      //          PX_eredm.setText(df.format(PX));
+       //         PY_eredm.setText(df.format(PY));
 
                 PX_eredm.setVisibility(View.VISIBLE);
                 PY_eredm.setVisibility(View.VISIBLE);
@@ -122,7 +138,6 @@ public class polarispont extends Activity {
             });
             alertDialog.show();
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

@@ -81,47 +81,15 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/szog_in_fok"
+                    android:id="@+id/szog_in"
                     android:layout_column="1"
                     android:inputType="numberDecimal"
                     android:numeric="integer|decimal"
                     android:autoText="false"
                     android:layout_weight="1"
-                    android:layout_span="2" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="-"
-                android:id="@+id/elvalaszto1"
-                android:layout_column="3" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/szog_in_perc"
-                android:layout_column="4"
-                android:inputType="numberDecimal"
-                android:numeric="integer"
-                android:layout_weight="1"
-                android:minWidth="50dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="-"
-                android:id="@+id/elvalaszto2"
-                android:layout_column="5" />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/szog_in_masod"
-                android:layout_column="6"
-                android:inputType="numberDecimal"
-                android:numeric="integer"
-                android:layout_weight="1"
-                android:minWidth="50dp" />
+                    android:layout_span="2"
+                    android:digits="1234567890-."
+                    android:editable="true" />
 
         </TableRow>
             <TableRow

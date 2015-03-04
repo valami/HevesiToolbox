@@ -18,6 +18,7 @@ import java.text.DecimalFormat;
 
 import com.example.valamas.hevesitoolbox.R;
 import hu.valamas.hevesitoolbox.szamolasok.felulet.tizedes;
+import hu.valamas.hevesitoolbox.szamolasok.felulet.szogkezeles;
 
 public class iranyszog extends Activity   {
     private double szog,dist;
