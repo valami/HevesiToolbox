@@ -9,9 +9,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.Toast;
 
@@ -39,19 +42,20 @@ public class atvalto extends Activity {
         final RadioButton radio_ter = (RadioButton) findViewById(R.id.radio_ter);
         final RadioButton radio_szog = (RadioButton) findViewById(R.id.radio_szog);
 
-        final Button from = (Button) findViewById(R.id.from);
-        final Button to = (Button) findViewById(R.id.to);
+        final Spinner from = (Spinner) findViewById(R.id.from);
+        final Spinner to = (Spinner) findViewById(R.id.to);
         final Button szamol = (Button) findViewById(R.id.szamol);
 
         final EditText from_in = (EditText) findViewById(R.id.from_in);
         final EditText to_in = (EditText) findViewById(R.id.to_in);
         final EditText mereta_in = (EditText) findViewById(R.id.mereta_in);
 
-        final TableRow sor3 = (TableRow) findViewById(R.id.sor3);
-        final TableRow sor4 = (TableRow) findViewById(R.id.sor4);
-        final TableRow sor5 = (TableRow) findViewById(R.id.sor5);
-        final TableRow sor6 = (TableRow) findViewById(R.id.sor6);
+        final LinearLayout sor3 = (LinearLayout) findViewById(R.id.sor3);
+        final LinearLayout sor4 = (LinearLayout) findViewById(R.id.sor4);
+        final LinearLayout sor5 = (LinearLayout) findViewById(R.id.sor5);
+        final LinearLayout sor6 = (LinearLayout) findViewById(R.id.sor6);
 
+        //Forgatás
         Bundle extras = getIntent().getExtras();
         Byte orientation = extras.getByte("orientation");
         if (orientation == 0)   {
@@ -60,6 +64,7 @@ public class atvalto extends Activity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Almüvelet
         radio_meret.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +95,7 @@ public class atvalto extends Activity {
                 funkcioal = 2;
             }
         });
+        //Müvelet
         radio_tav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,16 +111,12 @@ public class atvalto extends Activity {
                 {
                     // Meret - Hossz
                     from_in.setText("1");
-                    from.setText( getString(R.string.atvalto_innen));
-                    to.setText( getString(R.string.atvalto_ide));
                     funkcio = 1;
                 }
                 else if (funkcioal == 2)
                 {
                     //Mertekegyeg - Hossz
                     from_in.setText("");
-                    from.setText( getString(R.string.atvalto_terkepi));
-                    to.setText( getString(R.string.atvalto_terepi));
                     funkcio = 11;
                     sor5.setVisibility(View.VISIBLE);
                 }
@@ -135,16 +137,12 @@ public class atvalto extends Activity {
                 {
                     // Meret - Terület
                     from_in.setText("1");
-                    from.setText( getString(R.string.atvalto_innen));
-                    to.setText( getString(R.string.atvalto_ide));
                     funkcio = 2;
                 }
                 else if (funkcioal == 2)
                 {
                     //Mertekegyeg - Terület
                     from_in.setText("");
-                    from.setText( getString(R.string.atvalto_terkepi));
-                    to.setText( getString(R.string.atvalto_terepi));
                     funkcio = 12;
                     sor5.setVisibility(View.VISIBLE);
                 }
@@ -157,8 +155,6 @@ public class atvalto extends Activity {
                 sor4.setVisibility(View.VISIBLE);
                 sor6.setVisibility(View.VISIBLE);
 
-                from.setText( getString(R.string.atvalto_innen));
-                to.setText( getString(R.string.atvalto_ide));
                 from_ert = 0;
                 to_ert = 0;
                 from_in.setText("1");
@@ -172,301 +168,30 @@ public class atvalto extends Activity {
             }
         });
 
-        from.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final AlertDialog.Builder menuAleart = new        AlertDialog.Builder(atvalto.this);
-                final List<String> menuList = new ArrayList<>();
 
-                if (funkcio==1) {
-                    menuList.add("méter");
-                    menuList.add("bécsi öl");
-                    menuList.add("GB láb (foot)");
-                    menuList.add("GB yard");
-                    menuList.add("GB mérföld (mile)");
-                }
-                if (funkcio==2) {
-                    menuList.add("méter²");
-                    menuList.add("hektár");
-                    menuList.add("bécsi öl²");
-                    menuList.add("kat. hold");
-                }
-                if (funkcio==3) {
-                    menuList.add("fok");
-                    menuList.add("grád");
-                    menuList.add("vonás (6000)");
-                    menuList.add("vonás (6400)");
-                    menuList.add("radián");
-                }
-                if (funkcio==11) {
-                    menuList.add("mm");
-                    menuList.add("cm");
-                    menuList.add("dm");
-                }
-                if (funkcio==12) {
-                    menuList.add("mm²");
-                    menuList.add("cm²");
-                    menuList.add("dm²");
-                }
+        String[] merteke;
+
+        switch (funkcio){
+            case (1):
+                merteke = new String[]{"méter","bécsi öl","láb (foot)","yard","mérföld (mile)" };
+            case (2):
+                merteke = new String[]{"méter²","hektár","bécsi öl²","yard","kat. hold" };
+            case (3):
+                merteke = new String[]{"fok","grád","vonás (6000)","vonás (6400)","radián" };
+            case (11):
+                merteke = new String[]{"mm","cm","dm" };
+            case (12):
+                merteke = new String[]{"mm²","cm²","dm²" };
+            default:
+                merteke = new String[]{"semmi"};
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, merteke);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        from.setAdapter(adapter);
+        to.setAdapter(adapter);
 
 
-                if (funkcioal == 1)
-                {
-                    menuAleart.setTitle(getString(R.string.atvalto_innen));
-                }
-                else if (funkcioal == 2)
-                {
-                    menuAleart.setTitle(getString(R.string.atvalto_terkepi));
-                }
-                if (funkcio==1 | funkcio==3){
-                final String menu[]=menuList.toArray(new String[menuList.size()]);
-                menuAleart.setItems(menu,new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int item) {
-                        switch (item) {
-                            case 0:
-                                from.setText(menu[0]);
-                                from_ert = 1;
-                                break;
-                            case 1:
-                                from.setText(menu[1]);
-                                from_ert = 2;
-                                break;
-                            case 2:
-                                from.setText(menu[2]);
-                                from_ert = 3;
-                                break;
-                            case 3:
-                                from.setText(menu[3]);
-                                from_ert = 4;
-                                break;
-                            case 4:
-                                from.setText(menu[4]);
-                                from_ert = 5;
-                                break;
-                        }
-                    }
-                });
-                }
-                if (funkcio==2){
-                    final String menu[]=menuList.toArray(new String[menuList.size()]);
-                    menuAleart.setItems(menu,new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int item) {
-                            switch (item) {
-                                case 0:
-                                    from.setText(menu[0]);
-                                    from_ert = 1;
-                                    break;
-                                case 1:
-                                    from.setText(menu[1]);
-                                    from_ert = 2;
-                                    break;
-                                case 2:
-                                    from.setText(menu[2]);
-                                    from_ert = 3;
-                                    break;
-                                case 3:
-                                    from.setText(menu[3]);
-                                    from_ert = 4;
-                                    break;
-                            }
-                        }
-                    });
-                }
-                if (funkcio==11 | funkcio==12){
-                    final String menu[]=menuList.toArray(new String[menuList.size()]);
-                    menuAleart.setItems(menu,new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int item) {
-                            switch (item) {
-                                case 0:
-                                    from.setText(menu[0]);
-                                    from_ert = 1;
-                                    break;
-                                case 1:
-                                    from.setText(menu[1]);
-                                    from_ert = 2;
-                                    break;
-                                case 2:
-                                    from.setText(menu[2]);
-                                    from_ert = 3;
-                                    break;
-                            }
-                        }
-                    });
-                }
-                AlertDialog menuDrop = menuAleart.create();
-                menuDrop.show();
-            }
-        });
-
-
-        to.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final AlertDialog.Builder menuAleart = new        AlertDialog.Builder(atvalto.this);
-                final List<String> menuList = new ArrayList<>();
-
-                if (funkcio==1) {
-                    if (from_ert!=1) {
-                        menuList.add("méter");
-                    }
-                if (from_ert!=2) {
-                        menuList.add("bécsi öl");
-                    }
-                if (from_ert!=3) {
-                        menuList.add("GB láb (foot)");
-                    }
-                if (from_ert!=4) {
-                        menuList.add("GB yard");
-                    }
-                if (from_ert!=5) {
-                        menuList.add("GB mérföld (mile)");
-                    }
-                }
-                if (funkcio==2) {
-                    if (from_ert!=1) {
-                        menuList.add("méter²");
-                    }
-                    if (from_ert!=2) {
-                        menuList.add("hektár");
-                    }
-                    if (from_ert!=3) {
-                        menuList.add("bécsi öl²");
-                    }
-                    if (from_ert!=4) {
-                        menuList.add("kat. hold");
-                    }
-                }
-                if (funkcio==3) {
-                    if (from_ert!=1) {
-                        menuList.add("fok");
-                    }
-                    if (from_ert!=2) {
-                        menuList.add("grád");
-                    }
-                    if (from_ert!=3) {
-                        menuList.add("vonás (6000)");
-                    }
-                    if (from_ert!=4) {
-                        menuList.add("vonás (6400)");
-                    }
-                    if (from_ert!=5) {
-                        menuList.add("radián");
-                    }
-                }
-                if (funkcio==11) {
-                    menuList.add("m");
-                    menuList.add("km");
-                }
-                if (funkcio==12) {
-                    menuList.add("m²");
-                    menuList.add("ha");
-                    menuList.add("km²");
-                }
-
-                if (funkcioal == 1)
-                {
-                    menuAleart.setTitle(getString(R.string.atvalto_ide));
-                }
-                else if (funkcioal == 2)
-                {
-                    menuAleart.setTitle(getString(R.string.atvalto_terepi));
-                }
-                if (funkcio==1 | funkcio==3){
-                    final String menu[]=menuList.toArray(new String[menuList.size()]);
-                    menuAleart.setItems(menu,new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int item) {
-                            switch (item) {
-                                case 0:
-                                    to.setText(menu[0]);
-                                    to_ert = 1;
-                                    break;
-                                case 1:
-                                    to.setText(menu[1]);
-                                    to_ert = 2;
-                                    break;
-                                case 2:
-                                    to.setText(menu[2]);
-                                    to_ert = 3;
-                                    break;
-                                case 3:
-                                    to.setText(menu[3]);
-                                    to_ert = 4;
-                                    break;
-                                case 4:
-                                    to.setText(menu[4]);
-                                    to_ert = 5;
-                                    break;
-                            }
-                        }
-                    });
-                }
-                if (funkcio==2){
-                    final String menu[]=menuList.toArray(new String[menuList.size()]);
-                    menuAleart.setItems(menu,new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int item) {
-                            switch (item) {
-                                case 0:
-                                    to.setText(menu[0]);
-                                    to_ert = 1;
-                                    break;
-                                case 1:
-                                    to.setText(menu[1]);
-                                    to_ert = 2;
-                                    break;
-                                case 2:
-                                    to.setText(menu[2]);
-                                    to_ert = 3;
-                                    break;
-                                case 3:
-                                    to.setText(menu[3]);
-                                    to_ert = 4;
-                                    break;
-                            }
-                        }
-                    });
-                }
-                if (funkcio==11){
-                    final String menu[]=menuList.toArray(new String[menuList.size()]);
-                    menuAleart.setItems(menu,new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int item) {
-                            switch (item) {
-                                case 0:
-                                    to.setText(menu[0]);
-                                    to_ert = 1;
-                                    break;
-                                case 1:
-                                    to.setText(menu[1]);
-                                    to_ert = 2;
-                                    break;
-                            }
-                        }
-                    });
-                }
-                if (funkcio==12){
-                    final String menu[]=menuList.toArray(new String[menuList.size()]);
-                    menuAleart.setItems(menu,new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int item) {
-                            switch (item) {
-                                case 0:
-                                    to.setText(menu[0]);
-                                    to_ert = 1;
-                                    break;
-                                case 1:
-                                    to.setText(menu[1]);
-                                    to_ert = 2;
-                                    break;
-                                case 2:
-                                    to.setText(menu[2]);
-                                    to_ert = 3;
-                                    break;
-                            }
-                        }
-                    });
-                }
-                AlertDialog menuDrop = menuAleart.create();
-                menuDrop.show();
-            }
-        });
 
         szamol.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -475,15 +200,22 @@ public class atvalto extends Activity {
                 String test2 = to_in.getText().toString();
                 String test3 = mereta_in.getText().toString();
 
+                String from_ert = from.getSelectedItem().toString();
+                String to_ert = to.getSelectedItem().toString();
+
+
+
             if (funkcioal==1) {
-                if (from_ert != 0 & to_ert != 0 & !test1.matches("")) {
+                if (!test1.matches("")) {
                     double in = Double.parseDouble(from_in.getText().toString());
-                    to_in.setText(atvalt(funkcio,from_ert,to_ert,in));
+                    to_in.setText(atvalt(funkcio,mertekid(from_ert),mertekid(to_ert),in));
                 }else {
                     Toast.makeText(getApplicationContext(),
                             getString(R.string.atvalto_ures), Toast.LENGTH_SHORT).show();
                 }
             }
+
+            /*
             if (funkcio==11)
             {
                 double terkepi = 0;
@@ -672,17 +404,65 @@ public class atvalto extends Activity {
                             from_ert = 2;
                             from_in.setText(df2.format(terkepi));
 
-                        }
+
                     } else {
                         Toast.makeText(getApplicationContext(),
                                 getString(R.string.atvalto_keves), Toast.LENGTH_SHORT).show();
                     }
-
                 }
+                */
             }
         });
 
 
+    }
+    public byte mertekid (String be)
+    {
+
+
+        if (be.equals("méter")){
+            return 1;
+        } else if (be.equals("bécsi öl"))   {
+            return 2;
+        } else if (be.equals("láb (foot)")) {
+            return 3;
+        } else if (be.equals("mérföld (mile)")) {
+            return 4;
+        } else if (be.equals("méter²"))   {
+            return 10;
+        } else if (be.equals("hektár"))   {
+            return 11;
+        } else if (be.equals("bécsi öl²"))   {
+            return 12;
+        } else if (be.equals("yard"))   {
+            return 13;
+        } else if (be.equals("kat. hold")) {
+            return 14;
+        } else if (be.equals("fok")) {
+            return 20;
+        } else if (be.equals("grád")) {
+            return 21;
+        } else if (be.equals("vonás (6000)")) {
+            return 22;
+        } else if (be.equals("vonás (6400)")) {
+            return 23;
+        } else if (be.equals("radián")) {
+            return 24;
+        } else if (be.equals("mm²")) {
+            return 30;
+        } else if (be.equals("cm²")) {
+            return 31;
+        } else if (be.equals("dm²")) {
+            return 32;
+        } else if (be.equals("mm")) {
+            return 40;
+        } else if (be.equals("cm")) {
+            return 41;
+        } else if (be.equals("dm²")) {
+            return 42;
+        } else {
+            return 0;
+        }
     }
 
     public String atvalt (byte funkcio ,byte from_ert ,byte to_ert , double in)
@@ -834,6 +614,7 @@ public class atvalto extends Activity {
         }
         return (vissza);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

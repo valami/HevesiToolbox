@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,12 +59,24 @@ public class polarispont extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String szog_bent =szog.getText().toString();
-                String szog_tagolt = szogkezeles.tagolas(szog_bent);
-                if (!szog_bent.equals(szog_tagolt))
-                {
+                String szog_tagolt = szogkezeles.tagolas(szog_bent)[0];
+                if (!szog_bent.equals(szog_tagolt)) {
                     szog.setText(szog_tagolt);
+                    szog.setSelection(szog.getText().length());
                 }
-
+                if (szogkezeles.tagolas(szog_bent)[1].equals("1"))  {
+                    szog.setFilters(new InputFilter[] {new InputFilter.LengthFilter(7)});
+                    szog.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
+                }   else if (szogkezeles.tagolas(szog_bent)[1].equals("2"))  {
+                    szog.setFilters(new InputFilter[] {new InputFilter.LengthFilter(8)});
+                    szog.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
+                }   else if (szogkezeles.tagolas(szog_bent)[1].equals("3"))  {
+                    szog.setFilters(new InputFilter[] {new InputFilter.LengthFilter(9)});
+                    szog.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
+                } else {
+                    szog.setFilters(new InputFilter[] {new InputFilter.LengthFilter(9)});
+                    szog.setKeyListener(DigitsKeyListener.getInstance("0123456789-."));
+                }
             }
 
             @Override
@@ -70,41 +84,32 @@ public class polarispont extends Activity {
             }
         });
 
-
-
         Button szamit = (Button) findViewById(R.id.button);
         szamit.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 String KX_s = KX_in.getText().toString();
                 String KY_s = KY_in.getText().toString();
-
-                //final String szog_s = szog.getText().toString();
-
-
-
-
-
+                String szog_t = szog.getText().toString();
                 String tav_s = tav_in.getText().toString();
-                if (KX_s.matches("") || KY_s.matches("") ||  tav_s.matches("") ) {
+                if (KX_s.matches("") || KY_s.matches("") ||  tav_s.matches("")||  szog_t.matches("") ) {
                     Toast.makeText(getApplicationContext(),
                             getString(R.string.polaris_ures), Toast.LENGTH_SHORT).show();
                             return;
                 }
-
                 double KX = Double.parseDouble(KX_s);
                 double KY = Double.parseDouble(KY_s);
                 double tav = Double.parseDouble(tav_s);
 
-     //           double fok = Double.parseDouble(szogfok_s);
+                String szog_bent =szog.getText().toString();
+                String szog_s = szogkezeles.tagolas(szog_bent)[2];
+                double szog = Double.parseDouble(szog_s);
 
-      //          double szog =Math.toRadians (fok + (perc/60) + (masod/3600)) ;
+                double PY = KY + (tav * Math.sin(szog));
+                double PX = KX + (tav * Math.cos(szog));
 
-      //          double PY = KY + (tav * Math.sin(szog));
-      //          double PX = KX + (tav * Math.cos(szog));
-
-      //          PX_eredm.setText(df.format(PX));
-       //         PY_eredm.setText(df.format(PY));
+                PX_eredm.setText(df.format(PX));
+                PY_eredm.setText(df.format(PY));
 
                 PX_eredm.setVisibility(View.VISIBLE);
                 PY_eredm.setVisibility(View.VISIBLE);

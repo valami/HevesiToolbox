@@ -9,31 +9,30 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/scrollView5"
+        android:id="@+id/scroll"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:fillViewport="false">
 
-        <TableLayout
-            android:id="@+id/tabla"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="*">
+            android:layout_height="fill_parent">
 
-            <TableRow
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/sor1">
 
                 <RadioGroup
-                    android:layout_width="fill_parent"
+                    android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:layout_span="2"
-                    android:layout_column="0"
                     android:layout_weight="2"
                     android:orientation="horizontal"
                     android:weightSum="1"
-                    android:id="@+id/radiocsoport1">
+                    android:id="@+id/radiocsoport1"
+                    android:gravity="center">
 
                     <RadioButton
                         android:layout_width="wrap_content"
@@ -41,7 +40,7 @@
                         android:text="@string/atvalto_meret"
                         android:id="@+id/radio_meret"
                         android:checked="false"
-                        android:layout_weight="0.70" />
+                        android:layout_marginRight="10dp" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
@@ -51,14 +50,13 @@
                         android:checked="false" />
 
                 </RadioGroup>
+            </LinearLayout>
 
-            </TableRow>
-
-            <TableRow
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/sor2"
-                android:layout_marginTop="5dp">
+                android:id="@+id/sor2">
 
                 <RadioGroup
                     android:layout_width="fill_parent"
@@ -66,108 +64,102 @@
                     android:orientation="horizontal"
                     android:layout_column="0"
                     android:layout_span="2"
-                    android:layout_weight="2">
+                    android:layout_weight="2"
+                    android:gravity="center">
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/atvalto_tav"
                         android:id="@+id/radio_tav"
-                        android:checked="false"
-                        android:visibility="invisible" />
+                        android:checked="false"/>
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/atvalto_ter"
                         android:id="@+id/radio_ter"
-                        android:checked="false"
-                        android:visibility="invisible" />
+                        android:checked="false"/>
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/atvalto_szog"
                         android:id="@+id/radio_szog"
-                        android:checked="false"
-                        android:visibility="invisible" />
+                        android:checked="false"/>
                 </RadioGroup>
-            </TableRow>
+            </LinearLayout>
 
-           <TableRow
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/sor3"
-               android:layout_marginTop="5dp"
-               android:visibility="invisible">
-
-               <EditText
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:id="@+id/from_in"
-                   android:layout_column="0"
-                   android:text="1"
-                   android:inputType="number|numberSigned|numberDecimal" />
-
-               <Button
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:id="@+id/from"
-                   android:minWidth="50dp"
-                   android:layout_column="1"/>
-
-           </TableRow>
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/sor4"
-                android:layout_marginTop="5dp"
-                android:visibility="invisible">
+                android:id="@+id/sor3" >
 
                 <EditText
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/from_in"
+                    android:layout_column="0"
+                    android:text="1"
+                    android:inputType="number|numberSigned|numberDecimal" />
+
+                <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/from"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/sor4" >
+
+                <EditText
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
                     android:id="@+id/to_in"
-                    android:layout_weight="10"
                     android:layout_column="0"
                     android:focusable="true"
                     android:inputType="number|numberSigned|numberDecimal" />
 
-                <Button
+                <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/to"
-                    android:layout_column="1" />
-            </TableRow>
+                    android:id="@+id/from"
+                    android:layout_weight="1" />
+            </LinearLayout>
 
-            <TableRow
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/sor5"
-                android:visibility="invisible">
+                android:id="@+id/sor5" >
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/mereta_in"
                     android:layout_column="0"
                     android:inputType="number|numberDecimal" />
 
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/atvalto_meretarany"
                     android:id="@+id/mereta"
                     android:layout_column="1" />
-            </TableRow>
+            </LinearLayout>
 
-            <TableRow
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/sor6"
-                android:layout_marginTop="5dp"
-                android:visibility="invisible">
-
+                android:id="@+id/sor6" >
 
                 <Button
                     android:layout_width="wrap_content"
@@ -175,9 +167,10 @@
                     android:text="@string/atvalto_szamol"
                     android:id="@+id/szamol"
                     android:layout_weight="2" />
-            </TableRow>
+            </LinearLayout>
+        </LinearLayout>
 
-        </TableLayout>
+
     </ScrollView>
 
 </RelativeLayout>

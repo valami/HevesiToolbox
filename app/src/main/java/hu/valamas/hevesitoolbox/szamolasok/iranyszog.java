@@ -14,20 +14,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DecimalFormat;
-
 import com.example.valamas.hevesitoolbox.R;
 import hu.valamas.hevesitoolbox.szamolasok.felulet.tizedes;
 import hu.valamas.hevesitoolbox.szamolasok.felulet.szogkezeles;
+import hu.valamas.hevesitoolbox.szamolasok.alapmuvelet.geodezia;
 
 public class iranyszog extends Activity   {
     private double szog,dist;
-    DecimalFormat df =new DecimalFormat("#");
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iranyszog);
         final tizedes tizedes =new tizedes();
+        final geodezia geodezia =new geodezia();
+        final szogkezeles szogkezeles = new szogkezeles();
         final TextView tavolnag = (TextView) findViewById(R.id.tav);
         final TextView szogkiir = (TextView) findViewById(R.id.szogkiir);
         final TextView szog_text = (TextView) findViewById(R.id.szog_text);
@@ -59,12 +59,16 @@ public class iranyszog extends Activity   {
                             getString(R.string.iranyszog_ures), Toast.LENGTH_SHORT).show();
                             return;
                 }
+                //Számol
                 double KX = Double.parseDouble(KX_s);
                 double KY = Double.parseDouble(KY_s);
                 double VX = Double.parseDouble(VX_s);
                 double VY = Double.parseDouble(VY_s);
+                szog = geodezia.iranyszog(KY,KX,VY,VX)[0];
+                szog = geodezia.iranyszog(KY,KX,VY,VX)[0];
 
-                double szogu = ((VY - KY) / (VX - KX));
+
+                        double szogu = ((VY - KY) / (VX - KX));
                 double szoge = Math.toDegrees(Math.atan(szogu));
                 if ((VY - KY) > 0 & (VX - KX) > 0) {
                     szog = szoge;
@@ -94,12 +98,7 @@ public class iranyszog extends Activity   {
                 szog_text.setVisibility(View.VISIBLE);
                 tav_text.setVisibility(View.VISIBLE);
 
-                String fokkiir = (df.format(Math.floor(szog)));
-                double t1 = (szog - (Math.floor(szog))) * 60;
-                double m = (Math.floor((szog - (Math.floor(szog))) * 60));
-                String perckiir = (df.format(m));
-                String masodkiir = (df.format((t1 - m) * 60));
-                szogkiir.setText(fokkiir + " - " + perckiir + " - " + masodkiir);
+                szogkiir.setText(szogkezeles.kiiras(szog));
 
                 dist = Math.sqrt((((VY - KY) * (VY - KY)) + ((VX - KX) * (VX - KX))));
 

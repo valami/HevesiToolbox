@@ -24,7 +24,7 @@
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -45,31 +45,31 @@
 
 
 
-                <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="20dp">
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="5dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/polaris_kezdopont_x"
-                android:id="@+id/KX"
-                android:layout_column="0" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/polaris_kezdopont_x"
+                    android:id="@+id/KX"
+                    android:layout_column="0" />
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/KX_in"
-                android:layout_column="1"
-                android:inputType="numberDecimal"
-                android:layout_weight="1"/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/KX_in"
+                    android:layout_column="1"
+                    android:inputType="numberDecimal"
+                    android:layout_weight="1"/>
 
-        </TableRow>
-        <TableRow
+            </TableRow>
+            <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -91,11 +91,11 @@
                     android:digits="1234567890-."
                     android:editable="true" />
 
-        </TableRow>
+            </TableRow>
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -117,7 +117,7 @@
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="5dp">
 
                 <Button
                     android:layout_width="wrap_content"
@@ -131,7 +131,7 @@
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -153,7 +153,7 @@
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"

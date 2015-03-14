@@ -48,7 +48,8 @@
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/b_oldal">
+                android:id="@+id/b_oldal"
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:id="@+id/b_text"
@@ -70,7 +71,8 @@
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/c_oldal">
+                android:id="@+id/c_oldal"
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:id="@+id/c_text"
@@ -92,7 +94,8 @@
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/alfa">
+                android:id="@+id/alfa"
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:id="@+id/alfa_text"
@@ -102,46 +105,12 @@
                     android:text="@string/haromszog_alfa" />
 
                 <EditText
-                    android:id="@+id/alfa_fok_in"
+                    android:id="@+id/alfa_in"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:layout_weight="1"
                     android:inputType="numberDecimal" />
-
-                <TextView
-                    android:id="@+id/elvalaszto1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="-" />
-
-                <EditText
-                    android:id="@+id/alfa_perc_in"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="3"
-                    android:inputType="numberDecimal"
-                    android:minWidth="70dp" />
-
-                <TextView
-                    android:id="@+id/elvalaszto2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="4"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="-" />
-
-                <EditText
-                    android:id="@+id/alfa_masod_in"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="5"
-                    android:inputType="numberDecimal"
-                    android:minWidth="70dp" />
 
 
             </TableRow>
@@ -149,7 +118,8 @@
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/beta">
+                android:id="@+id/beta"
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:id="@+id/beta_text"
@@ -159,46 +129,12 @@
                     android:text="@string/haromszog_beta" />
 
                 <EditText
-                    android:id="@+id/beta_fok_in"
+                    android:id="@+id/beta_in"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:layout_weight="1"
                     android:inputType="numberDecimal" />
-
-                <TextView
-                    android:id="@+id/elvalaszto3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="-" />
-
-                <EditText
-                    android:id="@+id/beta_perc_in"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="3"
-                    android:inputType="numberDecimal"
-                    android:minWidth="70dp" />
-
-                <TextView
-                    android:id="@+id/elvaszto4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="4"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="-" />
-
-                <EditText
-                    android:id="@+id/beta_masod_in"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="5"
-                    android:inputType="numberDecimal"
-                    android:minWidth="70dp" />
 
 
             </TableRow>
@@ -206,7 +142,8 @@
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/gamma">
+                android:id="@+id/gamma"
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:id="@+id/gamma_text"
@@ -216,46 +153,12 @@
                     android:text="@string/haromszog_gamma" />
 
                 <EditText
-                    android:id="@+id/gamma_fok_in"
+                    android:id="@+id/gamma_in"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:layout_weight="1"
                     android:inputType="numberDecimal" />
-
-                <TextView
-                    android:id="@+id/elvalaszto5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="-" />
-
-                <EditText
-                    android:id="@+id/gamma_perc_in"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="3"
-                    android:inputType="numberDecimal"
-                    android:minWidth="70dp" />
-
-                <TextView
-                    android:id="@+id/elvalaszto6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="4"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="-" />
-
-                <EditText
-                    android:id="@+id/gamma_masod_in"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="5"
-                    android:inputType="numberDecimal"
-                    android:minWidth="70dp" />
 
 
             </TableRow>
