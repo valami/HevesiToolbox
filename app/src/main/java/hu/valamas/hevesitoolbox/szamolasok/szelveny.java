@@ -21,6 +21,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.valamas.hevesitoolbox.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class szelveny extends Activity {
 
@@ -28,6 +30,10 @@ public class szelveny extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_szelveny);
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         final EditText x_in = (EditText) findViewById(R.id.x_in);
         final EditText y_in = (EditText) findViewById(R.id.y_in);

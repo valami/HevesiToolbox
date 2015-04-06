@@ -53,13 +53,41 @@
             android:label="@string/title_activity_atvalto" >
         </activity>
         <activity
-            android:name="com.google.android.gms.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:theme="@android:style/Theme.Translucent" />
-        <activity
             android:name="hu.valamas.hevesitoolbox.szamolasok.szelveny"
             android:label="@string/title_activity_szelveny" >
         </activity>
+        <activity
+            android:name="hu.valamas.hevesitoolbox.settings"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="hu.valamas.hevesitoolbox.szamolasok.metszesek.metszesek"
+            android:label="@string/title_activity_metszesek" >
+        </activity>
+        <activity
+            android:name="hu.valamas.hevesitoolbox.szamolasok.metszesek.tajekozott"
+            android:label="@string/title_activity_tajekozott" >
+        </activity>
+        <activity
+            android:name="hu.valamas.hevesitoolbox.szamolasok.metszesek.belsoszoges"
+            android:label="@string/title_activity_belsoszoges" >
+        </activity>
+        <activity
+            android:name="hu.valamas.hevesitoolbox.szamolasok.metszesek.oldal"
+            android:label="@string/title_activity_oldal" >
+        </activity>
+        <activity
+            android:name="hu.valamas.hevesitoolbox.szamolasok.metszesek.iv"
+            android:label="@string/title_activity_iv" >
+        </activity>
+        <activity
+            android:name="hu.valamas.hevesitoolbox.szamolasok.metszesek.hatra"
+            android:label="@string/title_activity_hatra" >
+        </activity>
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@android:style/Theme.Translucent" />
     </application>
 
 </manifest>

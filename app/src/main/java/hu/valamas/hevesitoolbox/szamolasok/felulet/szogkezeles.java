@@ -3,7 +3,7 @@ package hu.valamas.hevesitoolbox.szamolasok.felulet;
 import java.text.DecimalFormat;
 
 public class szogkezeles {
-    public String[] tagolas (String bevitel)
+    public static String[] tagolas(String bevitel)
     {
         String[] r = new String[3];
         // r[0] tagolt szám ; r[1] tizedes ; r[2] Szög

@@ -31,4 +31,8 @@ public class trigonometria {
     public double szinusztetel_oldal (double szogfelso, double szogalso, double tavalso) {
         return ((Math.sin(szogfelso)/Math.sin(szogalso) )*tavalso);
     }
+    public double pi ()
+    {
+        return 3.141592653589793238462643383279502884197169;
+    }
 }

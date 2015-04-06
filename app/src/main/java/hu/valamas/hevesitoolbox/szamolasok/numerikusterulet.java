@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.example.valamas.hevesitoolbox.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class numerikusterulet extends Activity {
 
@@ -35,6 +37,10 @@ public class numerikusterulet extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numerikusterulet);
         mylistview = (ListView) findViewById(R.id.listView1);
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         final EditText Y_in = (EditText) findViewById(R.id.Y_in);
         final EditText X_in = (EditText) findViewById(R.id.X_in);

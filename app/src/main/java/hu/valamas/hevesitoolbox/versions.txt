@@ -40,6 +40,10 @@
     Hírdetés a föoldalra
 0.7
     Szelvény keresö
+0.8
+    Metszések
+    Javított GUI
+
 
 
 Várható:
@@ -48,12 +52,7 @@ Várható:
 -Komparálás
 -számolás tárolás
 -troll hibaüzenet
--Metszések (Elö ,hátra ,oldal ,ív)
-
--új UI
-
 -frissítéskor ujdonságok
--szög bevitel egyszerüsítés
 
 5letek:
 -Magaspont levezetés

@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -14,190 +15,182 @@
         android:layout_height="wrap_content"
         android:id="@+id/scrollView4"
         android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true">
+        android:layout_above="@+id/adView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true">
 
-        <TableLayout
-            android:id="@+id/tabla"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="*">
+            android:layout_height="wrap_content">
 
-            <TableRow
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/a_oldal">
+                android:layout_marginBottom="5dp">
 
                 <TextView
                     android:id="@+id/a_text"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_marginRight="5dp"
                     android:text="@string/haromszog_a" />
 
                 <EditText
                     android:id="@+id/a_in"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
                     android:layout_weight="4"
                     android:ems="10"
                     android:inputType="numberDecimal" />
-            </TableRow>
 
-            <TableRow
+                </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/b_oldal"
-                android:layout_marginTop="5dp">
+                android:layout_marginBottom="5dp">
 
                 <TextView
                     android:id="@+id/b_text"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
                     android:text="@string/haromszog_b" />
 
                 <EditText
                     android:id="@+id/b_in"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
                     android:layout_weight="4"
                     android:ems="10"
                     android:inputType="numberDecimal" />
-            </TableRow>
 
-            <TableRow
+                </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/c_oldal"
-                android:layout_marginTop="5dp">
+                android:layout_marginBottom="5dp">
 
                 <TextView
                     android:id="@+id/c_text"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
                     android:text="@string/haromszog_c" />
 
                 <EditText
                     android:id="@+id/c_in"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
                     android:layout_weight="4"
                     android:ems="10"
                     android:inputType="numberDecimal" />
-            </TableRow>
 
-            <TableRow
+                </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/alfa"
-                android:layout_marginTop="5dp">
+                android:layout_marginBottom="5dp">
 
                 <TextView
                     android:id="@+id/alfa_text"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
                     android:text="@string/haromszog_alfa" />
 
                 <EditText
                     android:id="@+id/alfa_in"
-                    android:layout_width="100dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
                     android:layout_weight="1"
                     android:inputType="numberDecimal" />
 
+                </LinearLayout>
 
-            </TableRow>
-
-            <TableRow
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/beta"
-                android:layout_marginTop="5dp">
+                android:layout_marginBottom="5dp">
 
                 <TextView
                     android:id="@+id/beta_text"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
                     android:text="@string/haromszog_beta" />
 
                 <EditText
                     android:id="@+id/beta_in"
-                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
                     android:layout_weight="1"
-                    android:inputType="numberDecimal" />
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent" />
 
+                </LinearLayout>
 
-            </TableRow>
-
-            <TableRow
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/gamma"
-                android:layout_marginTop="5dp">
+                android:layout_marginBottom="5dp">
 
                 <TextView
                     android:id="@+id/gamma_text"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
                     android:text="@string/haromszog_gamma" />
 
                 <EditText
                     android:id="@+id/gamma_in"
-                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
                     android:layout_weight="1"
-                    android:inputType="numberDecimal" />
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent" />
 
+                </LinearLayout>
 
-            </TableRow>
-
-            <TableRow
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="20dp"
-                android:id="@+id/gomb">
+                android:layout_marginBottom="5dp">
 
                 <Button
                     android:id="@+id/button"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_span="4"
-                    android:layout_weight="4"
                     android:text="@string/haromszog_szamol" />
-            </TableRow>
 
-            <TableRow
+                </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="10dp"
-                android:id="@+id/terulet_row">
+                android:layout_marginBottom="5dp">
 
                 <TextView
                     android:id="@+id/terulet"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_span="4"
-                    android:layout_weight="4"
                     android:textSize="18sp"
                     android:visibility="invisible" />
-            </TableRow>
 
-        </TableLayout>
+                </LinearLayout>
+        </LinearLayout>
     </ScrollView>
-
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
 
 </RelativeLayout>

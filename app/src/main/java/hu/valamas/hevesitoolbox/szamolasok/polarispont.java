@@ -21,6 +21,9 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 
 import com.example.valamas.hevesitoolbox.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import hu.valamas.hevesitoolbox.szamolasok.felulet.szogkezeles;
 
 public class polarispont extends Activity {
@@ -30,13 +33,15 @@ public class polarispont extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_polarispont);
 
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         final szogkezeles szogkezeles = new szogkezeles();
-        final TextView PX_eredm = (TextView) findViewById(R.id.PX_eredmeny);
-        final TextView PY_eredm = (TextView) findViewById(R.id.PY_eredmeny);
+        final EditText PX_eredm = (EditText) findViewById(R.id.PX_eredmeny);
+        final EditText PY_eredm = (EditText) findViewById(R.id.PY_eredmeny);
         final EditText KX_in = (EditText) findViewById(R.id.KX_in);
         final EditText KY_in = (EditText) findViewById(R.id.KY_in);
-        final TextView  PX_text = (TextView) findViewById(R.id.PX_text);
-        final TextView  PY_text = (TextView) findViewById(R.id.PY_text);
         final EditText szog = (EditText) findViewById(R.id.szog_in);
         final EditText tav_in = (EditText) findViewById(R.id.tav_in);
 
@@ -110,11 +115,6 @@ public class polarispont extends Activity {
 
                 PX_eredm.setText(df.format(PX));
                 PY_eredm.setText(df.format(PY));
-
-                PX_eredm.setVisibility(View.VISIBLE);
-                PY_eredm.setVisibility(View.VISIBLE);
-                PX_text.setVisibility(View.VISIBLE);
-                PY_text.setVisibility(View.VISIBLE);
             }
         });
     }

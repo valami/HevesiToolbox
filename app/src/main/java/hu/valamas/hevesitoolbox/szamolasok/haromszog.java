@@ -19,6 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.valamas.hevesitoolbox.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import hu.valamas.hevesitoolbox.szamolasok.felulet.szogkezeles;
 import hu.valamas.hevesitoolbox.szamolasok.opengl.haromszograjz;
@@ -36,6 +38,11 @@ public class haromszog extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_haromszog);
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
 
         final trigonometria trigonometria = new trigonometria();
         final szogkezeles szogkezeles = new szogkezeles();
@@ -83,6 +90,7 @@ public class haromszog extends Activity {
                     alfa_in.setFilters(new InputFilter[] {new InputFilter.LengthFilter(9)});
                     alfa_in.setKeyListener(DigitsKeyListener.getInstance("0123456789-."));
                 }
+
             }
 
             @Override

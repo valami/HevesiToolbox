@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_height="fill_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -10,169 +11,168 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView3"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentLeft="true">
+        android:layout_alignParentLeft="true"
+        android:layout_above="@+id/adView">
 
-        <TableLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="*"
-            >
+            android:layout_height="wrap_content">
 
-            <TableRow
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="5dp">
+                android:layout_marginBottom="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/polaris_kezdopont_y"
-                    android:id="@+id/KY"
-                    android:layout_column="0"
-                    android:layout_marginRight="10dp" />
+                    android:id="@+id/KY" />
 
                 <EditText
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/KY_in"
-                    android:layout_column="1"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1" />
-            </TableRow>
+                    android:inputType="numberDecimal" />
+                </LinearLayout>
 
-
-
-            <TableRow
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="5dp">
+                android:layout_marginBottom="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/polaris_kezdopont_x"
-                    android:id="@+id/KX"
-                    android:layout_column="0" />
+                    android:id="@+id/KX"/>
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/KX_in"
-                    android:layout_column="1"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
 
-            </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
+                </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="5dp">
+                android:layout_marginBottom="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/porlarisz_szog"
-                    android:id="@+id/szog"
-                    android:layout_column="0" />
+                    android:id="@+id/szog" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/szog_in"
-                    android:layout_column="1"
-                    android:inputType="numberDecimal"
+                     android:inputType="numberDecimal"
                     android:numeric="integer|decimal"
                     android:autoText="false"
-                    android:layout_weight="1"
-                    android:layout_span="2"
                     android:digits="1234567890-."
                     android:editable="true" />
 
-            </TableRow>
-            <TableRow
+                </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="5dp">
+                android:layout_marginBottom="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="@string/polaris_tav"
-                    android:id="@+id/tav"
-                    android:layout_column="0" />
+                    android:id="@+id/tav" />
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/tav_in"
-                    android:layout_column="1"
-                    android:inputType="numberDecimal"
-                    android:layout_weight="1"/>
+                    android:inputType="numberDecimal" />
 
-            </TableRow>
+                </LinearLayout>
 
-            <TableRow
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="5dp">
+                android:layout_marginBottom="5dp">
 
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/polaris_szamol"
-                    android:id="@+id/button"
-                    android:layout_column="0"
-                    android:layout_span="7" />
-            </TableRow>
+                    android:id="@+id/button"/>
 
-            <TableRow
+                </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="5dp">
+                android:layout_marginBottom="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
                     android:text="@string/polaris_pont_y"
-                    android:id="@+id/PY_text"
-                    android:layout_column="0"
-                    android:visibility="invisible" />
+                    android:id="@+id/PY_text" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/PY_eredmeny"
-                    android:textSize="20sp"
-                    android:layout_column="1"
-                    android:visibility="invisible" />
-            </TableRow>
-            <TableRow
+                    android:editable="false"
+                    android:background="#ffdfdfdf"
+                    android:minHeight="50dp"/>
+
+                </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="5dp">
-
+                android:layout_marginBottom="5dp">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
                     android:text="@string/polaris_pont_x"
                     android:id="@+id/PX_text"
-                    android:layout_column="0"
-                    android:visibility="invisible" />
+                    android:textIsSelectable="false" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/PX_eredmeny"
-                    android:textSize="20sp"
-                    android:layout_column="1"
-                    android:visibility="invisible" />
-            </TableRow>
-        </TableLayout>
+                    android:editable="false"
+                    android:background="#ffdfdfdf"
+                    android:minHeight="50dp"/>
+
+                </LinearLayout>
+        </LinearLayout>
     </ScrollView>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true">
+    </com.google.android.gms.ads.AdView>
+
 
 </RelativeLayout>

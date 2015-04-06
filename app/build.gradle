@@ -9,14 +9,14 @@ android {
             storePassword 'Hirosima 45'
         }
     }
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 16
+    buildToolsVersion '22.0.1'
     defaultConfig {
         applicationId "hu.valamas.hevesitoolbox"
         minSdkVersion 10
         targetSdkVersion 16
-        versionCode 10
-        versionName '0.7.3'
+        versionCode 11
+        versionName '0.8'
     }
     buildTypes {
         release {
@@ -27,11 +27,17 @@ android {
     }
     productFlavors {
     }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.google.android.gms:play-services:6.+'
+    compile 'com.google.android.gms:play-services:7.0.0'
     //compile 'com.google.android.gms:play-services:6.5.87'
     //compile 'com.android.support:appcompat-v7:21.0.3'
 }

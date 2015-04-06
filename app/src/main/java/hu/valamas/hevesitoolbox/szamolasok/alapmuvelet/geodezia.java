@@ -10,7 +10,7 @@ public class geodezia {
         return r;
 
     }
-    public double [] iranyszog (double KY ,double KX, double VY ,double VX) {
+    public static double [] iranyszog(double KY, double KX, double VY, double VX) {
         double[] r =new double[2];
 
         double szogu = ((VY - KY) / (VX - KX));

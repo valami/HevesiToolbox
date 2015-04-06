@@ -15,6 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.valamas.hevesitoolbox.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import hu.valamas.hevesitoolbox.szamolasok.felulet.tizedes;
 import hu.valamas.hevesitoolbox.szamolasok.felulet.szogkezeles;
 import hu.valamas.hevesitoolbox.szamolasok.alapmuvelet.geodezia;
@@ -28,14 +31,17 @@ public class iranyszog extends Activity   {
         final tizedes tizedes =new tizedes();
         final geodezia geodezia =new geodezia();
         final szogkezeles szogkezeles = new szogkezeles();
-        final TextView tavolnag = (TextView) findViewById(R.id.tav);
-        final TextView szogkiir = (TextView) findViewById(R.id.szogkiir);
-        final TextView szog_text = (TextView) findViewById(R.id.szog_text);
-        final TextView tav_text = (TextView) findViewById(R.id.tav_text);
+        final EditText tavolnag = (EditText) findViewById(R.id.tav);
+        final EditText szogkiir = (EditText) findViewById(R.id.szogkiir);
         final EditText KX_in = (EditText) findViewById(R.id.KX_in);
         final EditText KY_in = (EditText) findViewById(R.id.KY_in);
         final EditText VX_in = (EditText) findViewById(R.id.VX_in);
         final EditText VY_in = (EditText) findViewById(R.id.VY_in);
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         //Forgatás
         Bundle extras = getIntent().getExtras();
         Byte orientation = extras.getByte("orientation");
@@ -92,11 +98,6 @@ public class iranyszog extends Activity   {
                         getString(R.string.iranyszog_egyezik), Toast.LENGTH_SHORT).show();
                     return;
                     }
-
-                tavolnag.setVisibility(View.VISIBLE);
-                szogkiir.setVisibility(View.VISIBLE);
-                szog_text.setVisibility(View.VISIBLE);
-                tav_text.setVisibility(View.VISIBLE);
 
                 szogkiir.setText(szogkezeles.kiiras(szog));
 

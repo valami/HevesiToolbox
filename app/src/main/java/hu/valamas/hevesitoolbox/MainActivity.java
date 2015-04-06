@@ -19,6 +19,7 @@ import hu.valamas.hevesitoolbox.szamolasok.iranyszog;
 import hu.valamas.hevesitoolbox.szamolasok.haromszog;
 import hu.valamas.hevesitoolbox.szamolasok.atvalto;
 import hu.valamas.hevesitoolbox.szamolasok.szelveny;
+import hu.valamas.hevesitoolbox.szamolasok.metszesek.metszesek;
 
 public class MainActivity extends Activity {
     @Override
@@ -26,7 +27,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Reklám
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -90,6 +90,16 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        final Button metszes = (Button) findViewById(R.id.metszesek);
+        metszes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,  metszesek.class);
+                intent.putExtra("orientation", orient());
+                startActivity(intent);
+            }
+        });
     }
 
     public byte orient ()
@@ -116,11 +126,14 @@ public class MainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+/*
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(MainActivity.this,  settings.class);
+            intent.putExtra("orientation", orient());
+            startActivity(intent);
             return true;
-        }
+        } */
         return super.onOptionsItemSelected(item);
-    }
+   }
 }
