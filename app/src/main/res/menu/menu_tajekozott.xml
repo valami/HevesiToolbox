@@ -1,12 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="hu.valamas.hevesitoolbox.szamolasok.metszesek.tajekozott">
-    <item android:id="@+id/action_reset"
-        android:title="@string/menu_vissza"
-        android:orderInCategory="100"
-        android:showAsAction="never" />
-    <item android:id="@+id/action_info"
-        android:title="@string/menu_sugo"
-        android:orderInCategory="100"
-        android:showAsAction="never" />
+xmlns:tools="http://schemas.android.com/tools"
+tools:context="hu.valamas.hevesitoolbox.szamolasok.metszesek.tajekozott">
+<item android:id="@+id/action_reset"
+    android:title="@string/menu_vissza"
+    android:orderInCategory="100"
+    android:icon="@drawable/ic_history_white_36dp"
+    android:showAsAction="ifRoom" />
+<item android:id="@+id/action_info"
+    android:title="@string/menu_sugo"
+    android:orderInCategory="100"
+    android:icon="@drawable/ic_help_outline_white_36dp"
+    android:showAsAction="ifRoom" />
 </menu>

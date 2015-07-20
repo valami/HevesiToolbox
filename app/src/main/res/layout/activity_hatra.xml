@@ -244,7 +244,7 @@
                     android:id="@+id/PX_in"
                     android:editable="false"
                     android:background="#ffdfdfdf"
-                    android:minHeight="50dp" />
+                    android:minHeight="40dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

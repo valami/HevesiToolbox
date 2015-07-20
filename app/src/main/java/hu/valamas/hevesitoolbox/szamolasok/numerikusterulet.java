@@ -63,17 +63,21 @@ public class numerikusterulet extends Activity {
             public void onClick(View v) {
 
                 //Ellenörzés
-                String Y_in_s = Y_in.getText().toString();
-                String X_in_s = X_in.getText().toString();
-                if (Y_in_s.matches("") | X_in_s.matches("")) {
+                float Y , X ;
+                try {
+                    String Y_in_s = Y_in.getText().toString();
+                    String X_in_s = X_in.getText().toString();
+                    Y = Float.parseFloat(Y_in_s);
+                    X = Float.parseFloat(X_in_s);
+
+                } catch (Exception e) {
                     Toast.makeText(getApplicationContext(),
                             getString(R.string.numerikus_ures), Toast.LENGTH_LONG).show();
-                    return;   }
+                    return;
+                }
 
                 //Hozzáadás
                 HashMap<String, String> map = new HashMap<String, String>();
-                float Y = Float.parseFloat(Y_in_s);
-                float X = Float.parseFloat(X_in_s);
                 Y_koord[num_count]=Y;
                 X_koord[num_count]=X;
                 num_count=num_count +1;
@@ -95,16 +99,27 @@ public class numerikusterulet extends Activity {
         Button szamol = (Button) findViewById(R.id.calc);
         szamol.setOnClickListener(new View.OnClickListener() {
            public void onClick(View v) {
-            //automata visszazárás hiányzik
-
-            if (num_count<3)
-            {
-                Toast.makeText(getApplicationContext(),
-                        getString(R.string.numerikus_keves), Toast.LENGTH_SHORT).show();
-                return;
-            }
-            eredmeny.setText(getString(R.string.numerikus_terulet)+ Double.toString(szamol())   );
-            eredmeny.setVisibility(View.VISIBLE);
+               if (num_count<3)
+               {
+                   Toast.makeText(getApplicationContext(),
+                           "Túl kevés bevitt adat!", Toast.LENGTH_SHORT).show();
+                   return;
+               } else {
+                   float Y = (float) Y_koord[0];
+                   float X = (float) X_koord[0];
+                   Y_koord[num_count]=Y;
+                   X_koord[num_count]=X;
+                   num_count=num_count +1;
+                   map.put("n",Integer.toString(num_count));
+                   map.put("Y",Float.toString(Y));
+                   map.put("X",Float.toString(X) );
+                   bevitt.add(map);
+                   simpleAdapter.notifyDataSetChanged();
+                   Y_in.setText("");
+                   X_in.setText("");
+                   eredmeny.setText("Terület :"+ Double.toString(szamol())   );
+                   eredmeny.setVisibility(View.VISIBLE);
+               }
            }
            }
         ) ;

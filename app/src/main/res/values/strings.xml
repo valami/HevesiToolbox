@@ -24,6 +24,8 @@
     <string name="title_activity_belsoszoges">Belsőszöges előmetszés</string>
     <string name="title_activity_iv">Ív metszés</string>
     <string name="title_activity_hatra">Hátra metszés</string>
+    <string name="title_activity_oldal">Oldal metszés</string>
+    <string name="title_activity_wgseov">WGS-EOV átváltó</string>
 
     //Irányszög
     <string name="iranyszog_kezdopont.y">Kezdőpont Y</string>
@@ -35,7 +37,7 @@
     <string name="iranyszog_tavolsag">Távolság :</string>
     <string name="iranyszog_ures">Valamelyik mező üres!</string>
     <string name="iranyszog_egyezik">A két koordináta egyezik !</string>
-    <string name="iranyszog_sugo">Meghatározza két pont távolságát ,és a köztük lévö irányszöget.</string>
+    <string name="iranyszog_sugo">Meghatározza két pont távolságát, és a köztük lévő irányszöget.</string>
 
     //Poláris
     <string name="polaris_kezdopont_y">Kezdőpont Y</string>
@@ -46,7 +48,7 @@
     <string name="polaris_pont_y">Pont Y :</string>
     <string name="polaris_pont_x">Pont X :</string>
     <string name="polaris_ures">Valamelyik mező üres!</string>
-    <string name="polaris_sugo">Meghatározza annak a pontnak a helyzetét,amelyik egy ismert ponthoz képest ,megadott távolságra helyezkedik el egy ismert irányszögü egyenesen.</string>
+    <string name="polaris_sugo">Meghatározza annak a pontnak a helyzetét, amelyik egy ismert ponthoz képest, megadott távolságra helyezkedik el egy ismert irányszögű egyenesen.</string>
 
     //Numerikus
     <string name="numerikus_y">Y</string>
@@ -56,8 +58,7 @@
     <string name="numerikus_ures">Valamelyik mező üres!</string>
     <string name="numerikus_keves">Túl kevés bevitt adat!</string>
     <string name="numerikus_terulet">Terület : </string>
-    <string name="numerikus_sugo">Meghatározza a poligon területét sarokpontjainak koordinátái alapján.
-                                   \n Visszazáráskor számol! </string>
+    <string name="numerikus_sugo">Meghatározza a poligon területét sarokpontjainak koordinátái alapján. </string>
 
     //Háromszög
     <string name="haromszog_a">a oldal</string>
@@ -70,9 +71,9 @@
     <string name="haromszog_egyenlotlen">A Háromszög-egyenlőtlenség nem teljesül!</string>
     <string name="haromszog_terulet">Terület : </string>
     <string name="haromszog_kevesadat">Túl kevés adat !</string>
-    <string name="haromszog_nincskesz">Elöször add meg a háromszög adatait !</string>
-    <string name="haromszog_sugo">Meghatározza a háromszög maradék adatait !
-          \n Lehetséges megadási módok :
+    <string name="haromszog_nincskesz">Először  add meg a háromszög adatait!</string>
+    <string name="haromszog_sugo">Meghatározza a háromszög maradék adatait!
+          \n Lehetséges megadási módok:
           \n  -Három oldal
           \n  -Két oldala és a közbezárt szöge
           \n  -Egy oldala és a rajta fekvő két szöge
@@ -91,7 +92,7 @@
     <string name="atvalto_ide">Ide</string>
     <string name="atvalto_terepi">Terepi</string>
     <string name="atvalto_terkepi">Térképi</string>
-    <string name="atvalto_ures">Nem adtál meg mértékegységet</string>
+    <string name="atvalto_ures">Nem adtál meg mértékegységet!</string>
     <string name="atvalto_keves">Túl kevés adat!</string>
 
     //Szelvény
@@ -108,35 +109,44 @@
     <string name="szelveny_ervenytelen">Érvénytelen koordináta!</string>
     <string name="szelveny_ures">Valamelyik mező üres !</string>
     <string name="szelveny_nemletezo">Nem létező szelvény!</string>
-    <string name="szelveny_sugo">EOV koordináta alapján ,az azt tartalmazó EOTR szelvény keresése.
-            \n EOTR szelvény szomszédjainak keresése.
-        </string>
+    <string name="szelveny_sugo">EOV koordináta alapján, az azt tartalmazó EOTR szelvény keresése.
+        \n EOTR szelvény szomszédjainak keresése.
+    </string>
     <string name="szelveny_kereses">Keres</string>
 
-    //Merü
-    <string name="menu_vissza">Visszaállítás</string>
-    <string name="menu_sugo">Súgó</string>
-    <string name="munu_rajz">Rajzolás</string>
-    <string name="title_activity_oldal">Oldal metszés</string>
+    //WGS-EOV
+    <string name="wgs_sugo"> WGS84 és EOV vetületi rendszer közti koordináta oda-vissza transzformáció.
+        \n Használata internetkapcsolatot igényel!
+        \n Csak közelítõ pontosságú eredményt ad!</string>
+
 
     //Metszés
-    <string name="iv_sugo">Meghatározza a poligon területét sarokpontjainak koordinátái alapján.
-                                   \n Visszazáráskor számol! </string>
-    <string name="oldal_sugo">Meghatározza a poligon területét sarokpontjainak koordinátái alapján.
-                                   \n Visszazáráskor számol! </string>
-    <string name="belso_sugo">Meghatározza a poligon területét sarokpontjainak koordinátái alapján.
-                                   \n Visszazáráskor számol! </string>
+    <string name="iv_sugo">Új pont koordinátáinak a számítása két ismert koordinátájú pont, valamint az ismert pontok és az új pont közötti vízszintes távolság felhasználásával.
+           \n Körüljárási mód: a meghatározandó pont az A-B szakasz ball oldalán. PBA </string>
+    <string name="oldal_sugo">Új pont koordinátáinak a számítása két ismert koordinátájú pont, valamint az ismert pontok és az új pont közötti vizszintes távolság felhasználásával. </string>
+    <string name="belso_sugo">Új pont koordinátáinak meghatározása két ismert koordinátájú pont, valamint az ismert pontról az új pontra menő irányok tájékozott irányértékeinek a felhasználásával.
+            \n Körüljárási mód: a meghatározandó pont az A-B szakasz ball oldalán. PBA </string>
     <string name="tajekozott_sugo">Meghatározza a poligon területét sarokpontjainak koordinátái alapján.
                                    \n Visszazáráskor számol! </string>
     <string name="hatra_sugo">Meghatározza a poligon területét sarokpontjainak koordinátái alapján.
                                    \n Visszazáráskor számol! </string>
 
-    //Beállítások
-    <string-array name="tizedes">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-    </string-array>
+    //Merü
+    <string name="menu_vissza">Visszaállítás</string>
+    <string name="menu_sugo">Súgó</string>
+    <string name="munu_rajz">Rajzolás</string>
+
+    //Fömenü
+    <string name="mainmenu_iranyszog">Irányszög számítás</string>
+    <string name="mainmenu_polarispont">Poláris pont számítás</string>
+    <string name="mainmenu_numerikus">Numerikus területszámítás</string>
+    <string name="mainmenu_haromszog">Háromszög</string>
+    <string name="mainmenu_atvalto">Átváltó</string>
+    <string name="mainmenu_szelveny">Szelvény kereső</string>
+    <string name="mainmenu_metszes">Metszések</string>
+    <string name="wgseov">WGS - EOV</string>
+    <string name="main_sugo">Az alkalmazás a geodéziaia számítások megkönnyítésére szolgál.
+        \n Készítette: Fülöp Martin
+        \n Ötletek,hibák : fulopdvd@gmail.com</string>
+
 </resources>

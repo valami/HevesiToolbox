@@ -88,6 +88,10 @@
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name="hu.valamas.hevesitoolbox.szamolasok.wgseov"
+            android:label="@string/title_activity_wgseov" >
+        </activity>
     </application>
 
 </manifest>

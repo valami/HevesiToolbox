@@ -28,21 +28,22 @@ import hu.valamas.hevesitoolbox.szamolasok.felulet.tizedes;
 import hu.valamas.hevesitoolbox.szamolasok.alapmuvelet.trigonometria;
 
 public class haromszog extends Activity {
+    final private String KEYA = "a" ,KEYB ="b" , KEYC="c" ,KEYALFA = "alfa" ,
+            KEYBETA="beta",KEYGAMMA="gamma" ,KEYTER="tav";
     final tizedes tizedes =new tizedes();
     double pi = 3.141592653589793238462643383279502884197;
 
-    double a;
     double b;
+    double a;
     double c;
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedinstanceState) {
+        super.onCreate(savedinstanceState);
         setContentView(R.layout.activity_haromszog);
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
 
         final trigonometria trigonometria = new trigonometria();
         final szogkezeles szogkezeles = new szogkezeles();
@@ -53,14 +54,19 @@ public class haromszog extends Activity {
         final EditText beta_in = (EditText) findViewById(R.id.beta_in);
         final EditText gamma_in = (EditText) findViewById(R.id.gamma_in);
         final Button szamit = (Button) findViewById(R.id.button);
+        final TextView terulet = (TextView) findViewById(R.id.terulet);
 
-        //Forgatás
-        Bundle extras = getIntent().getExtras();
-        Byte orientation = extras.getByte("orientation");
-        if (orientation == 0)   {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }   else {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //Visszaállítás
+        if (savedinstanceState != null) {
+            // Restore value of members from saved state
+            a_in.setText(savedinstanceState.getString(KEYA));
+            b_in.setText(savedinstanceState.getString(KEYB));
+            c_in.setText(savedinstanceState.getString(KEYC));
+            alfa_in.setText(savedinstanceState.getString(KEYALFA));
+            beta_in.setText(savedinstanceState.getString(KEYBETA));
+            gamma_in.setText(savedinstanceState.getString(KEYGAMMA));
+            terulet.setText(savedinstanceState.getString(KEYTER));
+            terulet.setVisibility(View.VISIBLE);
         }
 
         //Alfa Szögbevitel
@@ -487,6 +493,25 @@ public class haromszog extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_haromszog, menu);
         return true;
+    }
+    //Batyu
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        final EditText a_in = (EditText) findViewById(R.id.a_in);
+        final EditText b_in = (EditText) findViewById(R.id.b_in);
+        final EditText c_in = (EditText) findViewById(R.id.c_in);
+        final EditText alfa_in = (EditText) findViewById(R.id.alfa_in);
+        final EditText beta_in = (EditText) findViewById(R.id.beta_in);
+        final EditText gamma_in = (EditText) findViewById(R.id.gamma_in);
+        final TextView terulet = (TextView) findViewById(R.id.terulet);
+
+        savedInstanceState.putString(KEYA, a_in.getText().toString());
+        savedInstanceState.putString(KEYB, b_in.getText().toString());
+        savedInstanceState.putString(KEYC, c_in.getText().toString());
+        savedInstanceState.putString(KEYALFA, alfa_in.getText().toString());
+        savedInstanceState.putString(KEYBETA, beta_in.getText().toString());
+        savedInstanceState.putString(KEYGAMMA, gamma_in.getText().toString());
+        savedInstanceState.putString(KEYTER, terulet.getText().toString());
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -25,6 +25,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 public class szelveny extends Activity {
+    private final String KEYFEL = "fel" , KEYLE = "le" , KEYBAL= "bal" ,KEYJOBB="jobb" ,KEYKOZEP="kozep";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +51,13 @@ public class szelveny extends Activity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        //Forgatás
-        Bundle extras = getIntent().getExtras();
-        Byte orientation = extras.getByte("orientation");
-        if (orientation == 0)   {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }   else {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //Visszaállítás
+        if (savedInstanceState != null) {
+            szelv_also.setText(savedInstanceState.getString(KEYLE));
+            szelv_bal.setText(savedInstanceState.getString(KEYBAL));
+            szelv_jobb.setText(savedInstanceState.getString(KEYJOBB));
+            szelv_fel.setText(savedInstanceState.getString(KEYFEL));
+            szelv_kozep.setText(savedInstanceState.getString(KEYKOZEP));
         }
 
         //Szelvély keresét
@@ -76,7 +77,6 @@ public class szelveny extends Activity {
                         Toast.makeText(getApplicationContext(),
                             getString(R.string.szelveny_ervenytelen),Toast.LENGTH_SHORT).show();
                     } else {
-
                         int meretarany = meretarany(String.valueOf(spinner.getSelectedItem()));
                         szelv_kozep.setText(koord(meretarany,y,x));
                     }
@@ -567,7 +567,20 @@ public class szelveny extends Activity {
         }
         return (r);
     }
-
+    //Batyu
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        final EditText szelv_also = (EditText) findViewById(R.id.szelv_also);
+        final EditText szelv_bal = (EditText) findViewById(R.id.szelv_bal);
+        final EditText szelv_jobb = (EditText) findViewById(R.id.szelv_jobb);
+        final EditText szelv_fel = (EditText) findViewById(R.id.szelv_fel);
+        final EditText szelv_kozep = (EditText) findViewById(R.id.szelv_kozep);
+        savedInstanceState.putString(KEYLE, (String) szelv_also.getText().toString());
+        savedInstanceState.putString(KEYBAL, (String) szelv_bal.getText().toString());
+        savedInstanceState.putString(KEYJOBB, (String) szelv_jobb.getText().toString());
+        savedInstanceState.putString(KEYFEL, (String) szelv_fel.getText().toString());
+        savedInstanceState.putString(KEYKOZEP, (String) szelv_kozep.getText().toString());
+        super.onSaveInstanceState(savedInstanceState);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_szelveny, menu);

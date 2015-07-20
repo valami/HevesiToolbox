@@ -1,6 +1,8 @@
 package hu.valamas.hevesitoolbox;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import hu.valamas.hevesitoolbox.szamolasok.haromszog;
 import hu.valamas.hevesitoolbox.szamolasok.atvalto;
 import hu.valamas.hevesitoolbox.szamolasok.szelveny;
 import hu.valamas.hevesitoolbox.szamolasok.metszesek.metszesek;
+import hu.valamas.hevesitoolbox.szamolasok.wgseov;
 
 public class MainActivity extends Activity {
     @Override
@@ -36,7 +39,6 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, iranyszog.class);
-                intent.putExtra("orientation", orient());
                 startActivity(intent);
             }
         });
@@ -46,7 +48,6 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, polarispont.class);
-                intent.putExtra("orientation", orient());
                 startActivity(intent);
             }
         });
@@ -66,7 +67,6 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,  haromszog.class);
-                intent.putExtra("orientation", orient());
                 startActivity(intent);
             }
         });
@@ -86,17 +86,24 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,  szelveny.class);
-                intent.putExtra("orientation", orient());
                 startActivity(intent);
             }
         });
 
         final Button metszes = (Button) findViewById(R.id.metszesek);
         metszes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this,  metszesek.class);
+                        startActivity(intent);
+            }
+        });
+
+        final Button wgseov = (Button) findViewById(R.id.wgseov);
+        wgseov.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,  metszesek.class);
-                intent.putExtra("orientation", orient());
+                Intent intent = new Intent(MainActivity.this,  wgseov.class);
                 startActivity(intent);
             }
         });
@@ -115,25 +122,24 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-/*
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(MainActivity.this,  settings.class);
-            intent.putExtra("orientation", orient());
-            startActivity(intent);
-            return true;
-        } */
+        if (id == R.id.action_info)
+        {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle(getString(R.string.menu_sugo));
+            alertDialog.setMessage(getString(R.string.main_sugo));
+            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            alertDialog.show();
+        }
         return super.onOptionsItemSelected(item);
    }
 }

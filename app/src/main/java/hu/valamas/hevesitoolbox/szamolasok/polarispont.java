@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
@@ -28,6 +27,7 @@ import hu.valamas.hevesitoolbox.szamolasok.felulet.szogkezeles;
 
 public class polarispont extends Activity {
      DecimalFormat df = new DecimalFormat("#.##");
+    private final String KEYY = "y" , KEYX = "x";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,14 +45,10 @@ public class polarispont extends Activity {
         final EditText szog = (EditText) findViewById(R.id.szog_in);
         final EditText tav_in = (EditText) findViewById(R.id.tav_in);
 
-
-        //Forgatás
-        Bundle extras = getIntent().getExtras();
-        Byte orientation = extras.getByte("orientation");
-        if (orientation == 0)   {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }   else {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //Visszaállítás
+        if (savedInstanceState != null) {
+            PX_eredm.setText(savedInstanceState.getString(KEYX));
+            PY_eredm.setText(savedInstanceState.getString(KEYY));
         }
 
         //Szögbevitel
@@ -91,20 +87,22 @@ public class polarispont extends Activity {
 
         Button szamit = (Button) findViewById(R.id.button);
         szamit.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
                 String KX_s = KX_in.getText().toString();
                 String KY_s = KY_in.getText().toString();
                 String szog_t = szog.getText().toString();
                 String tav_s = tav_in.getText().toString();
-                if (KX_s.matches("") || KY_s.matches("") ||  tav_s.matches("")||  szog_t.matches("") ) {
-                    Toast.makeText(getApplicationContext(),
-                            getString(R.string.polaris_ures), Toast.LENGTH_SHORT).show();
-                            return;
+
+                //Ellenörzés
+                double KX , KY ,tav;
+                try {
+                    KX = Double.parseDouble(KX_s);
+                    KY = Double.parseDouble(KY_s);
+                    tav = Double.parseDouble(tav_s);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.polaris_ures), Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                double KX = Double.parseDouble(KX_s);
-                double KY = Double.parseDouble(KY_s);
-                double tav = Double.parseDouble(tav_s);
 
                 String szog_bent =szog.getText().toString();
                 String szog_s = szogkezeles.tagolas(szog_bent)[2];
@@ -119,6 +117,14 @@ public class polarispont extends Activity {
         });
     }
 
+    //Batyu
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        final EditText PX_eredm = (EditText) findViewById(R.id.PX_eredmeny);
+        final EditText PY_eredm = (EditText) findViewById(R.id.PY_eredmeny);
+        savedInstanceState.putString(KEYY, (String) PY_eredm.getText().toString());
+        savedInstanceState.putString(KEYX, (String) PX_eredm.getText().toString());
+        super.onSaveInstanceState(savedInstanceState);
+    }
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_polarispont, menu);
         return true;

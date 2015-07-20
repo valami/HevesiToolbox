@@ -31,7 +31,6 @@ public class metszesek extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(metszesek.this,  tajekozott.class);
-                intent.putExtra("orientation", orient());
                 startActivity(intent);
             }
         });
@@ -41,7 +40,6 @@ public class metszesek extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(metszesek.this,  belsoszoges.class);
-                intent.putExtra("orientation", orient());
                 startActivity(intent);
             }
         });
@@ -51,7 +49,6 @@ public class metszesek extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(metszesek.this,  oldal.class);
-                intent.putExtra("orientation", orient());
                 startActivity(intent);
             }
         });
@@ -61,7 +58,6 @@ public class metszesek extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(metszesek.this,  iv.class);
-                intent.putExtra("orientation", orient());
                 startActivity(intent);
             }
         });
@@ -71,40 +67,8 @@ public class metszesek extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(metszesek.this,  hatra.class);
-                intent.putExtra("orientation", orient());
                 startActivity(intent);
             }
         });
-    }
-
-    public byte orient ()
-    {
-        int currentOrientation = getResources().getConfiguration().orientation;
-        byte message;
-        if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-            message = (byte) 0;  }
-        else {
-            message = (byte) 1;  }
-        return (message);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_metszesek, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-
-
-        return super.onOptionsItemSelected(item);
     }
 }

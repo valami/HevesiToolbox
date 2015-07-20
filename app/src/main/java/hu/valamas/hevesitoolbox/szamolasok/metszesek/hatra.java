@@ -2,6 +2,7 @@ package hu.valamas.hevesitoolbox.szamolasok.metszesek;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -13,6 +14,7 @@ import android.text.method.DigitsKeyListener;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,6 +29,7 @@ import hu.valamas.hevesitoolbox.szamolasok.felulet.szogkezeles;
 import hu.valamas.hevesitoolbox.szamolasok.felulet.tizedes;
 
 public class hatra extends Activity {
+    private final String KEYPY = "py" ,KEYPX = "px";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +54,10 @@ public class hatra extends Activity {
         final EditText PX_e = (EditText) findViewById(R.id.PX_in);
         final Button szamol = (Button) findViewById(R.id.szamol);
 
-        //Forgatás
-        Bundle extras = getIntent().getExtras();
-        Byte orientation = extras.getByte("orientation");
-        if (orientation == 0)   {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }   else {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //Visszaállítás
+        if (savedInstanceState != null) {
+            PX_e.setText(savedInstanceState.getString(KEYPX));
+            PY_e.setText(savedInstanceState.getString(KEYPY));
         }
 
         //Szögbevitel alfa
@@ -128,22 +128,23 @@ public class hatra extends Activity {
         szamol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (AY_e.equals("") || AX_e.equals("") || BY_e.equals("")|| BX_e.equals("") || alfa_e.equals("")|| beta_e.equals(""))
-                {
-                    Toast.makeText(getApplicationContext(),
-                            getString(R.string.polaris_ures), Toast.LENGTH_SHORT).show();
+
+                double AY , AX ,BY,BX,KY,KX,alfa,beta;
+                try {
+                    String alfa_bent =alfa_e.getText().toString();
+                    String beta_bent =beta_e.getText().toString();
+                    alfa = Double.parseDouble(szogkezeles.tagolas(alfa_bent)[2]) ;
+                    beta = Double.parseDouble(szogkezeles.tagolas(beta_bent)[2]) ;
+                    AY = Double.parseDouble(AY_e.getText().toString())  ;
+                    AX = Double.parseDouble(AX_e.getText().toString())  ;
+                    BY = Double.parseDouble(BY_e.getText().toString())  ;
+                    BX = Double.parseDouble(BX_e.getText().toString())  ;
+                    KY = Double.parseDouble(KY_e.getText().toString())  ;
+                    KX = Double.parseDouble(KX_e.getText().toString())  ;
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.iranyszog_ures), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String alfa_bent =alfa_e.getText().toString();
-                double alfa = Double.parseDouble(szogkezeles.tagolas(alfa_bent)[2]) ;
-                String beta_bent =beta_e.getText().toString();
-                double beta = Double.parseDouble(szogkezeles.tagolas(beta_bent)[2]) ;
-                double AY = Double.parseDouble(AY_e.getText().toString())  ;
-                double AX = Double.parseDouble(AX_e.getText().toString())  ;
-                double BY = Double.parseDouble(BY_e.getText().toString())  ;
-                double BX = Double.parseDouble(BX_e.getText().toString())  ;
-                double KY = Double.parseDouble(KY_e.getText().toString())  ;
-                double KX = Double.parseDouble(KX_e.getText().toString())  ;
 
                 double dAB = Math.toRadians(geodezia.iranyszog(AY, AX, BY, BX)[0]);
                 double tAB = geodezia.iranyszog(AY, AX, BY, BX)[1];
@@ -166,12 +167,26 @@ public class hatra extends Activity {
                 double PY = CY + tCP * Math.sin(dCK);
                 double PX = CX + tCP * Math.cos(dCK);
 
-                PY_e.setText(tizedes.tizedes(PY,3))  ;
+                PY_e.setText(tizedes.tizedes(PY,3));
                 PX_e.setText(tizedes.tizedes(PX,3));
+
+                //Billentyüzet
+                InputMethodManager inputManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
             }
         });
     }
-
+    //Batyu
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        final EditText PY_e = (EditText) findViewById(R.id.PY_in);
+        final EditText PX_e = (EditText) findViewById(R.id.PX_in);
+        savedInstanceState.putString(KEYPY, PY_e.getText().toString());
+        savedInstanceState.putString(KEYPX, PX_e.getText().toString());
+        super.onSaveInstanceState(savedInstanceState);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -43,17 +43,28 @@
 0.8
     Metszések
     Javított GUI
+1.0
+    Javított numerikus
+    Elfordulási hiba javítva
+    EOV - WGS átváltó
+    Új UI stílus 4.0 felett
+    Action Bar menü
+
 
 
 
 Várható:
--Beállítások
--Tablet support
--Komparálás
--számolás tárolás
--troll hibaüzenet
--frissítéskor ujdonságok
+-Munkák ,koordináták mentése
+-Térképi ábrázolás
+-Kevesebb activity (gyorsabb futás)
+-Verzió ellenörzés
+-Frissítéskor ujdonságok
+-Pontok térképi megjelenítése
+-Numerikus terület ,átváltó ellenörzése
+
+-Numerikus terület forgatás
+-OpenGL rajz
 
 5letek:
 -Magaspont levezetés
-
+-troll hibaüzenet

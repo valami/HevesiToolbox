@@ -33,7 +33,7 @@
                     android:id="@+id/iranyszog"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Irányszög számítás" />
+                    android:text="@string/mainmenu_iranyszog" />
 
             </LinearLayout>
 
@@ -47,7 +47,7 @@
                     android:id="@+id/polaris"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Poláris pont számítás" />
+                    android:text="@string/mainmenu_polarispont" />
 
                 </LinearLayout>
 
@@ -61,7 +61,7 @@
                     android:id="@+id/numerikus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Numerikus területszámítás" />
+                    android:text="@string/mainmenu_numerikus" />
 
                 </LinearLayout>
 
@@ -75,7 +75,7 @@
                     android:id="@+id/haromszog"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Háromszög" />
+                    android:text="@string/mainmenu_haromszog" />
 
                 </LinearLayout>
 
@@ -88,7 +88,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Átváltó"
+                    android:text="@string/mainmenu_atvalto"
                     android:id="@+id/atvalto" />
 
                 </LinearLayout>
@@ -102,7 +102,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Szelvény keresö"
+                    android:text="@string/mainmenu_szelveny"
                     android:id="@+id/szelveny" />
 
                 </LinearLayout>
@@ -116,12 +116,24 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Metszések"
+                    android:text="@string/mainmenu_metszes"
                     android:id="@+id/metszesek" />
 
-                </LinearLayout>
+            </LinearLayout>
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="5dp">
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wgseov"
+                    android:id="@+id/wgseov" />
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
     <com.google.android.gms.ads.AdView

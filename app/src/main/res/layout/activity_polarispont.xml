@@ -136,7 +136,7 @@
                     android:id="@+id/PY_eredmeny"
                     android:editable="false"
                     android:background="#ffdfdfdf"
-                    android:minHeight="50dp"/>
+                    android:minHeight="40dp"/>
 
                 </LinearLayout>
 
@@ -158,7 +158,7 @@
                     android:id="@+id/PX_eredmeny"
                     android:editable="false"
                     android:background="#ffdfdfdf"
-                    android:minHeight="50dp"/>
+                    android:minHeight="40dp"/>
 
                 </LinearLayout>
         </LinearLayout>

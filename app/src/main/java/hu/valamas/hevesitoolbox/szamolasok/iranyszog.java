@@ -2,16 +2,16 @@ package hu.valamas.hevesitoolbox.szamolasok;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.valamas.hevesitoolbox.R;
@@ -24,8 +24,10 @@ import hu.valamas.hevesitoolbox.szamolasok.alapmuvelet.geodezia;
 
 public class iranyszog extends Activity   {
     private double szog,dist;
+    private final String KEYSZOG = "szog" ,KEYTAV = "tav";
 
-    protected void onCreate(Bundle savedInstanceState) {
+
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iranyszog);
         final tizedes tizedes =new tizedes();
@@ -42,39 +44,36 @@ public class iranyszog extends Activity   {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-        //Forgatás
-        Bundle extras = getIntent().getExtras();
-        Byte orientation = extras.getByte("orientation");
-        if (orientation == 0)   {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }   else {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
-
-
         Button szamit = (Button) findViewById(R.id.button);
-                szamit.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                //Ellenörzés
-                String KX_s = KX_in.getText().toString();
-                String KY_s = KY_in.getText().toString();
-                String VX_s = VX_in.getText().toString();
-                String VY_s = VY_in.getText().toString();
-                if (KX_s.matches("") | KY_s.matches("") |  VX_s.matches("") | VY_s.matches("") ) {
-                    Toast.makeText(getApplicationContext(),
-                            getString(R.string.iranyszog_ures), Toast.LENGTH_SHORT).show();
-                            return;
+            szamit.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                //Visszaállítás
+                if (savedInstanceState != null) {
+                    tavolnag.setText(savedInstanceState.getString(KEYTAV));
+                    szogkiir.setText(savedInstanceState.getString(KEYSZOG));
                 }
+                //Ellenörzés
+                String KX_s , KY_s , VX_s , VY_s;
+                double KX , KY ,VX ,VY;
+                try {
+                    KX_s = KX_in.getText().toString();
+                    KY_s = KY_in.getText().toString();
+                    VX_s = VX_in.getText().toString();
+                    VY_s = VY_in.getText().toString();
+                    KX = Double.parseDouble(KX_s);
+                    KY = Double.parseDouble(KY_s);
+                    VX = Double.parseDouble(VX_s);
+                    VY = Double.parseDouble(VY_s);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.iranyszog_ures), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 //Számol
-                double KX = Double.parseDouble(KX_s);
-                double KY = Double.parseDouble(KY_s);
-                double VX = Double.parseDouble(VX_s);
-                double VY = Double.parseDouble(VY_s);
                 szog = geodezia.iranyszog(KY,KX,VY,VX)[0];
                 szog = geodezia.iranyszog(KY,KX,VY,VX)[0];
 
-
-                        double szogu = ((VY - KY) / (VX - KX));
+                double szogu = ((VY - KY) / (VX - KX));
                 double szoge = Math.toDegrees(Math.atan(szogu));
                 if ((VY - KY) > 0 & (VX - KX) > 0) {
                     szog = szoge;
@@ -97,15 +96,29 @@ public class iranyszog extends Activity   {
                     Toast.makeText(getApplicationContext(),
                         getString(R.string.iranyszog_egyezik), Toast.LENGTH_SHORT).show();
                     return;
-                    }
-
-                szogkiir.setText(szogkezeles.kiiras(szog));
-
+                }
                 dist = Math.sqrt((((VY - KY) * (VY - KY)) + ((VX - KX) * (VX - KX))));
 
+                szogkiir.setText(szogkezeles.kiiras(szog));
                 tavolnag.setText(tizedes.tizedes(dist,3));
-            }
+
+                //Billentyüzet
+                InputMethodManager inputManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+                }
         });
+    }
+
+    //Batyu
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        final EditText tavolsag = (EditText) findViewById(R.id.tav);
+        final EditText szogkiir = (EditText) findViewById(R.id.szogkiir);
+        savedInstanceState.putString(KEYSZOG, (String) szogkiir.getText().toString());
+        savedInstanceState.putString(KEYTAV, (String) tavolsag.getText().toString());
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
